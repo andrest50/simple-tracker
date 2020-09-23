@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-add-tracker {
+  margin-bottom: 50px;
+}
+
+.trackers-group {
+  margin-top: 50px;
+}
+
+.tracker-group {
+  margin-top: 50px;
+}
+
+.footer {
+  height: 100px;
+}
