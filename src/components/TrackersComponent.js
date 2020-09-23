@@ -10,6 +10,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import { Control, LocalForm, Errors } from "react-redux-form";
 
 class RenderTracker extends Component {
@@ -55,7 +56,9 @@ class RenderTracker extends Component {
     });
     return (
       <div className="tracker-group">
-        <h3 className="text-info">{this.props.tracker.name}</h3>
+        <Link to={`/tracker/${this.props.tracker.id}`} >
+          <h3 className="text-info">{this.props.tracker.name}</h3>
+        </Link>
         <h3>{this.props.tracker.value}</h3>
         <ButtonGroup role="group">
           <Button color="primary" onClick={this.toggleModal}>
