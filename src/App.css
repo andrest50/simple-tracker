@@ -66,3 +66,31 @@
 .night-mode {
   background-color: gray;
 }
+
+#delete-mode-btn {
+  font-weight: 600;
+}
+
+#single-tracker-value {
+  font-size: 150px;
+  font-weight: 200;
+  margin-bottom: 50px;
+}
+
+#single-tracker-name {
+  font-size: 75px;
+  font-weight: 200;
+  margin-bottom: 50px;
+}
+
+#single-tracker-btn-add {
+  font-size: 20px;
+  height: 70px;
+  width: 200px;
+}
+
+#single-tracker-btn-inc {
+  font-size: 25px;
+  height: 70px;
+  width: 50px;
+}

@@ -11,9 +11,10 @@ function Header() {
             <h1>Simple Tracker</h1>
             <p>This is a website for creating, and maintaining, many trackers</p>
             <Link to="/">Dashboard</Link>
+            <hr />
+      {/*       <br />
             <br />
-            <br />
-            <span className="color-dot center" id="colorModeBtn" onClick={changeColorMode}/>
+            <span className="color-dot center" id="colorModeBtn" onClick={changeColorMode}/> */}
         </div>
     )
 }

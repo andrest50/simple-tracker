@@ -4,7 +4,8 @@ import TrackersComponent from "./TrackersComponent";
 import SingleTrackerComponent from './SingleTrackerComponent';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { incrementTracker, postIncrementTracker, fetchTrackers, fetchIncrements, createTracker, createIncrement } from "../redux";
+import { incrementTracker, postIncrementTracker, fetchTrackers, deleteTracker, 
+  fetchIncrements, createTracker, createIncrement, deleteIncrement } from "../redux";
 
 const mapStateToProps = (state) => {
   return {
@@ -18,7 +19,9 @@ const mapDispatchToProps = (dispatch) => ({
     incrementTracker: (index, amount) => dispatch(incrementTracker(index, amount)),
     postIncrementTracker: (index, name, value, amount) => dispatch(postIncrementTracker(index, name, value, amount)),
     createTracker: (name, value) => dispatch(createTracker(name, value)),
+    deleteTracker: (id) => dispatch(deleteTracker(id)),
     createIncrement: (trackerId, value) => dispatch(createIncrement(trackerId, value)),
+    deleteIncrement: (id) => dispatch(deleteIncrement(id)),
 });
 
 class Main extends Component {
@@ -32,23 +35,22 @@ class Main extends Component {
       return (
         <TrackersComponent trackers={this.props.trackers} 
           increments={this.props.increments} 
-          createTracker={this.props.createTracker} 
-          createIncrement={this.props.createIncrement} 
+          createTracker={this.props.createTracker}
+          deleteTracker={this.props.deleteTracker}  
+          createIncrement={this.props.createIncrement}
+          deleteIncrement={this.props.deleteIncrement} 
           incrementTracker={this.props.incrementTracker} 
           postIncrementTracker={this.props.postIncrementTracker}/>
       );
     }
 
     const SingleTrackerPage = ({match}) => {
-      console.log("Single Tracker Page");
-      console.log(match.params.trackerId);
-      console.log(this.props.trackers.increments);
-      console.log(this.props.trackers.trackers);
-      console.log(this.props.trackers.trackers.filter((tracker) => tracker.id === match.params.trackerId));
       return (
-        <SingleTrackerComponent tracker={this.props.trackers.trackers.filter((tracker) => tracker.id === match.params.trackerId)} 
-          increments={this.props.trackers.increments.filter((increment) => increment.trackerId === match.params.trackerId)}
+        <SingleTrackerComponent tracker={this.props.trackers.trackers.filter((tracker) => tracker.id == match.params.trackerId)[0]} 
+          increments={this.props.trackers.increments.filter((increment) => increment.trackerId == match.params.trackerId)}
+          deleteTracker={this.props.deleteTracker}  
           createIncrement={this.props.createIncrement} 
+          deleteIncrement={this.props.deleteIncrement}
           incrementTracker={this.props.incrementTracker} 
           postIncrementTracker={this.props.postIncrementTracker}/>
       );

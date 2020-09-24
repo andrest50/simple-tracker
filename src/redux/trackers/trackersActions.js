@@ -4,6 +4,8 @@ import {
   INCREMENT_TRACKER,
   ADD_INCREMENT,
   ADD_INCREMENTS,
+  DELETE_INCREMENT,
+  DELETE_TRACKER
 } from "./trackersTypes";
 
 export const fetchTrackers = () => (dispatch) => {
@@ -50,7 +52,6 @@ export const createTracker = (name, value) => (dispatch) => {
   const newTracker = {
     name: name,
     value: parseInt(value),
-    increments: [],
   };
 
   return fetch("http://localhost:3000/trackers", {
@@ -86,6 +87,22 @@ export const createTracker = (name, value) => (dispatch) => {
     });
 };
 
+export const destroyTracker = (id) => {
+  return {
+    type: DELETE_TRACKER,
+    payload: id,
+  };
+};
+
+export const deleteTracker = (id) => (dispatch) => {
+
+  return fetch(`http://localhost:3000/trackers/${id}`, {
+    method: "DELETE",
+  })
+  .then((response) => response.json())
+  .then((response) => dispatch(destroyTracker(id)))     
+};
+
 export const incrementTracker = (trackerId, amount) => {
   return {
     type: INCREMENT_TRACKER,
@@ -95,9 +112,6 @@ export const incrementTracker = (trackerId, amount) => {
 };
 
 export const postIncrementTracker = (trackerId, name, value, amount) => (dispatch) => {
-  console.log(String(name));
-  console.log(parseInt(value));
-  console.log(parseInt(amount));
   const changeTrackerVal = {
     id: trackerId,
     name: String(name),
@@ -215,4 +229,20 @@ export const createIncrement = (trackerId, value) => (dispatch) => {
       console.log("Create increment ", error.message);
       alert("Your increment could not be created\nError: " + error.message);
     });
+};
+
+export const destroyIncrement = (id) => {
+  return {
+    type: DELETE_INCREMENT,
+    payload: id,
+  };
+};
+
+export const deleteIncrement = (id) => (dispatch) => {
+
+  return fetch(`http://localhost:3000/increments/${id}`, {
+    method: "DELETE",
+  })
+  .then((response) => response.json())
+  .then((response) => dispatch(destroyIncrement(id)))     
 };
