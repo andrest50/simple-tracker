@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   Button,
   ButtonGroup,
+  Alert
 } from "reactstrap";
 import { Redirect } from 'react-router-dom';
 import IncrementModal from './IncrementModalComponent';
@@ -13,6 +14,7 @@ class SingleTracker extends Component {
     this.state = {
       isModalOpen: false,
       isDeleteMode: false,
+      isAlert: false,
       redirect: false,
       incrementBtnColor: 'primary',
       incrementText: 'Add Increment'
@@ -26,6 +28,7 @@ class SingleTracker extends Component {
     this.handleDeleteTracker = this.handleDeleteTracker.bind(this);
     this.handleIncrementOptions = this.handleIncrementOptions.bind(this);
     this.handleTrackerOptions = this.handleTrackerOptions.bind(this);
+    this.removeAlert = this.removeAlert(this);
 }
 
   toggleModal() {
@@ -81,9 +84,20 @@ class SingleTracker extends Component {
         console.log(tracker.numIncrements)
         if(tracker.numIncrements < 5)
           this.toggleModal();
-        else
-          alert("You can't have more than 5 increments per tracker!");
+        else {
+            //alert("You can't have more than 5 increments per tracker!");
+            this.setState({
+                isAlert: true
+            })
+        }
     }
+  }
+
+  removeAlert(){
+    console.log("im here");
+    this.setState({
+        isAlert: false
+    })
   }
 
   render() {
@@ -123,13 +137,15 @@ class SingleTracker extends Component {
       <div className="tracker-group">
         {this.props.tracker ? (
           <div id="single-tracker-div">
-            <h2 className="text-info" id="single-tracker-name">
+            <h2 className="tracker-name" id="single-tracker-name">
               {this.props.tracker.name}
             </h2>
             <h1 id="single-tracker-value">{this.props.tracker.value}</h1>
           </div>
         ) : null}
-        <ButtonGroup role="group">
+        {this.state.isAlert ? <Alert color="danger">You can't have more than 5 increments per tracker!
+            <span className="alert-close-btn" onClick={this.removeAlert}>x</span></Alert> : null}
+        <ButtonGroup role="group" className="increment-btns">
           <Button
             color={this.state.incrementBtnColor}
             id="single-tracker-btn-add"

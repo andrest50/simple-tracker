@@ -60,7 +60,7 @@ class Main extends Component {
     }
 
     return (
-      <div>
+      <div id="trackers-bg">
         <Header />
         <Switch>
           <Route path="/home" component={TrackersPage} />

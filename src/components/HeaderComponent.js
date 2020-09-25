@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
 
 function Header() {
     /* const changeColorMode = () => {
@@ -7,15 +8,19 @@ function Header() {
         element.classList.toggle('night-mode');
     } */
     return (
-        <div>
-            <h1>Simple Tracker</h1>
-            <p>This is a website for creating, and maintaining, many trackers</p>
-            <Link to="/">Dashboard</Link>
-            <hr />
-      {/*   <br />
-            <br />
-            <span className="color-dot center" id="colorModeBtn" onClick={changeColorMode}/> */}
-        </div>
+        <React.Fragment>
+            <Navbar color="dark" expand="md">
+                <NavbarBrand href="/" id="title">Simple Tracker</NavbarBrand>
+                {/* <Nav navbar>
+                    <NavItem>
+                        <NavLink href="/" id="navbar-btn">Dashboard</NavLink>
+                    </NavItem>
+                </Nav> */}
+            </Navbar>
+            <div id="description">
+                <h5>This is a website for creating, and maintaining, many trackers</h5>
+            </div>
+        </React.Fragment>
     )
 }
 

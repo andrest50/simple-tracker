@@ -132,7 +132,7 @@ class RenderTracker extends Component {
     return (
       <div className="tracker-group">
         <Link to={`/tracker/${this.props.tracker.id}`}>
-          <h3 className="text-info">{this.props.tracker.name}</h3>
+          <h3 className="tracker-name">{this.props.tracker.name}</h3>
         </Link>
         <h3>{this.props.tracker.value}</h3>
         <ButtonGroup role="group">
@@ -214,7 +214,7 @@ class TrackersComponent extends Component {
 
     return (
       <div className="container trackers-group">
-        <Button className="btn-add-tracker" onClick={this.toggleModal}>
+        <Button id="btn-add-tracker" onClick={this.toggleModal}>
           Add Tracker
         </Button>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>

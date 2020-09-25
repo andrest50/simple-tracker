@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  overflow: hidden;
+  overflow-y: hidden;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: #afc0e6;
 }
 
 .App-logo {
@@ -39,8 +50,34 @@
 
 /* My added styling */
 
-.btn-add-tracker {
+#title {
+  color: #109ec5;
+  font-weight: 600;
+}
+
+#title:hover {
+  color: #45c7eb;
+}
+
+#navbar-btn {
+  color: #109ec5;
+}
+
+#description {
+  margin-top: 30px;
+}
+
+#trackers-bg {
+  background-color: #afc0e6;
+}
+
+#btn-add-tracker {
+  background-color: #4054c5;
   margin-bottom: 50px;
+}
+
+#btn-add-tracker:hover {
+  background-color: #2c43c5;
 }
 
 .trackers-group {
@@ -49,6 +86,15 @@
 
 .tracker-group {
   margin-top: 50px;
+}
+
+.tracker-name {
+  color:#243494;
+}
+
+.tracker-name:hover {
+  color:#2a3579;
+  text-decoration: none;
 }
 
 #footer {
@@ -95,4 +141,18 @@
   font-size: 25px;
   height: 70px;
   width: 50px;
+}
+
+.increment-btns {
+  max-width: 90%;
+}
+
+.alert-close-btn {
+  margin-left: 20px;
+}
+
+.alert-close-btn:hover {
+  color: rgb(121, 43, 43);
+  font-weight: 800;
+  cursor: pointer;
 }
