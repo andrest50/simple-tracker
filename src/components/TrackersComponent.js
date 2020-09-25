@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   Button,
   ButtonGroup,
-  ButtonToolbar,
   Modal,
   ModalHeader,
   ModalBody,
@@ -27,9 +26,13 @@ class RenderTracker extends Component {
     };
 
     this.toggleModal = this.toggleModal.bind(this);
+    this.toggleDeleteMode = this.toggleDeleteMode.bind(this);
     this.handleIncrement = this.handleIncrement.bind(this);
     this.handleAddIncrement = this.handleAddIncrement.bind(this);
-    this.toggleDeleteMode = this.toggleDeleteMode.bind(this);
+    this.handleDeleteIncrement = this.handleDeleteIncrement.bind(this);
+    this.handleDeleteTracker = this.handleDeleteTracker.bind(this);
+    this.handleIncrementOptions = this.handleIncrementOptions.bind(this);
+    this.handleTrackerOptions = this.handleTrackerOptions.bind(this);
   }
 
   toggleModal() {
@@ -38,32 +41,12 @@ class RenderTracker extends Component {
     });
   }
 
-  handleIncrement(trackerId, name, value, amount) {
-    console.log(name + " : " + trackerId + " : " + value + " : " + amount);
-    this.props.postIncrementTracker(trackerId, name, value, amount);
-  }
-
-  handleAddIncrement(values) {
-    this.toggleModal();
-    console.log(this.props.tracker.id + " : " + values.value);
-    this.props.createIncrement(this.props.tracker.id, values.value);
-  }
-
-  handleDeleteIncrement(id) {
-    this.props.deleteIncrement(id);
-  }
-
-  handleDeleteTracker(id) {
-    this.props.deleteTracker(id);
-  }
-
   toggleDeleteMode() {
     var color, text;
-    if (this.state.isDeleteMode === true) color = "primary";
-    else color = "danger";
 
-    if (this.state.incrementText === "Add Increment") text = "Delete Tracker";
-    else text = "Add Increment";
+    if(this.state.isDeleteMode === true ? color = 'primary' : color = 'danger');
+
+    if(this.state.incrementText === 'Add Increment' ? text = 'Delete Tracker' : text = 'Add Increment');
 
     this.setState((prevState) => ({
       isDeleteMode: !prevState.isDeleteMode,
@@ -72,16 +55,39 @@ class RenderTracker extends Component {
     }));
   }
 
+  handleIncrement(tracker, amount) {
+    this.props.postIncrementTracker(tracker, amount);
+  }
+
+  handleAddIncrement(values) {
+    this.toggleModal();
+    console.log(this.props.tracker.id + " : " + values.value);
+    this.props.createIncrement(this.props.tracker.id, values.value);
+    this.props.updateNumIncrements(this.props.tracker, 1);
+  }
+
+  handleDeleteIncrement(id) {
+    this.props.deleteIncrement(id);
+    this.props.updateNumIncrements(this.props.tracker, -1);
+  }
+
+  handleDeleteTracker(id) {
+    this.props.deleteTracker(id);
+  }
+
   handleIncrementOptions(increment) {
     if (this.state.isDeleteMode === true) {
       this.handleDeleteIncrement(increment.id);
     } else {
-      this.handleIncrement(
-        this.props.tracker.id,
-        this.props.tracker.name,
-        this.props.tracker.value,
-        increment.value
-      );
+      if(this.props.tracker.value + increment.value < 1000000){
+        this.handleIncrement(
+          this.props.tracker,
+          increment.value
+        );
+      }
+      else {
+        alert("Value cannot exceed 999999");
+      }
     }
   }
 
@@ -89,11 +95,16 @@ class RenderTracker extends Component {
     if (this.state.isDeleteMode === true) {
       this.handleDeleteTracker(tracker.id);
     } else {
-      this.toggleModal();
+      console.log(tracker.numIncrements)
+      if(tracker.numIncrements < 5)
+        this.toggleModal();
+      else
+        alert("You can't have more than 5 increments per tracker!");
     }
   }
 
   render() {
+
     const compare = (a, b) => {
       if (a.value < b.value) {
         return -1;
@@ -103,6 +114,7 @@ class RenderTracker extends Component {
       }
       return 0;
     };
+
     this.props.increments.sort(compare);
 
     const increments = this.props.increments.map((increment) => {
@@ -150,6 +162,13 @@ class RenderTracker extends Component {
   }
 }
 
+//Form validation checks
+const required = (val) => val && val.length;
+const maxLength = (len) => (val) => !val || val.length <= len;
+const minLength = (len) => (val) => val && val.length >= len;
+const isNumber = (val) => !isNaN(Number(val));
+const maxValue = (val) => val < 1000000;
+
 class TrackersComponent extends Component {
   constructor(props) {
     super(props);
@@ -187,6 +206,7 @@ class TrackersComponent extends Component {
             deleteTracker={this.props.deleteTracker}
             incrementTracker={this.props.incrementTracker}
             postIncrementTracker={this.props.postIncrementTracker}
+            updateNumIncrements={this.props.updateNumIncrements}
           />
         </div>
       );
@@ -212,7 +232,22 @@ class TrackersComponent extends Component {
                     name="name"
                     placeholder="Tracker Name"
                     className="form-control"
+                    validators={{
+                      required,
+                      minLength: minLength(2),
+                      maxLength: maxLength(30)
+                    }}
                   />
+                  <Errors
+                      className="text-danger"
+                      model=".name"
+                      show="touched"
+                      messages={{
+                        required: "Required. ",
+                        minLength: "Must be greater than 2 characters. ",
+                        maxLength: "Must be 30 characters or less. ",
+                      }}
+                    />
                 </Col>
               </Row>
               <Row className="form-group">
@@ -226,7 +261,22 @@ class TrackersComponent extends Component {
                     name="value"
                     placeholder="Starting Value"
                     className="form-control"
+                    validators={{
+                      required,
+                      isNumber,
+                      maxValue
+                    }}
                   />
+                  <Errors
+                      className="text-danger"
+                      model=".value"
+                      show="touched"
+                      messages={{
+                        required: "Required. ",
+                        isNumber: "Value must be a number. ",
+                        maxValue: "Value must be less than 1000000. "
+                      }}
+                    />
                 </Col>
               </Row>
               <Button type="submit" value="submit" color="primary">

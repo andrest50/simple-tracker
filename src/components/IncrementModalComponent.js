@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Button,
-  ButtonGroup,
   Modal,
   ModalHeader,
   ModalBody,
@@ -10,6 +9,11 @@ import {
   Label,
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
+
+//Form validation checks
+const required = (val) => val && val.length;
+const maxValue = (val) => val < 1000;
+const isNumber = (val) => !isNaN(Number(val));
 
 const IncrementModal = (props) => {
     return (
@@ -28,7 +32,22 @@ const IncrementModal = (props) => {
                     name="value"
                     placeholder="Increment Value"
                     className="form-control"
+                    validators={{
+                        required,
+                        isNumber,
+                        maxValue
+                    }}                   
                   />
+                  <Errors
+                      className="text-danger"
+                      model=".value"
+                      show="touched"
+                      messages={{
+                        required: "Required. ",
+                        isNumber: "Value must be a number. ",
+                        maxValue: "Value must be less than 1000. "
+                      }}
+                    />
                 </Col>
               </Row>
               <Button type="submit" value="submit" color="primary">

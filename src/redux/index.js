@@ -10,5 +10,6 @@ export {
   addIncrements,
   fetchIncrements,
   createIncrement,
-  deleteIncrement
+  deleteIncrement,
+  updateNumIncrements
 } from "./trackers/trackersActions";
