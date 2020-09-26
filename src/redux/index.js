@@ -11,5 +11,6 @@ export {
   fetchIncrements,
   createIncrement,
   deleteIncrement,
-  updateNumIncrements
+  updateNumIncrements,
+  deleteClick
 } from "./trackers/trackersActions";

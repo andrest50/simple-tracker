@@ -5,7 +5,7 @@ import SingleTrackerComponent from './SingleTrackerComponent';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { incrementTracker, postIncrementTracker, fetchTrackers, deleteTracker, 
-  fetchIncrements, createTracker, createIncrement, deleteIncrement, updateNumIncrements } from "../redux";
+  fetchIncrements, createTracker, createIncrement, deleteIncrement, updateNumIncrements, deleteClick } from "../redux";
 
 const mapStateToProps = (state) => {
   return {
@@ -23,6 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
     createIncrement: (trackerId, value) => dispatch(createIncrement(trackerId, value)),
     deleteIncrement: (id) => dispatch(deleteIncrement(id)),
     updateNumIncrements: (id, amount) => dispatch(updateNumIncrements(id, amount)),
+    deleteClick: (id, clicks) => dispatch(deleteClick(id, clicks)),
 });
 
 class Main extends Component {
@@ -55,7 +56,8 @@ class Main extends Component {
           deleteIncrement={this.props.deleteIncrement}
           incrementTracker={this.props.incrementTracker} 
           postIncrementTracker={this.props.postIncrementTracker}
-          updateNumIncrements={this.props.updateNumIncrements}/>
+          updateNumIncrements={this.props.updateNumIncrements}
+          deleteClick={this.props.deleteClick}/>
       );
     }
 

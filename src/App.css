@@ -68,7 +68,9 @@ body {
 }
 
 #trackers-bg {
-  background-color: #afc0e6;
+  /*afc0e6*/
+  /*939cbe*/
+  background-color: #939cbe;
 }
 
 #btn-add-tracker {
@@ -193,6 +195,12 @@ body {
   margin-top: 50px;
 }
 
+.history-click {
+  width: 30%;
+  font-weight: 200;
+  font-size: 20px;
+}
+
 .history-click:hover {
   cursor: pointer;
   color: #243494;
@@ -202,9 +210,11 @@ body {
 .delete-click {
   margin-left: 20px;
   color: red;
+  font-size: 20px;
 }
 
 .delete-click:hover {
   cursor: pointer;
   color: #5d1111;
+  font-weight: 600;
 }

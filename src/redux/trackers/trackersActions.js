@@ -7,6 +7,7 @@ import {
   UPDATE_NUM_INCREMENTS,
   DELETE_INCREMENT,
   DELETE_TRACKER,
+  DELETE_CLICK
 } from "./trackersTypes";
 
 export const addTracker = (tracker) => {
@@ -64,6 +65,14 @@ export const handleDeleteTracker = (id) => {
   return {
     type: DELETE_TRACKER,
     payload: id,
+  };
+};
+
+export const handleDeleteClick = (trackerId, clicks) => {
+  return {
+    type: DELETE_CLICK,
+    trackerId: trackerId,
+    clicks: clicks,
   };
 };
 
@@ -170,6 +179,48 @@ export const postIncrementTracker = (tracker, amount) => (dispatch) => {
     )
     .then((response) => response.json())
     .then((tracker) => dispatch(incrementTracker(tracker.id, amount)))
+    .catch((error) => {
+      console.log("Create increment", error.message);
+      alert("Your increment could not be created\nError: " + error.message);
+    });
+};
+
+export const deleteClick = (tracker, clicks) => (dispatch) => {
+  const updateTracker = {
+    id: tracker.id,
+    name: String(tracker.name),
+    value: parseInt(tracker.value),
+    numIncrements: tracker.numIncrements,
+    clicks: clicks
+  };
+
+  return fetch(`http://localhost:3000/trackers/${tracker.id}`, {
+    method: "PUT",
+    body: JSON.stringify(updateTracker),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "same-origin",
+  })
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error(
+            "Error " + response.status + ": " + response.statusText
+          );
+          error.repsonse = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      }
+    )
+    .then((response) => response.json())
+    .then((tracker) => dispatch(handleDeleteClick(tracker.id, clicks)))
     .catch((error) => {
       console.log("Create increment", error.message);
       alert("Your increment could not be created\nError: " + error.message);

@@ -7,6 +7,7 @@ import {
   UPDATE_NUM_INCREMENTS,
   DELETE_INCREMENT,
   DELETE_TRACKER,
+  DELETE_CLICK
 } from "./trackersTypes";
 
 const TrackersReducer = (
@@ -61,6 +62,17 @@ const TrackersReducer = (
           (tracker) => tracker.id !== action.payload
         ),
       };
+    case DELETE_CLICK:
+        return Object.assign({}, state, {
+            trackers: state.trackers.map((tracker, trackerId) => {
+              if (trackerId === action.trackerId) {
+                return Object.assign({}, tracker, {
+                  clicks: action.clicks
+                });
+              }
+              return tracker;
+            }),
+          });
     default:
       return state;
   }
