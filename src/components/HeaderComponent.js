@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from "react-router-dom";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+//import { Link } from "react-router-dom";
+import { Navbar, NavbarBrand } from "reactstrap";
 
 function Header() {
     /* const changeColorMode = () => {

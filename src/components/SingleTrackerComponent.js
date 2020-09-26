@@ -12,7 +12,6 @@ class SingleTracker extends Component {
       isDeleteMode: false,
       isAlert: false,
       redirect: false,
-      incrementBtnColor: "primary",
       incrementText: "Add Increment",
     };
 
@@ -34,13 +33,8 @@ class SingleTracker extends Component {
   }
 
   toggleDeleteMode() {
-    var color, text;
+    var text;
 
-    if (
-      this.state.isDeleteMode === true
-        ? (color = "primary")
-        : (color = "danger")
-    );
 
     if (
       this.state.incrementText === "Add Increment"
@@ -50,7 +44,6 @@ class SingleTracker extends Component {
 
     this.setState((prevState) => ({
       isDeleteMode: !prevState.isDeleteMode,
-      incrementBtnColor: color,
       incrementText: text,
     }));
   }
@@ -76,11 +69,13 @@ class SingleTracker extends Component {
       date: dateTime,
     };
     tracker.clicks.push(new_click);
-    this.props.postIncrementTracker(tracker, amount);
+    this.props.incrementTracker(tracker, amount);
   }
 
-  handleDeleteClick(tracker, click){
-    var new_clicks = tracker.clicks.filter((curr_click) => curr_click.date != click.date);
+  handleDeleteClick(tracker, click) {
+    var new_clicks = tracker.clicks.filter(
+      (curr_click) => curr_click.date !== click.date
+    );
     this.props.deleteClick(tracker, new_clicks);
   }
 
@@ -117,7 +112,6 @@ class SingleTracker extends Component {
       console.log(tracker.numIncrements);
       if (tracker.numIncrements < 5) this.toggleModal();
       else {
-        //alert("You can't have more than 5 increments per tracker!");
         this.setState({
           isAlert: true,
         });
@@ -129,6 +123,10 @@ class SingleTracker extends Component {
     this.setState({
       isAlert: false,
     });
+  }
+
+  componentDidMount() {
+    //window.scrollTo(0, 0);
   }
 
   render() {
@@ -154,8 +152,8 @@ class SingleTracker extends Component {
           key={increment.id}
           id={
             this.state.isDeleteMode
-              ? "single-tracker-btn-delete-inc"
-              : "single-tracker-btn-inc"
+              ? "single-tracker-delete-inc-btn"
+              : "single-tracker-inc-btn"
           }
           onClick={() => this.handleIncrementOptions(increment)}
         >
@@ -167,7 +165,7 @@ class SingleTracker extends Component {
     console.log(this.props.tracker);
 
     return (
-      <div className="tracker-group">
+      <div className="dashboard-tracker-group">
         {this.props.tracker ? (
           <div id="single-tracker-div">
             <h2 className="tracker-name" id="single-tracker-name">
@@ -187,8 +185,8 @@ class SingleTracker extends Component {
                 <Button
                   id={
                     this.state.isDeleteMode
-                      ? "single-tracker-btn-delete"
-                      : "single-tracker-btn-add"
+                      ? "single-tracker-delete-btn"
+                      : "single-tracker-add-btn"
                   }
                   onClick={() => this.handleTrackerOptions(this.props.tracker)}
                 >
@@ -210,22 +208,31 @@ class SingleTracker extends Component {
                 </Button>
               </ButtonGroup>
               <div id="history">
-                {this.props.tracker.clicks.reverse().map((click) => (
-                  <div>
-                    <span
-                      className="history-click"
-                      onClick={() =>
-                        this.handleIncrement(
-                          this.props.tracker,
-                          click.value - this.props.tracker.value
-                        )
-                      }
-                    >
-                      {click.value} : {click.date}
-                    </span>
-                    <span className="delete-click" onClick={() => this.handleDeleteClick(this.props.tracker, click)}>x</span>
-                  </div>
-                ))}
+                {this.props.tracker.clicks
+                  ? this.props.tracker.clicks.reverse().map((click) => (
+                      <div>
+                        <span
+                          className="history-click"
+                          onClick={() =>
+                            this.handleIncrement(
+                              this.props.tracker,
+                              click.value - this.props.tracker.value
+                            )
+                          }
+                        >
+                          {click.value} : {click.date}
+                        </span>
+                        <span
+                          className="delete-click"
+                          onClick={() =>
+                            this.handleDeleteClick(this.props.tracker, click)
+                          }
+                        >
+                          x
+                        </span>
+                      </div>
+                    ))
+                  : null}
               </div>
             </div>
           </div>

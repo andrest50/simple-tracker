@@ -10,7 +10,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #afc0e6;
+  background-color: #939cbe;
 }
 
 .App-logo {
@@ -67,34 +67,31 @@ body {
   margin-top: 30px;
 }
 
-#trackers-bg {
   /*afc0e6*/
   /*939cbe*/
-  background-color: #939cbe;
-}
 
-#btn-add-tracker {
+#dashboard-add-tracker-btn {
   background-color: #4054c5;
   margin-bottom: 50px;
 }
 
-#btn-add-tracker:hover {
+#dashboard-add-tracker-btn:hover {
   background-color: #2c43c5;
 }
 
-.trackers-group {
+.dashboard-trackers-group {
   margin-top: 50px;
 }
 
-.tracker-group {
+.dashboard-tracker-group {
   margin-top: 50px;
 }
 
-.tracker-name {
+.dashboard-tracker-name {
   color:#243494;
 }
 
-.tracker-name:hover {
+.dashboard-tracker-name:hover {
   color:#2a3579;
   text-decoration: none;
 }
@@ -117,7 +114,7 @@ body {
   background-color: gray;
 }
 
-#delete-mode-btn {
+#dashboard-delete-mode-btn {
   font-weight: 600;
 }
 
@@ -133,48 +130,48 @@ body {
   margin-bottom: 50px;
 }
 
-#single-tracker-btn-add {
-  background-color: rgb(91, 7, 226);
+#single-tracker-add-btn {
+  background-color: rgb(94, 84, 185);
   font-size: 20px;
   height: 70px;
   width: 200px;
 }
 
-#single-tracker-btn-add:hover {
-  background-color: rgb(63, 8, 151);
+#single-tracker-add-btn:hover {
+  background-color: rgb(83, 67, 177);
 }
 
-#single-tracker-btn-delete {
-  background-color: rgb(190, 40, 40);
+#single-tracker-delete-btn {
+  background-color: rgb(195, 62, 62);
   font-size: 20px;
   height: 70px;
   width: 200px;
 }
 
-#single-tracker-btn-delete:hover {
-  background-color: rgb(139, 13, 13);
+#single-tracker-delete-btn:hover {
+  background-color: rgb(156, 57, 57);
 }
 
-#single-tracker-btn-inc {
-  background-color: rgb(91, 7, 226);
+#single-tracker-inc-btn {
+  background-color: rgb(94, 84, 185);
   font-size: 25px;
   height: 70px;
   width: 20%;
 }
 
-#single-tracker-btn-inc:hover {
-  background-color: rgb(63, 8, 151);
+#single-tracker-inc-btn:hover {
+  background-color: rgb(83, 67, 177);
 }
 
-#single-tracker-btn-delete-inc {
-  background-color: rgb(190, 40, 40);
+#single-tracker-delete-inc-btn {
+  background-color: rgb(195, 62, 62);
   font-size: 25px;
   height: 70px;
   width: 20%;
 }
 
-#single-tracker-btn-delete-inc:hover {
-  background-color: rgb(139, 13, 13);
+#single-tracker-delete-inc-btn:hover {
+  background-color: rgb(156, 57, 57);
 }
 
 .increment-btns {

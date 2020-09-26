@@ -2,16 +2,10 @@ import React, { Component } from "react";
 import {
   Button,
   ButtonGroup,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Label,
-  Row,
-  Col,
 } from "reactstrap";
 import IncrementModal from "./IncrementModalComponent";
+import TrackerModal from "./TrackerModalComponent";
 import { Link } from "react-router-dom";
-import { Control, LocalForm, Errors } from "react-redux-form";
 
 class RenderTracker extends Component {
   constructor(props) {
@@ -21,7 +15,6 @@ class RenderTracker extends Component {
       isModalOpen: false,
       isDeleteMode: false,
       incrementBtnColor: "primary",
-      value: this.props.tracker.value,
       incrementText: "Add Increment",
     };
 
@@ -76,7 +69,7 @@ class RenderTracker extends Component {
       date: dateTime,
     };
     tracker.clicks.push(new_click);
-    this.props.postIncrementTracker(tracker, amount);
+    this.props.incrementTracker(tracker, amount);
   }
 
   handleAddIncrement(values) {
@@ -142,6 +135,7 @@ class RenderTracker extends Component {
         <Button
           color={this.state.incrementBtnColor}
           key={increment.id}
+          className="dashboard-tracker-inc-btn"
           onClick={() => this.handleIncrementOptions(increment)}
         >
           {increment.value}
@@ -150,12 +144,12 @@ class RenderTracker extends Component {
     });
 
     return (
-      <div className="tracker-group">
+      <div className="dashboard-tracker-group">
         <Link to={`/tracker/${this.props.tracker.id}`}>
-          <h3 className="tracker-name">{this.props.tracker.name}</h3>
+          <h3 className="dashboard-tracker-name">{this.props.tracker.name}</h3>
         </Link>
         <h3>{this.props.tracker.value}</h3>
-        <ButtonGroup role="group">
+        <ButtonGroup role="group" className="dashboard-tracker-btns">
           <Button
             color={this.state.incrementBtnColor}
             onClick={() => this.handleTrackerOptions(this.props.tracker)}
@@ -171,7 +165,7 @@ class RenderTracker extends Component {
           {increments}
           <Button
             color="danger"
-            id="delete-mode-btn"
+            id="dashboard-delete-mode-btn"
             onClick={this.toggleDeleteMode}
           >
             X
@@ -181,13 +175,6 @@ class RenderTracker extends Component {
     );
   }
 }
-
-//Form validation checks
-const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !val || val.length <= len;
-const minLength = (len) => (val) => val && val.length >= len;
-const isNumber = (val) => !isNaN(Number(val));
-const maxValue = (val) => val < 1000000;
 
 class TrackersComponent extends Component {
   constructor(props) {
@@ -225,7 +212,6 @@ class TrackersComponent extends Component {
             deleteIncrement={this.props.deleteIncrement}
             deleteTracker={this.props.deleteTracker}
             incrementTracker={this.props.incrementTracker}
-            postIncrementTracker={this.props.postIncrementTracker}
             updateNumIncrements={this.props.updateNumIncrements}
           />
         </div>
@@ -233,78 +219,16 @@ class TrackersComponent extends Component {
     });
 
     return (
-      <div className="container trackers-group">
-        <Button id="btn-add-tracker" onClick={this.toggleModal}>
+      <div className="container dashboard-trackers-group">
+        <Button id="dashboard-add-tracker-btn" onClick={this.toggleModal}>
           Add Tracker
         </Button>
-        <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggleModal}>Create Tracker</ModalHeader>
-          <ModalBody>
-            <LocalForm onSubmit={(values) => this.handleAddTracker(values)}>
-              <Row className="form-group">
-                <Label htmlFor="name" md={2}>
-                  Name
-                </Label>
-                <Col md={10}>
-                  <Control.text
-                    model=".name"
-                    id="name"
-                    name="name"
-                    placeholder="Tracker Name"
-                    className="form-control"
-                    validators={{
-                      required,
-                      minLength: minLength(2),
-                      maxLength: maxLength(30)
-                    }}
-                  />
-                  <Errors
-                      className="text-danger"
-                      model=".name"
-                      show="touched"
-                      messages={{
-                        required: "Required. ",
-                        minLength: "Must be greater than 2 characters. ",
-                        maxLength: "Must be 30 characters or less. ",
-                      }}
-                    />
-                </Col>
-              </Row>
-              <Row className="form-group">
-                <Label htmlFor="value" md={2}>
-                  Value
-                </Label>
-                <Col md={10}>
-                  <Control.text
-                    model=".value"
-                    id="value"
-                    name="value"
-                    placeholder="Starting Value"
-                    className="form-control"
-                    validators={{
-                      required,
-                      isNumber,
-                      maxValue
-                    }}
-                  />
-                  <Errors
-                      className="text-danger"
-                      model=".value"
-                      show="touched"
-                      messages={{
-                        required: "Required. ",
-                        isNumber: "Value must be a number. ",
-                        maxValue: "Value must be less than 1000000. "
-                      }}
-                    />
-                </Col>
-              </Row>
-              <Button type="submit" value="submit" color="primary">
-                Submit
-              </Button>
-            </LocalForm>
-          </ModalBody>
-        </Modal>
+        <TrackerModal
+          tracker={this.props.tracker}
+          isModalOpen={this.state.isModalOpen}
+          toggleModal={this.toggleModal}
+          handleAddTracker={this.handleAddTracker}
+        />
         <h2>Your Trackers: </h2>
         {trackers}
       </div>

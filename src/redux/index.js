@@ -5,7 +5,6 @@ export {
   createTracker,
   deleteTracker,
   incrementTracker,
-  postIncrementTracker,
   addIncrement,
   addIncrements,
   fetchIncrements,

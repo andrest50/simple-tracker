@@ -4,7 +4,7 @@ import TrackersComponent from "./TrackersComponent";
 import SingleTrackerComponent from './SingleTrackerComponent';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { incrementTracker, postIncrementTracker, fetchTrackers, deleteTracker, 
+import { incrementTracker, fetchTrackers, deleteTracker, 
   fetchIncrements, createTracker, createIncrement, deleteIncrement, updateNumIncrements, deleteClick } from "../redux";
 
 const mapStateToProps = (state) => {
@@ -16,8 +16,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     fetchTrackers: () => dispatch(fetchTrackers()),
     fetchIncrements: () => dispatch(fetchIncrements()),
-    incrementTracker: (index, amount) => dispatch(incrementTracker(index, amount)),
-    postIncrementTracker: (tracker, amount) => dispatch(postIncrementTracker(tracker, amount)),
+    incrementTracker: (tracker, amount) => dispatch(incrementTracker(tracker, amount)),
     createTracker: (name, value) => dispatch(createTracker(name, value)),
     deleteTracker: (id) => dispatch(deleteTracker(id)),
     createIncrement: (trackerId, value) => dispatch(createIncrement(trackerId, value)),
@@ -42,7 +41,6 @@ class Main extends Component {
           createIncrement={this.props.createIncrement}
           deleteIncrement={this.props.deleteIncrement} 
           incrementTracker={this.props.incrementTracker} 
-          postIncrementTracker={this.props.postIncrementTracker}
           updateNumIncrements={this.props.updateNumIncrements}/>
       );
     }
@@ -55,14 +53,13 @@ class Main extends Component {
           createIncrement={this.props.createIncrement} 
           deleteIncrement={this.props.deleteIncrement}
           incrementTracker={this.props.incrementTracker} 
-          postIncrementTracker={this.props.postIncrementTracker}
           updateNumIncrements={this.props.updateNumIncrements}
           deleteClick={this.props.deleteClick}/>
       );
     }
 
     return (
-      <div id="trackers-bg">
+      <div>
         <Header />
         <Switch>
           <Route path="/home" component={TrackersPage} />
