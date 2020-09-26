@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Alert
-} from "reactstrap";
-import { Redirect } from 'react-router-dom';
-import IncrementModal from './IncrementModalComponent';
+import { Button, ButtonGroup, Alert } from "reactstrap";
+import { Redirect } from "react-router-dom";
+import IncrementModal from "./IncrementModalComponent";
 
 class SingleTracker extends Component {
   constructor(props) {
@@ -16,12 +12,12 @@ class SingleTracker extends Component {
       isDeleteMode: false,
       isAlert: false,
       redirect: false,
-      incrementBtnColor: 'primary',
-      incrementText: 'Add Increment'
+      incrementBtnColor: "primary",
+      incrementText: "Add Increment",
     };
 
     this.toggleModal = this.toggleModal.bind(this);
-    this.toggleDeleteMode = this.toggleDeleteMode.bind(this); 
+    this.toggleDeleteMode = this.toggleDeleteMode.bind(this);
     this.handleIncrement = this.handleIncrement.bind(this);
     this.handleAddIncrement = this.handleAddIncrement.bind(this);
     this.handleDeleteIncrement = this.handleDeleteIncrement.bind(this);
@@ -29,29 +25,57 @@ class SingleTracker extends Component {
     this.handleIncrementOptions = this.handleIncrementOptions.bind(this);
     this.handleTrackerOptions = this.handleTrackerOptions.bind(this);
     this.removeAlert = this.removeAlert(this);
-}
+  }
 
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
   }
-  
+
   toggleDeleteMode() {
     var color, text;
 
-    if(this.state.isDeleteMode === true ? color = 'primary' : color = 'danger');
+    if (
+      this.state.isDeleteMode === true
+        ? (color = "primary")
+        : (color = "danger")
+    );
 
-    if(this.state.incrementText === 'Add Increment' ? text = 'Delete Tracker' : text = 'Add Increment');
+    if (
+      this.state.incrementText === "Add Increment"
+        ? (text = "Delete Tracker")
+        : (text = "Add Increment")
+    );
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       isDeleteMode: !prevState.isDeleteMode,
       incrementBtnColor: color,
-      incrementText: text
+      incrementText: text,
     }));
   }
 
   handleIncrement(tracker, amount) {
+    console.log(tracker);
+    var curr_date = new Date();
+    var date =
+      curr_date.getFullYear() +
+      "-" +
+      (curr_date.getMonth() + 1) +
+      "-" +
+      curr_date.getDate();
+    var time =
+      curr_date.getHours() +
+      ":" +
+      curr_date.getMinutes() +
+      ":" +
+      curr_date.getSeconds();
+    var dateTime = date + " " + time;
+    var new_click = {
+      value: tracker.value,
+      date: dateTime,
+    };
+    tracker.clicks.push(new_click);
     this.props.postIncrementTracker(tracker, amount);
   }
 
@@ -61,51 +85,51 @@ class SingleTracker extends Component {
     this.props.updateNumIncrements(this.props.tracker, 1);
   }
 
-  handleDeleteIncrement(id){
+  handleDeleteIncrement(id) {
     this.props.deleteIncrement(id);
     this.props.updateNumIncrements(this.props.tracker, -1);
   }
 
   handleDeleteTracker(id) {
-    this.setState ({
-        redirect: true
+    this.setState({
+      redirect: true,
     });
     this.props.deleteTracker(id);
   }
 
   handleIncrementOptions(increment) {
-    if(this.state.isDeleteMode === true ? this.handleDeleteIncrement(increment.id) : this.handleIncrement(this.props.tracker, increment.value));
+    if (
+      this.state.isDeleteMode === true
+        ? this.handleDeleteIncrement(increment.id)
+        : this.handleIncrement(this.props.tracker, increment.value)
+    );
   }
 
   handleTrackerOptions(tracker) {
     if (this.state.isDeleteMode === true) {
       this.handleDeleteTracker(tracker.id);
     } else {
-        console.log(tracker.numIncrements)
-        if(tracker.numIncrements < 5)
-          this.toggleModal();
-        else {
-            //alert("You can't have more than 5 increments per tracker!");
-            this.setState({
-                isAlert: true
-            })
-        }
+      console.log(tracker.numIncrements);
+      if (tracker.numIncrements < 5) this.toggleModal();
+      else {
+        //alert("You can't have more than 5 increments per tracker!");
+        this.setState({
+          isAlert: true,
+        });
+      }
     }
   }
 
-  removeAlert(){
+  removeAlert() {
     console.log("im here");
     this.setState({
-        isAlert: false
-    })
+      isAlert: false,
+    });
   }
 
   render() {
-
-    if(this.state.redirect === true){
-        return (
-            <Redirect to="/home"/>
-        );
+    if (this.state.redirect === true) {
+      return <Redirect to="/home" />;
     }
 
     const compare = (a, b) => {
@@ -123,16 +147,30 @@ class SingleTracker extends Component {
     const increments = this.props.increments.map((increment) => {
       return (
         <Button
-          color={this.state.incrementBtnColor}
           key={increment.id}
-          id="single-tracker-btn-inc"
+          id={this.state.isDeleteMode ? "single-tracker-btn-delete-inc" : "single-tracker-btn-inc"}
           onClick={() => this.handleIncrementOptions(increment)}
         >
           {increment.value}
         </Button>
       );
     });
-    
+
+    console.log(this.props.tracker);
+
+    const history = (tracker) => {
+      console.log("hi");
+      console.log(tracker.clicks);
+      tracker.clicks.map((click) => {
+        return (
+          <div>
+            <p>{click.value}</p>
+            <p>{click.date.getHours()}</p>
+          </div>
+        );
+      });
+    };
+
     return (
       <div className="tracker-group">
         {this.props.tracker ? (
@@ -141,25 +179,56 @@ class SingleTracker extends Component {
               {this.props.tracker.name}
             </h2>
             <h1 id="single-tracker-value">{this.props.tracker.value}</h1>
+            <div>
+              {this.state.isAlert ? (
+                <Alert color="danger">
+                  You can't have more than 5 increments per tracker!
+                  <span className="alert-close-btn" onClick={this.removeAlert}>
+                    x
+                  </span>
+                </Alert>
+              ) : null}
+              <ButtonGroup role="group" className="increment-btns">
+                <Button
+                  id={this.state.isDeleteMode ? "single-tracker-btn-delete" : "single-tracker-btn-add"}
+                  onClick={() => this.handleTrackerOptions(this.props.tracker)}
+                >
+                  {this.state.incrementText}
+                </Button>
+                <IncrementModal
+                  tracker={this.props.tracker}
+                  isModalOpen={this.state.isModalOpen}
+                  toggleModal={this.toggleModal}
+                  handleAddIncrement={this.handleAddIncrement}
+                />
+                {increments}
+                <Button
+                  color="danger"
+                  id="delete-mode-btn"
+                  onClick={this.toggleDeleteMode}
+                >
+                  X
+                </Button>
+              </ButtonGroup>
+              <div id="history">
+              {this.props.tracker.clicks.map((click) => (
+                <p
+                  className="history-click"
+                  onClick={() =>
+                    this.handleIncrement(
+                      this.props.tracker,
+                      click.value - this.props.tracker.value
+                    )
+                  }
+                >
+                  {click.value} : {click.date}
+                  <span className="delete-click">x</span>
+                </p>
+              ))}
+              </div>
+            </div>
           </div>
         ) : null}
-        {this.state.isAlert ? <Alert color="danger">You can't have more than 5 increments per tracker!
-            <span className="alert-close-btn" onClick={this.removeAlert}>x</span></Alert> : null}
-        <ButtonGroup role="group" className="increment-btns">
-          <Button
-            color={this.state.incrementBtnColor}
-            id="single-tracker-btn-add"
-            onClick={() => this.handleTrackerOptions(this.props.tracker)}
-          >
-            {this.state.incrementText}
-          </Button>
-          <IncrementModal tracker={this.props.tracker} isModalOpen={this.state.isModalOpen} 
-            toggleModal={this.toggleModal} handleAddIncrement={this.handleAddIncrement}/>
-          {increments}
-          <Button color="danger" id="delete-mode-btn" onClick={this.toggleDeleteMode}>
-            X
-          </Button>
-        </ButtonGroup>
       </div>
     );
   }

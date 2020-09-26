@@ -56,6 +56,26 @@ class RenderTracker extends Component {
   }
 
   handleIncrement(tracker, amount) {
+    console.log(tracker);
+    var curr_date = new Date();
+    var date =
+      curr_date.getFullYear() +
+      "-" +
+      (curr_date.getMonth() + 1) +
+      "-" +
+      curr_date.getDate();
+    var time =
+      curr_date.getHours() +
+      ":" +
+      curr_date.getMinutes() +
+      ":" +
+      curr_date.getSeconds();
+    var dateTime = date + " " + time;
+    var new_click = {
+      value: tracker.value,
+      date: dateTime,
+    };
+    tracker.clicks.push(new_click);
     this.props.postIncrementTracker(tracker, amount);
   }
 

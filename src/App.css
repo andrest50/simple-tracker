@@ -132,15 +132,47 @@ body {
 }
 
 #single-tracker-btn-add {
+  background-color: rgb(91, 7, 226);
   font-size: 20px;
   height: 70px;
   width: 200px;
 }
 
+#single-tracker-btn-add:hover {
+  background-color: rgb(63, 8, 151);
+}
+
+#single-tracker-btn-delete {
+  background-color: rgb(190, 40, 40);
+  font-size: 20px;
+  height: 70px;
+  width: 200px;
+}
+
+#single-tracker-btn-delete:hover {
+  background-color: rgb(139, 13, 13);
+}
+
 #single-tracker-btn-inc {
+  background-color: rgb(91, 7, 226);
   font-size: 25px;
   height: 70px;
-  width: 50px;
+  width: 20%;
+}
+
+#single-tracker-btn-inc:hover {
+  background-color: rgb(63, 8, 151);
+}
+
+#single-tracker-btn-delete-inc {
+  background-color: rgb(190, 40, 40);
+  font-size: 25px;
+  height: 70px;
+  width: 20%;
+}
+
+#single-tracker-btn-delete-inc:hover {
+  background-color: rgb(139, 13, 13);
 }
 
 .increment-btns {
@@ -155,4 +187,24 @@ body {
   color: rgb(121, 43, 43);
   font-weight: 800;
   cursor: pointer;
+}
+
+#history {
+  margin-top: 50px;
+}
+
+.history-click:hover {
+  cursor: pointer;
+  color: #243494;
+  font-weight: 500;
+}
+
+.delete-click {
+  margin-left: 20px;
+  color: red;
+}
+
+.delete-click:hover {
+  cursor: pointer;
+  color: #5d1111;
 }

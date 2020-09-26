@@ -98,6 +98,7 @@ export const createTracker = (name, value) => (dispatch) => {
     name: name,
     value: parseInt(value),
     numIncrements: 0,
+    clicks: []
   };
 
   return fetch("http://localhost:3000/trackers", {
@@ -139,6 +140,7 @@ export const postIncrementTracker = (tracker, amount) => (dispatch) => {
     name: String(tracker.name),
     value: parseInt(tracker.value) + parseInt(amount),
     numIncrements: tracker.numIncrements,
+    clicks: tracker.clicks
   };
 
   return fetch(`http://localhost:3000/trackers/${tracker.id}`, {
