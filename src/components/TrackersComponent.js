@@ -236,8 +236,8 @@ class TrackersComponent extends Component {
           toggleModal={this.toggleModal}
           handleAddTracker={this.handleAddTracker}
         />
-        <div>
-          <h2>Your Trackers: </h2>
+        <div id="dashboard-trackers">
+          <h2 id="dashboard-trackers-title">Your Trackers: </h2>
           {trackers}
         </div>
       </div>

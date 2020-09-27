@@ -10,6 +10,7 @@ class SingleTracker extends Component {
     this.state = {
       isModalOpen: false,
       isDeleteMode: false,
+      isHistoryDropdown: false,
       isAlert: false,
       redirect: false,
       incrementText: "Add Increment",
@@ -17,6 +18,7 @@ class SingleTracker extends Component {
 
     this.toggleModal = this.toggleModal.bind(this);
     this.toggleDeleteMode = this.toggleDeleteMode.bind(this);
+    this.toggleHistoryDropdown = this.toggleHistoryDropdown.bind(this);
     this.handleIncrement = this.handleIncrement.bind(this);
     this.handleAddIncrement = this.handleAddIncrement.bind(this);
     this.handleDeleteIncrement = this.handleDeleteIncrement.bind(this);
@@ -35,7 +37,6 @@ class SingleTracker extends Component {
   toggleDeleteMode() {
     var text;
 
-
     if (
       this.state.incrementText === "Add Increment"
         ? (text = "Delete Tracker")
@@ -45,6 +46,12 @@ class SingleTracker extends Component {
     this.setState((prevState) => ({
       isDeleteMode: !prevState.isDeleteMode,
       incrementText: text,
+    }));
+  }
+
+  toggleHistoryDropdown() {
+    this.setState((prevState) => ({
+        isHistoryDropdown: !prevState.isHistoryDropdown,
     }));
   }
 
@@ -76,6 +83,11 @@ class SingleTracker extends Component {
     var new_clicks = tracker.clicks.filter(
       (curr_click) => curr_click.date !== click.date
     );
+    this.props.deleteClick(tracker, new_clicks);
+  }
+
+  handleDeleteAllClicks(tracker) {
+    var new_clicks = []
     this.props.deleteClick(tracker, new_clicks);
   }
 
@@ -207,8 +219,21 @@ class SingleTracker extends Component {
                   X
                 </Button>
               </ButtonGroup>
-              <div className="history justify-content center">
-                <h4 className="history-title">History</h4>
+              <div className="history center">
+                <div className="history-header">
+                    <h4 className="history-title">
+                        History
+                    </h4>
+                    <div className="history-options">
+                        <i className="fa fa-ellipsis-v history-options-btn noselect" onClick={this.toggleHistoryDropdown}></i>
+                        { this.state.isHistoryDropdown ? 
+                            <div className="history-options-dropdown">
+                                {/* onClick={this.handleDeleteAllClicks(this.props.tracker)} */}
+                                <p onClick={() => this.handleDeleteAllClicks(this.props.tracker)}>Clear</p>
+                            </div> 
+                        : null }
+                    </div>
+                </div>
                 {this.props.tracker.clicks
                   ? this.props.tracker.clicks.reverse().map((click) => (
                       <div>
