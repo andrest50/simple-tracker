@@ -17,9 +17,10 @@ const isNumber = (val) => !isNaN(Number(val));
 const maxValue = (val) => val < 1000000;
 
 const TrackerModal = (props) => {
+    console.log(props);
     return (
-        <Modal isOpen={props.isModalOpen} toggle={props.toggleModal}>
-          <ModalHeader toggle={props.toggleModal}>Create Tracker</ModalHeader>
+        <Modal isOpen={props.isModalOpen} toggle={() => props.toggleModal(!props.isModalOpen)}>
+          <ModalHeader toggle={() => props.toggleModal(!props.isModalOpen)}>Create Tracker</ModalHeader>
           <ModalBody>
             <LocalForm onSubmit={(values) => props.handleAddTracker(values)}>
               <Row className="form-group">

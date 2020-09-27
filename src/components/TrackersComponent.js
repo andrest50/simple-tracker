@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   Button,
   ButtonGroup,
@@ -133,9 +133,12 @@ class RenderTracker extends Component {
     const increments = this.props.increments.map((increment) => {
       return (
         <Button
-          color={this.state.incrementBtnColor}
           key={increment.id}
-          className="dashboard-tracker-inc-btn"
+          className={
+            this.state.isDeleteMode
+              ? "dashboard-tracker-delete-inc-btn tracker-delete-btn-color-default"
+              : "dashboard-tracker-inc-btn tracker-btn-color-default"
+          }
           onClick={() => this.handleIncrementOptions(increment)}
         >
           {increment.value}
@@ -151,7 +154,11 @@ class RenderTracker extends Component {
         <h3>{this.props.tracker.value}</h3>
         <ButtonGroup role="group" className="dashboard-tracker-btns">
           <Button
-            color={this.state.incrementBtnColor}
+            className={
+              this.state.isDeleteMode
+                ? "dashboard-tracker-delete-btn tracker-delete-btn-color-default"
+                : "dashboard-tracker-add-btn tracker-btn-color-default"
+            }
             onClick={() => this.handleTrackerOptions(this.props.tracker)}
           >
             {this.state.incrementText}
@@ -219,7 +226,7 @@ class TrackersComponent extends Component {
     });
 
     return (
-      <div className="container dashboard-trackers-group">
+      <div className="container" id="dashboard-trackers-group">
         <Button id="dashboard-add-tracker-btn" onClick={this.toggleModal}>
           Add Tracker
         </Button>
@@ -229,11 +236,59 @@ class TrackersComponent extends Component {
           toggleModal={this.toggleModal}
           handleAddTracker={this.handleAddTracker}
         />
-        <h2>Your Trackers: </h2>
-        {trackers}
+        <div>
+          <h2>Your Trackers: </h2>
+          {trackers}
+        </div>
       </div>
     );
   }
 }
+
+/* function TrackersComponent(props) {
+
+  console.log("here");
+
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+
+  const handleAddTracker = (values) => {
+    console.log("hey");
+    setIsModalOpen(false);
+    props.createTracker(values.name, values.value);
+  }
+
+    const trackers = props.trackers.trackers.map((tracker) => {
+      return (
+        <div key={tracker.id}>
+          <RenderTracker
+            tracker={tracker}
+            increments={props.trackers.increments.filter(
+              (increment) => increment.trackerId === tracker.id
+            )}
+            createIncrement={props.createIncrement}
+            deleteIncrement={props.deleteIncrement}
+            deleteTracker={props.deleteTracker}
+            incrementTracker={props.incrementTracker}
+            updateNumIncrements={props.updateNumIncrements}
+          />
+        </div>
+      );
+    });
+
+    return (
+      <div className="container dashboard-trackers-group">
+        <Button id="dashboard-add-tracker-btn" onClick={() => setIsModalOpen(!isModalOpen)}>
+          Add Tracker
+        </Button>
+        <TrackerModal
+          isModalOpen={isModalOpen}
+          toggleModal={() => setIsModalOpen}
+          handleAddTracker={() => handleAddTracker}
+        />
+        <h2>Your Trackers: </h2>
+        {trackers}
+      </div>
+    );
+  } */
 
 export default TrackersComponent;

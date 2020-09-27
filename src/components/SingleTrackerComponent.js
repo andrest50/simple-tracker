@@ -150,10 +150,10 @@ class SingleTracker extends Component {
       return (
         <Button
           key={increment.id}
-          id={
+          className={
             this.state.isDeleteMode
-              ? "single-tracker-delete-inc-btn"
-              : "single-tracker-inc-btn"
+              ? "single-tracker-inc-btn-standard tracker-delete-btn-color-default"
+              : "single-tracker-inc-btn-standard tracker-btn-color-default"
           }
           onClick={() => this.handleIncrementOptions(increment)}
         >
@@ -167,11 +167,11 @@ class SingleTracker extends Component {
     return (
       <div className="dashboard-tracker-group">
         {this.props.tracker ? (
-          <div id="single-tracker-div">
-            <h2 className="tracker-name" id="single-tracker-name">
+          <div className="single-tracker-div">
+            <h2 className="tracker-name single-tracker-name">
               {this.props.tracker.name}
             </h2>
-            <h1 id="single-tracker-value">{this.props.tracker.value}</h1>
+            <h1 className="single-tracker-value">{this.props.tracker.value}</h1>
             <div>
               {this.state.isAlert ? (
                 <Alert color="danger">
@@ -183,10 +183,10 @@ class SingleTracker extends Component {
               ) : null}
               <ButtonGroup role="group" className="increment-btns">
                 <Button
-                  id={
+                  className={
                     this.state.isDeleteMode
-                      ? "single-tracker-delete-btn"
-                      : "single-tracker-add-btn"
+                      ? "single-tracker-btn-standard tracker-delete-btn-color-default"
+                      : "single-tracker-btn-standard tracker-btn-color-default"
                   }
                   onClick={() => this.handleTrackerOptions(this.props.tracker)}
                 >
@@ -201,13 +201,14 @@ class SingleTracker extends Component {
                 {increments}
                 <Button
                   color="danger"
-                  id="delete-mode-btn"
+                  className="delete-mode-btn"
                   onClick={this.toggleDeleteMode}
                 >
                   X
                 </Button>
               </ButtonGroup>
-              <div id="history">
+              <div className="history justify-content center">
+                <h4 className="history-title">History</h4>
                 {this.props.tracker.clicks
                   ? this.props.tracker.clicks.reverse().map((click) => (
                       <div>
