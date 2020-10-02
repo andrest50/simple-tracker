@@ -74,7 +74,6 @@ class RenderTracker extends Component {
 
   handleAddIncrement(values) {
     this.toggleModal();
-    console.log(this.props.tracker.id + " : " + values.value);
     this.props.createIncrement(this.props.tracker.id, values.value);
     this.props.updateNumIncrements(this.props.tracker, 1);
   }
@@ -238,6 +237,7 @@ class TrackersComponent extends Component {
         />
         <div id="dashboard-trackers">
           <h2 id="dashboard-trackers-title">Your Trackers: </h2>
+          <hr />
           {trackers}
         </div>
       </div>

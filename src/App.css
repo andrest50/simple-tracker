@@ -189,7 +189,7 @@ body {
 .single-tracker-inc-btn-standard {
   font-size: 25px;
   height: 70px;
-  width: 20%;
+  width: 33%;
 }
 
 .increment-btns {
@@ -298,4 +298,9 @@ body {
   cursor: pointer;
   color: #5d1111;
   font-weight: 600;
+}
+
+.increments {
+  display: flex;
+  background-color: rgb(94, 84, 185);
 }

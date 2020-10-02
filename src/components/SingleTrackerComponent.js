@@ -1,59 +1,26 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup, Alert } from "reactstrap";
 import { Redirect } from "react-router-dom";
-import IncrementModal from "./IncrementModalComponent";
+import SingleTrackerDetails from './SingleTrackerDetailsComponent';
+import TrackerHistory from './TrackerHistoryComponent';
 
 class SingleTracker extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isModalOpen: false,
-      isDeleteMode: false,
       isHistoryDropdown: false,
-      isAlert: false,
-      sortHistory: 0,
+      sortHistory: true,
       redirect: false,
-      incrementText: "Add Increment",
+      tracker: null
     };
 
-    this.toggleModal = this.toggleModal.bind(this);
-    this.toggleDeleteMode = this.toggleDeleteMode.bind(this);
-    this.toggleHistoryDropdown = this.toggleHistoryDropdown.bind(this);
     this.handleIncrement = this.handleIncrement.bind(this);
     this.handleAddIncrement = this.handleAddIncrement.bind(this);
     this.handleDeleteIncrement = this.handleDeleteIncrement.bind(this);
     this.handleDeleteTracker = this.handleDeleteTracker.bind(this);
-    this.handleIncrementOptions = this.handleIncrementOptions.bind(this);
-    this.handleTrackerOptions = this.handleTrackerOptions.bind(this);
-    this.removeAlert = this.removeAlert(this);
-  }
-
-  toggleModal() {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-    });
-  }
-
-  toggleDeleteMode() {
-    var text;
-
-    if (
-      this.state.incrementText === "Add Increment"
-        ? (text = "Delete Tracker")
-        : (text = "Add Increment")
-    );
-
-    this.setState((prevState) => ({
-      isDeleteMode: !prevState.isDeleteMode,
-      incrementText: text,
-    }));
-  }
-
-  toggleHistoryDropdown() {
-    this.setState((prevState) => ({
-      isHistoryDropdown: !prevState.isHistoryDropdown,
-    }));
+    this.handleDeleteAllClicks = this.handleDeleteAllClicks.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
   handleIncrement(tracker, amount) {
@@ -88,12 +55,12 @@ class SingleTracker extends Component {
   }
 
   handleDeleteAllClicks(tracker) {
+    console.log("handleDeleteAllClicks");
     var new_clicks = [];
     this.props.deleteClick(tracker, new_clicks);
   }
 
   handleAddIncrement(values) {
-    this.toggleModal();
     this.props.createIncrement(this.props.tracker.id, values.value);
     this.props.updateNumIncrements(this.props.tracker, 1);
   }
@@ -110,36 +77,11 @@ class SingleTracker extends Component {
     this.props.deleteTracker(id);
   }
 
-  handleIncrementOptions(increment) {
-    if (
-      this.state.isDeleteMode === true
-        ? this.handleDeleteIncrement(increment.id)
-        : this.handleIncrement(this.props.tracker, increment.value)
-    );
-  }
-
-  handleTrackerOptions(tracker) {
-    if (this.state.isDeleteMode === true) {
-      this.handleDeleteTracker(tracker.id);
-    } else {
-      console.log(tracker.numIncrements);
-      if (tracker.numIncrements < 5) this.toggleModal();
-      else {
-        this.setState({
-          isAlert: true,
-        });
-      }
-    }
-  }
-
-  removeAlert() {
-    this.setState({
-      isAlert: false,
-    });
-  }
-
   componentDidMount() {
     //window.scrollTo(0, 0);
+    this.setState({
+        tracker: this.props.tracker,
+    });
   }
 
   render() {
@@ -147,183 +89,17 @@ class SingleTracker extends Component {
       return <Redirect to="/home" />;
     }
 
-    const compare = (a, b) => {
-      if (a.value < b.value) {
-        return -1;
-      }
-      if (a.value > b.value) {
-        return 1;
-      }
-      return 0;
-    };
-
-    this.props.increments.sort(compare);
-
-    const increments = this.props.increments.map((increment) => {
-      return (
-        <Button
-          key={increment.id}
-          className={
-            this.state.isDeleteMode
-              ? "single-tracker-inc-btn-standard tracker-delete-btn-color-default"
-              : "single-tracker-inc-btn-standard tracker-btn-color-default"
-          }
-          onClick={() => this.handleIncrementOptions(increment)}
-        >
-          {increment.value}
-        </Button>
-      );
-    });
-
-    const History = () => {
-      console.log(this.props);
-      if (this.props.tracker.clicks != null && this.state.sortHistory == 0) {
-        console.log(this.props);
-        return this.props.tracker.clicks.reverse().map((click) => (
-          <div>
-            <span
-              className="history-click"
-              onClick={() =>
-                this.props.handleIncrement(
-                  this.props.tracker,
-                  click.value - this.props.tracker.value
-                )
-              }
-            >
-              {click.value} : {click.date}
-            </span>
-            <span
-              className="delete-click"
-              onClick={() =>
-                this.props.handleDeleteClick(this.props.tracker, click)
-              }
-            >
-              x
-            </span>
-          </div>
-        ));
-      } else if (
-        this.props.tracker.clicks != null &&
-        this.state.sortHistory == 1
-      ) {
-        return this.props.tracker.clicks.map((click) => (
-          <div>
-            <span
-              className="history-click"
-              onClick={() =>
-                this.props.handleIncrement(
-                  this.props.tracker,
-                  click.value - this.props.tracker.value
-                )
-              }
-            >
-              {click.value} : {click.date}
-            </span>
-            <span
-              className="delete-click"
-              onClick={() =>
-                this.props.handleDeleteClick(this.props.tracker, click)
-              }
-            >
-              x
-            </span>
-          </div>
-        ));
-      }
-    };
-
-    console.log(this.props.tracker);
+    console.log(this.state.tracker);
 
     return (
       <div className="dashboard-tracker-group">
         {this.props.tracker ? (
           <div className="single-tracker-div">
-            <h2 className="tracker-name single-tracker-name">
-              {this.props.tracker.name}
-            </h2>
-            <h1 className="single-tracker-value">{this.props.tracker.value}</h1>
-            <div>
-              {this.state.isAlert ? (
-                <Alert color="danger">
-                  You can't have more than 5 increments per tracker!
-                  <span className="alert-close-btn" onClick={this.removeAlert}>
-                    x
-                  </span>
-                </Alert>
-              ) : null}
-              <ButtonGroup role="group" className="increment-btns">
-                <Button
-                  className={
-                    this.state.isDeleteMode
-                      ? "single-tracker-btn-standard tracker-delete-btn-color-default"
-                      : "single-tracker-btn-standard tracker-btn-color-default"
-                  }
-                  onClick={() => this.handleTrackerOptions(this.props.tracker)}
-                >
-                  {this.state.incrementText}
-                </Button>
-                <IncrementModal
-                  tracker={this.props.tracker}
-                  isModalOpen={this.state.isModalOpen}
-                  toggleModal={this.toggleModal}
-                  handleAddIncrement={this.handleAddIncrement}
-                />
-                {increments}
-                <Button
-                  color="danger"
-                  className="delete-mode-btn"
-                  onClick={this.toggleDeleteMode}
-                >
-                  X
-                </Button>
-              </ButtonGroup>
-              <div className="history center">
-                <div className="history-header">
-                  <h4 className="history-title">History</h4>
-                  <div className="history-options">
-                    <i
-                      className="fa fa-ellipsis-v history-options-btn noselect"
-                      onClick={this.toggleHistoryDropdown}
-                    ></i>
-                    {this.state.isHistoryDropdown ? (
-                      <div className="history-options-dropdown">
-                        <p
-                          onClick={() =>
-                            this.handleDeleteAllClicks(this.props.tracker)
-                          }
-                        >
-                          Clear
-                        </p>
-                        {/*<p>Sort</p>*/}
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
-                {this.props.tracker.clicks.reverse().map((click) => (
-                  <div>
-                    <span
-                      className="history-click"
-                      onClick={() =>
-                        this.props.handleIncrement(
-                          this.props.tracker,
-                          click.value - this.props.tracker.value
-                        )
-                      }
-                    >
-                      {click.value} : {click.date}
-                    </span>
-                    <span
-                      className="delete-click"
-                      onClick={() =>
-                        this.props.handleDeleteClick(this.props.tracker, click)
-                      }
-                    >
-                      x
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <SingleTrackerDetails tracker={this.props.tracker} increments={this.props.increments}
+                handleAddIncrement={this.handleAddIncrement} handleDeleteIncrement={this.handleDeleteIncrement}
+                handleIncrement={this.handleIncrement} handleDeleteTracker={this.handleDeleteTracker} />
+            <TrackerHistory tracker={this.props.tracker} handleDeleteAllClicks={this.handleDeleteAllClicks}
+                handleIncrement={this.handleIncrement} handleDeleteClick={this.handleDeleteClick}/>
           </div>
         ) : null}
       </div>
