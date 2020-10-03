@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Header from "./HeaderComponent";
-import TrackersComponent from "./TrackersComponent";
+import Dashboard from "./DashboardComponent";
 import SingleTrackerComponent from './SingleTrackerComponent';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -34,7 +34,7 @@ class Main extends Component {
   render() {
     const TrackersPage = () => {
       return (
-        <TrackersComponent trackers={this.props.trackers} 
+        <Dashboard trackers={this.props.trackers} 
           increments={this.props.increments} 
           createTracker={this.props.createTracker}
           deleteTracker={this.props.deleteTracker}  

@@ -1,19 +1,59 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { sortHistory, handleIncrement } from './Utils';
 
 const TrackerHistory = (props) => {
-    
-    const [isHistoryDropdown, setIsHistoryDropdown] = useState(false);
-    const [isSorted, setIsSorted] = useState(true);
+  const [isHistoryDropdown, setIsHistoryDropdown] = useState(false);
+  const [isSorted, setIsSorted] = useState(false);
 
-    const toggleHistoryDropdown = () => {
-        setIsHistoryDropdown(!isHistoryDropdown);
-    }
+  const toggleHistoryDropdown = () => {
+    setIsHistoryDropdown(!isHistoryDropdown);
+  };
 
-    const handleSortHistory = () => {
-        setIsSorted(!isSorted);
-    }
+  const handleSortHistory = () => {
+    setIsSorted(!isSorted);
+  };
 
-console.log(isSorted);
+  const handleDeleteClick = (tracker, click) => {
+    var new_clicks = tracker.clicks.filter(
+      (curr_click) => curr_click.date !== click.date
+    );
+    props.deleteClick(tracker, new_clicks);
+  };
+
+  const handleDeleteAllClicks = (tracker) => {
+    console.log("handleDeleteAllClicks");
+    var new_clicks = [];
+    props.deleteClick(tracker, new_clicks);
+  };
+
+  console.log(isSorted);
+
+  sortHistory(isSorted, props.tracker);
+
+  const sorted_clicks = props.tracker.clicks.map((click) => {
+    return (
+      <div>
+        <span
+          className="history-click"
+          onClick={() =>
+            handleIncrement(
+              props.tracker,
+              click.value - props.tracker.value,
+              props.incrementTracker
+            )
+          }
+        >
+          {click.value} : {click.date}
+        </span>
+        <span
+          className="delete-click"
+          onClick={() => handleDeleteClick(props.tracker, click)}
+        >
+          x
+        </span>
+      </div>
+    );
+  });
 
   return (
     <div className="history center">
@@ -26,61 +66,13 @@ console.log(isSorted);
           ></i>
           {isHistoryDropdown ? (
             <div className="history-options-dropdown">
-              <p onClick={() => props.handleDeleteAllClicks(props.tracker)}>
-                Clear
-              </p>
+              <p onClick={() => handleDeleteAllClicks(props.tracker)}>Clear</p>
               <p onClick={handleSortHistory}>Sort</p>
             </div>
           ) : null}
         </div>
       </div>
-      {isSorted
-        ? props.tracker.clicks.reverse().map((click) => (
-            <div>
-              <span
-                className="history-click"
-                onClick={() =>
-                  props.handleIncrement(
-                    props.tracker,
-                    click.value - props.tracker.value
-                  )
-                }
-              >
-                {click.value} : {click.date}
-              </span>
-              <span
-                className="delete-click"
-                onClick={() =>
-                  props.handleDeleteClick(props.tracker, click)
-                }
-              >
-                x
-              </span>
-            </div>
-          ))
-        : props.tracker.clicks.map((click) => (
-            <div>
-              <span
-                className="history-click"
-                onClick={() =>
-                  props.handleIncrement(
-                    props.tracker,
-                    click.value - props.tracker.value
-                  )
-                }
-              >
-                {click.value} : {click.date}
-              </span>
-              <span
-                className="delete-click"
-                onClick={() =>
-                  props.handleDeleteClick(props.tracker, click)
-                }
-              >
-                x
-              </span>
-            </div>
-          ))}
+      {sorted_clicks}
     </div>
   );
 };

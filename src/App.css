@@ -136,14 +136,17 @@ body {
 
 .dashboard-tracker-delete-btn {
   font-size: 16px;
+  height: 50px;
 }
 
 .dashboard-tracker-inc-btn {
   font-size: 18px;
+  height: 50px;
 }
 
 .dashboard-tracker-delete-inc-btn {
   font-size: 18px;
+  height: 50px;
 }
 
 #footer {

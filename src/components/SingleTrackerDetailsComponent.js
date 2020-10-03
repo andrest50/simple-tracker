@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import { Button, Alert, ButtonGroup } from "reactstrap";
 import IncrementModal from "./IncrementModalComponent";
 import IncrementsDisplay from "./IncrementsDisplayComponent";
+import {handleIncrement} from './Utils'
 
 const SingleTrackerDetails = (props) => {
 
@@ -48,10 +49,10 @@ const SingleTrackerDetails = (props) => {
         if (
           isDeleteMode === true
             ? props.handleDeleteIncrement(increment.id)
-            : props.handleIncrement(props.tracker, increment.value)
+            : handleIncrement(props.tracker, increment.value, props.incrementTracker)
         );
     }
-    
+
     console.log(isModalOpen);
 
   return (
@@ -69,6 +70,9 @@ const SingleTrackerDetails = (props) => {
             </span>
           </Alert>
         ) : null}
+        {/* <IncrementsDisplay increments={props.increments} handleIncrementOptions={handleIncrementOptions}
+        isDeleteMode={isDeleteMode} handleTrackerOptions={handleTrackerOptions} incrementText={incrementText}
+        toggleDeleteMode={toggleDeleteMode}/> */}
         <ButtonGroup role="group" className="increment-btns">
           <Button
             className={
@@ -80,12 +84,6 @@ const SingleTrackerDetails = (props) => {
           >
             {incrementText}
           </Button>
-          <IncrementModal
-            tracker={props.tracker}
-            isModalOpen={isModalOpen}
-            toggleModal={toggleModal}
-            handleAddIncrement={props.handleAddIncrement}
-          />
           <IncrementsDisplay increments={props.increments} handleIncrementOptions={handleIncrementOptions}
             isDeleteMode={isDeleteMode} />
           <Button
@@ -96,6 +94,12 @@ const SingleTrackerDetails = (props) => {
             X
           </Button>
         </ButtonGroup>
+        <IncrementModal
+            tracker={props.tracker}
+            isModalOpen={isModalOpen}
+            toggleModal={toggleModal}
+            handleAddIncrement={props.handleAddIncrement}
+          />
       </div>
     </div>
   );

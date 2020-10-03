@@ -1,26 +1,24 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import {
   Button,
   ButtonGroup,
 } from "reactstrap";
 import IncrementModal from "./IncrementModalComponent";
-import TrackerModal from "./TrackerModalComponent";
+import {handleIncrement} from './Utils'
 import { Link } from "react-router-dom";
 
-class RenderTracker extends Component {
+class DashboardTracker extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isModalOpen: false,
       isDeleteMode: false,
-      incrementBtnColor: "primary",
       incrementText: "Add Increment",
     };
 
     this.toggleModal = this.toggleModal.bind(this);
     this.toggleDeleteMode = this.toggleDeleteMode.bind(this);
-    this.handleIncrement = this.handleIncrement.bind(this);
     this.handleAddIncrement = this.handleAddIncrement.bind(this);
     this.handleDeleteIncrement = this.handleDeleteIncrement.bind(this);
     this.handleDeleteTracker = this.handleDeleteTracker.bind(this);
@@ -35,41 +33,14 @@ class RenderTracker extends Component {
   }
 
   toggleDeleteMode() {
-    var color, text;
-
-    if(this.state.isDeleteMode === true ? color = 'primary' : color = 'danger');
+    var text;
 
     if(this.state.incrementText === 'Add Increment' ? text = 'Delete Tracker' : text = 'Add Increment');
 
     this.setState((prevState) => ({
       isDeleteMode: !prevState.isDeleteMode,
-      incrementBtnColor: color,
       incrementText: text,
     }));
-  }
-
-  handleIncrement(tracker, amount) {
-    console.log(tracker);
-    var curr_date = new Date();
-    var date =
-      curr_date.getFullYear() +
-      "-" +
-      (curr_date.getMonth() + 1) +
-      "-" +
-      curr_date.getDate();
-    var time =
-      curr_date.getHours() +
-      ":" +
-      curr_date.getMinutes() +
-      ":" +
-      curr_date.getSeconds();
-    var dateTime = date + " " + time;
-    var new_click = {
-      value: tracker.value,
-      date: dateTime,
-    };
-    tracker.clicks.push(new_click);
-    this.props.incrementTracker(tracker, amount);
   }
 
   handleAddIncrement(values) {
@@ -92,9 +63,10 @@ class RenderTracker extends Component {
       this.handleDeleteIncrement(increment.id);
     } else {
       if(this.props.tracker.value + increment.value < 1000000){
-        this.handleIncrement(
+        handleIncrement(
           this.props.tracker,
-          increment.value
+          increment.value,
+          this.props.incrementTracker
         );
       }
       else {
@@ -182,113 +154,4 @@ class RenderTracker extends Component {
   }
 }
 
-class TrackersComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isModalOpen: false,
-    };
-
-    this.toggleModal = this.toggleModal.bind(this);
-    this.handleAddTracker = this.handleAddTracker.bind(this);
-  }
-
-  toggleModal() {
-    this.setState({
-      isModalOpen: !this.state.isModalOpen,
-    });
-  }
-
-  handleAddTracker(values) {
-    this.toggleModal();
-    this.props.createTracker(values.name, values.value);
-  }
-
-  render() {
-    const trackers = this.props.trackers.trackers.map((tracker) => {
-      return (
-        <div key={tracker.id}>
-          <RenderTracker
-            tracker={tracker}
-            increments={this.props.trackers.increments.filter(
-              (increment) => increment.trackerId === tracker.id
-            )}
-            createIncrement={this.props.createIncrement}
-            deleteIncrement={this.props.deleteIncrement}
-            deleteTracker={this.props.deleteTracker}
-            incrementTracker={this.props.incrementTracker}
-            updateNumIncrements={this.props.updateNumIncrements}
-          />
-        </div>
-      );
-    });
-
-    return (
-      <div className="container" id="dashboard-trackers-group">
-        <Button id="dashboard-add-tracker-btn" onClick={this.toggleModal}>
-          Add Tracker
-        </Button>
-        <TrackerModal
-          tracker={this.props.tracker}
-          isModalOpen={this.state.isModalOpen}
-          toggleModal={this.toggleModal}
-          handleAddTracker={this.handleAddTracker}
-        />
-        <div id="dashboard-trackers">
-          <h2 id="dashboard-trackers-title">Your Trackers: </h2>
-          <hr />
-          {trackers}
-        </div>
-      </div>
-    );
-  }
-}
-
-/* function TrackersComponent(props) {
-
-  console.log("here");
-
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-  const handleAddTracker = (values) => {
-    console.log("hey");
-    setIsModalOpen(false);
-    props.createTracker(values.name, values.value);
-  }
-
-    const trackers = props.trackers.trackers.map((tracker) => {
-      return (
-        <div key={tracker.id}>
-          <RenderTracker
-            tracker={tracker}
-            increments={props.trackers.increments.filter(
-              (increment) => increment.trackerId === tracker.id
-            )}
-            createIncrement={props.createIncrement}
-            deleteIncrement={props.deleteIncrement}
-            deleteTracker={props.deleteTracker}
-            incrementTracker={props.incrementTracker}
-            updateNumIncrements={props.updateNumIncrements}
-          />
-        </div>
-      );
-    });
-
-    return (
-      <div className="container dashboard-trackers-group">
-        <Button id="dashboard-add-tracker-btn" onClick={() => setIsModalOpen(!isModalOpen)}>
-          Add Tracker
-        </Button>
-        <TrackerModal
-          isModalOpen={isModalOpen}
-          toggleModal={() => setIsModalOpen}
-          handleAddTracker={() => handleAddTracker}
-        />
-        <h2>Your Trackers: </h2>
-        {trackers}
-      </div>
-    );
-  } */
-
-export default TrackersComponent;
+export default DashboardTracker;
