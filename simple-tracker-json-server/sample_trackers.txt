@@ -1,0 +1,37 @@
+{
+  "trackers": [
+	{
+		"id": 0,
+		"name": "Test",
+		"value": 3,
+		"numIncrements": 2,
+		"numClicks": 0,
+		"clicks": []
+	},
+	{
+		"id": 1,
+		"name": "Test2",
+		"value": 10,
+		"numIncrements": 1,
+		"numClicks": 0,
+		"clicks": []
+	}
+  ],
+  "increments": [
+	{
+		"trackerId": 0,
+		"value": 7,
+		"id": 0
+	},
+	{
+		"trackerId": 0,
+		"value": 2,
+		"id": 1
+	},
+	{
+		"trackerId": 1,
+		"value": 5,
+		"id": 2
+	}
+  ]
+}

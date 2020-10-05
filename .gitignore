@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/simple-tracker-json-server/node_modules
 /.pnp
 .pnp.js
 
