@@ -14,14 +14,15 @@ const TrackerHistory = (props) => {
   };
 
   const handleDeleteClick = (tracker, click) => {
+    //sortHistory(false, tracker);
+    console.log(tracker.clicks);
     var new_clicks = tracker.clicks.filter(
-      (curr_click) => curr_click.date !== click.date
+      (curr_click) => curr_click.id !== click.id
     );
     props.deleteClick(tracker, new_clicks);
   };
 
   const handleDeleteAllClicks = (tracker) => {
-    console.log("handleDeleteAllClicks");
     var new_clicks = [];
     props.deleteClick(tracker, new_clicks);
   };

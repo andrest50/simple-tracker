@@ -16,6 +16,7 @@ export const handleIncrement = (tracker, amount, incrementTracker) => {
   var new_click = {
     value: tracker.value,
     date: dateTime,
+    id: tracker.numClicks
   };
   tracker.clicks.push(new_click);
   incrementTracker(tracker, amount);
@@ -36,10 +37,10 @@ export const sortHistory = (isSorted, tracker) => {
     tracker.clicks.sort(compare);
   } else {
     const compare = (a, b) => {
-      if (a.date < b.date) {
+      if (a.id < b.id) {
         return 1;
       }
-      if (a.date > b.date) {
+      if (a.id > b.id) {
         return -1;
       }
       return 0;

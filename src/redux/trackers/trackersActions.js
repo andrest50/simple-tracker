@@ -107,6 +107,7 @@ export const createTracker = (name, value) => (dispatch) => {
     name: name,
     value: parseInt(value),
     numIncrements: 0,
+    numClicks: 0,
     clicks: []
   };
 
@@ -148,7 +149,8 @@ export const incrementTracker = (tracker, amount) => (dispatch) => {
     id: tracker.id,
     name: String(tracker.name),
     value: parseInt(tracker.value) + parseInt(amount),
-    numIncrements: tracker.numIncrements,
+    numIncrements: parseInt(tracker.numIncrements),
+    numClicks: parseInt(tracker.numClicks) + 1,
     clicks: tracker.clicks
   };
 
@@ -181,7 +183,7 @@ export const incrementTracker = (tracker, amount) => (dispatch) => {
     .then((tracker) => dispatch(handleIncrementTracker(tracker.id, amount)))
     .catch((error) => {
       console.log("Create increment", error.message);
-      alert("Your increment could not be created\nError: " + error.message);
+      alert("Your tracker could not be incremented\nError: " + error.message);
     });
 };
 
@@ -255,7 +257,9 @@ export const updateNumIncrements = (tracker, amount) => (dispatch) => {
     id: tracker.id,
     name: String(tracker.name),
     value: parseInt(tracker.value),
-    numIncrements: tracker.numIncrements + amount,
+    numIncrements: parseInt(tracker.numIncrements) + parseInt(amount),
+    numClicks: parseInt(tracker.numClicks),
+    clicks: tracker.clicks
   };
 
   return fetch(`http://localhost:3000/trackers/${tracker.id}`, {
@@ -287,7 +291,7 @@ export const updateNumIncrements = (tracker, amount) => (dispatch) => {
     .then((response) => dispatch(handleUpdateNumIncrements(tracker.id, amount)))
     .catch((error) => {
       console.log("Create increment ", error.message);
-      alert("Your increment could not be created\nError: " + error.message);
+      alert("Your numIncrements could not be updated\nError: " + error.message);
     });
 };
 
@@ -297,6 +301,7 @@ export const deleteClick = (tracker, clicks) => (dispatch) => {
     name: String(tracker.name),
     value: parseInt(tracker.value),
     numIncrements: tracker.numIncrements,
+    numClicks: tracker.numClicks,
     clicks: clicks
   };
 

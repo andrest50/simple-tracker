@@ -28,10 +28,11 @@ const TrackersReducer = (
         return { ...state, increments: action.payload };
     case INCREMENT_TRACKER:
       return Object.assign({}, state, {
-        trackers: state.trackers.map((tracker, trackerId) => {
-          if (trackerId === action.trackerId) {
+        trackers: state.trackers.map((tracker) => {
+          if (tracker.id === action.trackerId) {
             return Object.assign({}, tracker, {
               value: tracker.value + action.amount,
+              numClicks: tracker.numClicks + 1
             });
           }
           return tracker;
@@ -39,8 +40,8 @@ const TrackersReducer = (
       });
     case UPDATE_NUM_INCREMENTS:
       return Object.assign({}, state, {
-        trackers: state.trackers.map((tracker, trackerId) => {
-          if (trackerId === action.trackerId) {
+        trackers: state.trackers.map((tracker) => {
+          if (tracker.id === action.trackerId) {
             return Object.assign({}, tracker, {
               numIncrements: tracker.numIncrements + action.amount,
             });
@@ -61,13 +62,17 @@ const TrackersReducer = (
         trackers: state.trackers.filter(
           (tracker) => tracker.id !== action.payload
         ),
+        increments: state.increments.filter(
+            (increment) => increment.trackerId !== action.payload
+          )
       };
     case DELETE_CLICK:
+        console.log("here: " + action.clicks);
         return Object.assign({}, state, {
-            trackers: state.trackers.map((tracker, trackerId) => {
-              if (trackerId === action.trackerId) {
+            trackers: state.trackers.map((tracker) => {
+              if (tracker.id === action.trackerId) {
                 return Object.assign({}, tracker, {
-                  clicks: action.clicks
+                  clicks: action.clicks,
                 });
               }
               return tracker;
