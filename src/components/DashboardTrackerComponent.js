@@ -122,7 +122,7 @@ class DashboardTracker extends Component {
         <Link to={`/tracker/${this.props.tracker.id}`}>
           <h3 className="dashboard-tracker-name">{this.props.tracker.name}</h3>
         </Link>
-        <h3>{this.props.tracker.value}</h3>
+        <h3 className="dashboard-tracker-value">{this.props.tracker.value}</h3>
         <ButtonGroup role="group" className="dashboard-tracker-btns">
           <Button
             className={

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Header from "./HeaderComponent";
 import Dashboard from "./DashboardComponent";
 import SingleTrackerComponent from './SingleTrackerComponent';
 import { connect } from "react-redux";
@@ -60,7 +59,6 @@ class Main extends Component {
 
     return (
       <div>
-        <Header />
         <Switch>
           <Route path="/home" component={TrackersPage} />
           <Route path="/tracker/:trackerId" component={SingleTrackerPage} />

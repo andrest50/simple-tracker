@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "reactstrap";
+import DashboardHeader from "./DashboardHeaderComponent";
 import DashboardTracker from "./DashboardTrackerComponent";
 import TrackerModal from "./TrackerModalComponent";
 
@@ -59,19 +60,22 @@ class Dashboard extends Component {
     });
 
     return (
-      <div className="container" id="dashboard-trackers-group">
-        <Button id="dashboard-add-tracker-btn" onClick={this.toggleModal}>
-          Add Tracker
-        </Button>
-        <TrackerModal
-          isModalOpen={this.state.isModalOpen}
-          toggleModal={this.toggleModal}
-          handleAddTracker={this.handleAddTracker}
-        />
-        <div id="dashboard-trackers">
-          <h2 id="dashboard-trackers-title">Your Trackers: </h2>
-          <hr />
-          {trackers}
+      <div>
+        <DashboardHeader />
+        <div className="container" id="dashboard-trackers-group">
+          <Button id="dashboard-add-tracker-btn" onClick={this.toggleModal}>
+            Add Tracker
+          </Button>
+          <TrackerModal
+            isModalOpen={this.state.isModalOpen}
+            toggleModal={this.toggleModal}
+            handleAddTracker={this.handleAddTracker}
+          />
+          <div id="dashboard-trackers">
+            <h2 id="dashboard-trackers-title">Your Trackers: </h2>
+            <hr />
+            {trackers}
+          </div>
         </div>
       </div>
     );

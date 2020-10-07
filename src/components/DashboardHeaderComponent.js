@@ -2,7 +2,7 @@ import React from 'react'
 //import { Link } from "react-router-dom";
 import { Navbar, NavbarBrand } from "reactstrap";
 
-function Header() {
+function DashboardHeader() {
     /* const changeColorMode = () => {
         var element = document.getElementById('colorModeBtn');
         element.classList.toggle('night-mode');
@@ -24,4 +24,4 @@ function Header() {
     )
 }
 
-export default Header;
+export default DashboardHeader;

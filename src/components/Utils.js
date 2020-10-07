@@ -14,7 +14,7 @@ export const handleIncrement = (tracker, amount, incrementTracker) => {
     curr_date.getSeconds();
   var dateTime = date + " " + time;
   var new_click = {
-    value: tracker.value,
+    value: parseInt(tracker.value + amount),
     date: dateTime,
     id: tracker.numClicks
   };

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import SingleTrackerDetails from './SingleTrackerDetailsComponent';
-import TrackerHistory from './TrackerHistoryComponent';
+import SingleTrackerHeader from "./SingleTrackerHeaderComponent";
+import SingleTrackerDetails from "./SingleTrackerDetailsComponent";
+import TrackerHistory from "./TrackerHistoryComponent";
 
 class SingleTracker extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class SingleTracker extends Component {
 
     this.state = {
       redirect: false,
-      tracker: null
+      tracker: null,
     };
 
     this.handleAddIncrement = this.handleAddIncrement.bind(this);
@@ -37,7 +38,7 @@ class SingleTracker extends Component {
   componentDidMount() {
     //window.scrollTo(0, 0);
     this.setState({
-        tracker: this.props.tracker,
+      tracker: this.props.tracker,
     });
   }
 
@@ -49,15 +50,27 @@ class SingleTracker extends Component {
     console.log(this.state.tracker);
 
     return (
-      <div className="dashboard-tracker-group">
-        {this.props.tracker ? (
-          <div className="single-tracker-div">
-            <SingleTrackerDetails tracker={this.props.tracker} increments={this.props.increments}
-                handleAddIncrement={this.handleAddIncrement} handleDeleteIncrement={this.handleDeleteIncrement}
-                incrementTracker={this.props.incrementTracker} handleDeleteTracker={this.handleDeleteTracker} />
-            <TrackerHistory tracker={this.props.tracker} incrementTracker={this.props.incrementTracker} deleteClick={this.props.deleteClick}/>
-          </div>
-        ) : null}
+      <div>
+        <SingleTrackerHeader tracker={this.props.tracker} incrementTracker={this.props.incrementTracker} />
+        <div className="dashboard-tracker-group">
+          {this.props.tracker ? (
+            <div className="single-tracker-div">
+              <SingleTrackerDetails
+                tracker={this.props.tracker}
+                increments={this.props.increments}
+                handleAddIncrement={this.handleAddIncrement}
+                handleDeleteIncrement={this.handleDeleteIncrement}
+                incrementTracker={this.props.incrementTracker}
+                handleDeleteTracker={this.handleDeleteTracker}
+              />
+              <TrackerHistory
+                tracker={this.props.tracker}
+                incrementTracker={this.props.incrementTracker}
+                deleteClick={this.props.deleteClick}
+              />
+            </div>
+          ) : null}
+        </div>
       </div>
     );
   }
