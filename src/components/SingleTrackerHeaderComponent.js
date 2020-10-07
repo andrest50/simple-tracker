@@ -3,7 +3,8 @@ import React, {useState} from 'react'
 import { Navbar, NavbarBrand, Nav, UncontrolledDropdown, 
     DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
 import TrackerValueModal from './TrackerValueModalComponent';
-import {handleIncrement} from './Utils'
+import {handleIncrement} from './Utils';
+import ColorModal from './ColorModalComponent';
 
 const SingleTrackerHeader = (props) => {
     /* const changeColorMode = () => {
@@ -11,11 +12,17 @@ const SingleTrackerHeader = (props) => {
         element.classList.toggle('night-mode');
     } */
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isValueModalOpen, setIsValueModalOpen] = useState(false);
+    const [isColorModalOpen, setIsColorModalOpen] = useState(false);
 
-    const toggleModal = () => {
-        console.log(!isModalOpen);
-        setIsModalOpen(!isModalOpen);
+    const toggleValueModal = () => {
+        console.log(!isValueModalOpen);
+        setIsValueModalOpen(!isValueModalOpen);
+    }
+
+    const toggleColorModal = () => {
+        console.log(!isColorModalOpen);
+        setIsColorModalOpen(!isColorModalOpen);
     }
 
     const setTrackerValue = (values) => {
@@ -34,13 +41,14 @@ const SingleTrackerHeader = (props) => {
                             <i className="fa fa-cog tracker-settings"></i>
                         </DropdownToggle>
                         <DropdownMenu right>
-                            <DropdownItem onClick={toggleModal}>
+                            <DropdownItem onClick={toggleValueModal}>
                                 Set Tracker Value
                             </DropdownItem>
-                            <TrackerValueModal setTrackerValue={setTrackerValue} toggleModal={toggleModal} isModalOpen={isModalOpen}/>
-                            <DropdownItem>
+                            <TrackerValueModal setTrackerValue={setTrackerValue} toggleModal={toggleValueModal} isModalOpen={isValueModalOpen}/>
+                            <DropdownItem onClick={toggleColorModal}>
                                 Colors
                             </DropdownItem>
+                            <ColorModal toggleModal={toggleColorModal} isModalOpen={isColorModalOpen}/>
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 </Nav>

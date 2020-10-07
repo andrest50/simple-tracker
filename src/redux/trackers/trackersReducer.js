@@ -31,7 +31,7 @@ const TrackersReducer = (
         trackers: state.trackers.map((tracker) => {
           if (tracker.id === action.trackerId) {
             return Object.assign({}, tracker, {
-              value: tracker.value + action.amount,
+              value: parseInt(tracker.value + action.amount),
               numClicks: tracker.numClicks + 1
             });
           }
