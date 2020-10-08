@@ -1,18 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Button,
   Modal,
   ModalHeader,
   ModalBody,
 } from "reactstrap";
-import { SketchPicker } from 'react-color';
+import { SketchPicker, BlockPicker } from 'react-color';
 
 const ColorModal = (props) => {
+
+    //const [color, setColor] = useState("#45c7eb");
+
+    /* const handleChangeComplete = (color) => {
+        this.setState={bgColor: color.hex};
+    } */
+
     return (
         <Modal isOpen={props.isModalOpen} toggle={props.toggleModal}>
             <ModalHeader toggle={() => props.toggleModal(!props.isModalOpen)}>Color Palette</ModalHeader>
-            <ModalBody>
-                <SketchPicker />
+            <ModalBody style={{backgroundColor: props.color}}>
+                <SketchPicker color={props.color} onChangeComplete={props.handleColor} />
             </ModalBody>
         </Modal>
     );

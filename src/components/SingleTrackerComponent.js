@@ -11,11 +11,13 @@ class SingleTracker extends Component {
     this.state = {
       redirect: false,
       tracker: null,
+      bgColor: "#939cbe"
     };
 
     this.handleAddIncrement = this.handleAddIncrement.bind(this);
     this.handleDeleteIncrement = this.handleDeleteIncrement.bind(this);
     this.handleDeleteTracker = this.handleDeleteTracker.bind(this);
+    this.handleBgColor = this.handleBgColor.bind(this);
   }
 
   handleAddIncrement(values) {
@@ -35,6 +37,12 @@ class SingleTracker extends Component {
     this.props.deleteTracker(id);
   }
 
+  handleBgColor(color){
+      this.setState({
+          bgColor: color.hex
+      });
+  }
+
   componentDidMount() {
     //window.scrollTo(0, 0);
     this.setState({
@@ -50,9 +58,13 @@ class SingleTracker extends Component {
     console.log(this.state.tracker);
 
     return (
-      <div>
-        <SingleTrackerHeader tracker={this.props.tracker} incrementTracker={this.props.incrementTracker} />
-        <div className="dashboard-tracker-group">
+      <div style={{backgroundColor: this.state.bgColor}}>
+        <SingleTrackerHeader 
+            tracker={this.props.tracker} 
+            incrementTracker={this.props.incrementTracker}
+            bgColor={this.state.bgColor}
+            handleBgColor={this.handleBgColor} />
+        <div className="single-tracker-page">
           {this.props.tracker ? (
             <div className="single-tracker-div">
               <SingleTrackerDetails

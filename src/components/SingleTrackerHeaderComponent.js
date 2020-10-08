@@ -48,7 +48,7 @@ const SingleTrackerHeader = (props) => {
                             <DropdownItem onClick={toggleColorModal}>
                                 Colors
                             </DropdownItem>
-                            <ColorModal toggleModal={toggleColorModal} isModalOpen={isColorModalOpen}/>
+                            <ColorModal toggleModal={toggleColorModal} isModalOpen={isColorModalOpen} color={props.bgColor} handleColor={props.handleBgColor}/>
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 </Nav>
