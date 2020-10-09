@@ -17,7 +17,7 @@ const ColorModal = (props) => {
 
     return (
         <Modal isOpen={props.isModalOpen} toggle={props.toggleModal}>
-            <ModalHeader toggle={() => props.toggleModal(!props.isModalOpen)}>Color Palette</ModalHeader>
+            <ModalHeader toggle={() => props.toggleModal(!props.isModalOpen)}>{props.headerText}</ModalHeader>
             <ModalBody style={{backgroundColor: props.color}}>
                 <SketchPicker color={props.color} onChangeComplete={props.handleColor} />
             </ModalBody>

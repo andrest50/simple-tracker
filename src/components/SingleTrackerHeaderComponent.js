@@ -20,19 +20,30 @@ const SingleTrackerHeader = (props) => {
     } */
 
   const [isValueModalOpen, setIsValueModalOpen] = useState(false);
-  const [isColorModalOpen, setIsColorModalOpen] = useState(false);
+  const [isBgColorModalOpen, setIsBgColorModalOpen] = useState(false);
+  const [isIncColorModalOpen, setIsIncColorModalOpen] = useState(false);
 
   const toggleValueModal = () => {
     console.log(!isValueModalOpen);
     setIsValueModalOpen(!isValueModalOpen);
   };
 
-  const toggleColorModal = () => {
-    console.log(!isColorModalOpen);
-    if(isColorModalOpen){
-        props.updateBgColor(props.tracker, String(props.bgColor));
+  const toggleBgColorModal = () => {
+    console.log(!isBgColorModalOpen);
+    if(isBgColorModalOpen){
+        //props.tracker.setting.bgColor = String(props.bgColor);
+        props.updateSetting(props.tracker);
     }
-    setIsColorModalOpen(!isColorModalOpen);
+    setIsBgColorModalOpen(!isBgColorModalOpen);
+  };
+
+  const toggleIncColorModal = () => {
+    console.log(!isIncColorModalOpen);
+    if(isIncColorModalOpen){
+        //props.tracker.setting.incColor = String(props.incColor);
+        props.updateSetting(props.tracker);
+    }
+    setIsIncColorModalOpen(!isIncColorModalOpen);
   };
 
   const setTrackerValue = (values) => {
@@ -61,12 +72,21 @@ const SingleTrackerHeader = (props) => {
                 toggleModal={toggleValueModal}
                 isModalOpen={isValueModalOpen}
               />
-              <DropdownItem onClick={toggleColorModal}>Colors</DropdownItem>
+              <DropdownItem onClick={toggleBgColorModal}>Background Color</DropdownItem>
               <ColorModal
-                toggleModal={toggleColorModal}
-                isModalOpen={isColorModalOpen}
+                toggleModal={toggleBgColorModal}
+                isModalOpen={isBgColorModalOpen}
                 color={props.bgColor}
                 handleColor={props.handleBgColor}
+                headerText="Background Color"
+              />
+              <DropdownItem onClick={toggleIncColorModal}>Increment Buttons Color</DropdownItem>
+              <ColorModal
+                toggleModal={toggleIncColorModal}
+                isModalOpen={isIncColorModalOpen}
+                color={props.incColor}
+                handleColor={props.handleIncColor}
+                headerText="Increment Color"
               />
             </DropdownMenu>
           </UncontrolledDropdown>

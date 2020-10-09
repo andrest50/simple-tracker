@@ -4,7 +4,7 @@ import {
   ADD_INCREMENT,
   ADD_INCREMENTS,
   INCREMENT_TRACKER,
-  UPDATE_BG_COLOR,
+  UPDATE_SETTING,
   UPDATE_NUM_INCREMENTS,
   DELETE_INCREMENT,
   DELETE_TRACKER,
@@ -39,14 +39,12 @@ const TrackersReducer = (
           return tracker;
         }),
       });
-    case UPDATE_BG_COLOR:
+    case UPDATE_SETTING:
         return Object.assign({}, state, {
             trackers: state.trackers.map((tracker) => {
-                if (tracker.id === action.trackerId) {
+                if (tracker.id === action.tracker.id) {
                 return Object.assign({}, tracker, {
-                    settings: {
-                        bgColor: action.bgColor
-                    },
+                    settings: action.tracker.settings
                 });
                 }
                 return tracker;

@@ -1,127 +1,91 @@
 {
   "trackers": [
     {
-      "id": 8,
-      "name": "Test7",
-      "value": 14,
-      "numIncrements": 1,
-      "numClicks": 24,
+      "id": 11,
+      "name": "Test10",
+      "value": 39,
+      "numIncrements": 3,
+      "numClicks": 7,
       "clicks": [
         {
-          "value": 14,
-          "date": "2020-10-9 10:23:47",
-          "id": 21
+          "value": 29,
+          "date": "2020-10-9 11:58:15",
+          "id": 5
         },
         {
-          "value": 13,
-          "date": "2020-10-9 10:23:46",
-          "id": 20
+          "value": 24,
+          "date": "2020-10-9 11:58:14",
+          "id": 4
         },
         {
-          "value": 12,
-          "date": "2020-10-9 10:23:45",
-          "id": 19
+          "value": 22,
+          "date": "2020-10-9 11:58:14",
+          "id": 3
         },
         {
-          "value": 11,
-          "date": "2020-10-9 10:23:43",
-          "id": 18
+          "value": 17,
+          "date": "2020-10-9 11:58:13",
+          "id": 2
         },
         {
-          "value": 16,
-          "date": "2020-10-9 10:23:32",
-          "id": 17
-        },
-        {
-          "value": 15,
-          "date": "2020-10-9 10:23:25",
-          "id": 14
-        },
-        {
-          "value": 14,
-          "date": "2020-10-9 10:23:24",
-          "id": 13
-        },
-        {
-          "value": 13,
-          "date": "2020-10-9 10:23:24",
-          "id": 12
-        },
-        {
-          "value": 12,
-          "date": "2020-10-9 10:23:24",
-          "id": 11
-        },
-        {
-          "value": 11,
-          "date": "2020-10-9 10:23:21",
-          "id": 10
-        }
-      ],
-      "settings": {
-        "bgColor": "#7c85a9"
-      }
-    },
-    {
-      "id": 9,
-      "name": "Test8",
-      "value": 10,
-      "numIncrements": 1,
-      "numClicks": 2,
-      "clicks": [
-        {
-          "value": 5,
-          "date": "2020-10-9 10:22:37",
-          "id": 0
-        },
-        {
-          "value": 10,
-          "date": "2020-10-9 10:22:38",
-          "id": 1
-        }
-      ],
-      "settings": {
-        "bgColor": "#718c74"
-      }
-    },
-    {
-      "id": 10,
-      "name": "Test9",
-      "value": 16,
-      "numIncrements": 1,
-      "numClicks": 2,
-      "clicks": [
-        {
-          "value": 16,
-          "date": "2020-10-9 10:20:52",
+          "value": 7,
+          "date": "2020-10-9 11:58:12",
           "id": 1
         },
         {
-          "value": 13,
-          "date": "2020-10-9 10:20:52",
+          "value": 2,
+          "date": "2020-10-9 11:58:11",
           "id": 0
+        },
+        {
+          "value": 39,
+          "date": "2020-10-9 11:58:15",
+          "id": 6
         }
       ],
       "settings": {
-        "bgColor": "#7762d2"
+        "bgColor": "#79809f",
+        "incColor": "#484565"
+      }
+    },
+    {
+      "id": 12,
+      "name": "Test11",
+      "value": 2,
+      "numIncrements": 2,
+      "numClicks": 0,
+      "clicks": [],
+      "settings": {
+        "bgColor": "#73846a",
+        "incColor": "#4a90e2"
       }
     }
   ],
   "increments": [
     {
-      "trackerId": 8,
-      "value": 1,
-      "id": 19
+      "trackerId": 11,
+      "value": 10,
+      "id": 22
     },
     {
-      "trackerId": 10,
-      "value": 3,
-      "id": 20
-    },
-    {
-      "trackerId": 9,
+      "trackerId": 11,
       "value": 5,
-      "id": 21
+      "id": 23
+    },
+    {
+      "trackerId": 11,
+      "value": 2,
+      "id": 24
+    },
+    {
+      "trackerId": 12,
+      "value": 3,
+      "id": 25
+    },
+    {
+      "trackerId": 12,
+      "value": 5,
+      "id": 26
     }
   ]
 }

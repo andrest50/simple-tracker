@@ -4,7 +4,7 @@ import {
   ADD_INCREMENT,
   ADD_INCREMENTS,
   INCREMENT_TRACKER,
-  UPDATE_BG_COLOR,
+  UPDATE_SETTING,
   UPDATE_NUM_INCREMENTS,
   DELETE_CLICK,
   DELETE_INCREMENT,
@@ -47,11 +47,10 @@ export const handleIncrementTracker = (trackerId, amount) => {
   };
 };
 
-export const handleBgColor = (trackerId, bgColor) => {
+export const handleSetting = (tracker) => {
   return {
-    type: UPDATE_BG_COLOR,
-    trackerId: trackerId,
-    bgColor: bgColor,
+    type: UPDATE_SETTING,
+    tracker: tracker,
   };
 };
 
@@ -119,7 +118,8 @@ export const createTracker = (name, value) => (dispatch) => {
     numClicks: 0,
     clicks: [],
     settings: {
-      bgColor: "#939cbe"
+      bgColor: "#939cbe",
+      incColor: "#5E54B9"
     }
   };
 
@@ -200,7 +200,7 @@ export const incrementTracker = (tracker, amount) => (dispatch) => {
     });
 };
 
-export const updateBgColor = (tracker, newBgColor) => (dispatch) => {
+export const updateSetting = (tracker) => (dispatch) => {
   const updateTracker = {
     id: tracker.id,
     name: String(tracker.name),
@@ -208,9 +208,7 @@ export const updateBgColor = (tracker, newBgColor) => (dispatch) => {
     numIncrements: parseInt(tracker.numIncrements),
     numClicks: parseInt(tracker.numClicks),
     clicks: tracker.clicks,
-    settings: {
-      bgColor: newBgColor
-    }
+    settings: tracker.settings
   };
 
   return fetch(`http://localhost:3000/trackers/${tracker.id}`, {
@@ -239,7 +237,7 @@ export const updateBgColor = (tracker, newBgColor) => (dispatch) => {
       }
     )
     .then((response) => response.json())
-    .then((tracker) => dispatch(handleBgColor(tracker.id, newBgColor)))
+    .then((tracker) => dispatch(handleSetting(tracker)))
     .catch((error) => {
       console.log("Create increment", error.message);
       alert("Your tracker could not be incremented\nError: " + error.message);
