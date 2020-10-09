@@ -1,195 +1,99 @@
 {
   "trackers": [
     {
-      "id": 11,
-      "name": "Test10",
-      "value": 77,
-      "numIncrements": 3,
-      "numClicks": 17,
+      "id": 14,
+      "name": "Test2",
+      "value": 38,
+      "numIncrements": 1,
+      "numClicks": 7,
       "clicks": [
         {
-          "value": 70,
-          "date": "2020-10-9 13:32:6",
-          "id": 14
-        },
-        {
-          "value": 65,
-          "date": "2020-10-9 13:31:49",
-          "id": 13
-        },
-        {
-          "value": 63,
-          "date": "2020-10-9 13:31:48",
-          "id": 12
-        },
-        {
-          "value": 58,
-          "date": "2020-10-9 13:27:20",
-          "id": 11
-        },
-        {
-          "value": 56,
-          "date": "2020-10-9 13:27:20",
-          "id": 10
-        },
-        {
-          "value": 51,
-          "date": "2020-10-9 13:24:28",
-          "id": 9
-        },
-        {
-          "value": 46,
-          "date": "2020-10-9 13:24:27",
-          "id": 8
-        },
-        {
-          "value": 44,
-          "date": "2020-10-9 13:24:26",
-          "id": 7
-        },
-        {
-          "value": 39,
-          "date": "2020-10-9 11:58:15",
+          "value": 38,
+          "date": "2020-10-9 14:43:55",
           "id": 6
         },
         {
-          "value": 29,
-          "date": "2020-10-9 11:58:15",
+          "value": 33,
+          "date": "2020-10-9 14:43:54",
           "id": 5
         },
         {
-          "value": 24,
-          "date": "2020-10-9 11:58:14",
+          "value": 28,
+          "date": "2020-10-9 14:43:54",
           "id": 4
         },
         {
-          "value": 22,
-          "date": "2020-10-9 11:58:14",
+          "value": 23,
+          "date": "2020-10-9 14:43:53",
           "id": 3
         },
         {
-          "value": 17,
-          "date": "2020-10-9 11:58:13",
+          "value": 18,
+          "date": "2020-10-9 14:43:51",
           "id": 2
         },
         {
-          "value": 7,
-          "date": "2020-10-9 11:58:12",
+          "value": 13,
+          "date": "2020-10-9 14:43:51",
           "id": 1
         },
         {
-          "value": 2,
-          "date": "2020-10-9 11:58:11",
+          "value": 8,
+          "date": "2020-10-9 14:43:50",
           "id": 0
-        },
-        {
-          "value": 75,
-          "date": "2020-10-9 14:2:23",
-          "id": 15
-        },
-        {
-          "value": 77,
-          "date": "2020-10-9 14:2:23",
-          "id": 16
         }
       ],
       "settings": {
-        "bgColor": "#79809f",
-        "incColor": "#484565"
+        "bgColor": "#5a658c",
+        "incColor": "#4b477a",
+        "historyColor": "#3f616c"
       }
     },
     {
-      "id": 12,
-      "name": "Test11",
-      "value": 10,
-      "numIncrements": 2,
-      "numClicks": 2,
-      "clicks": [
-        {
-          "value": 5,
-          "date": "2020-10-9 14:2:21",
-          "id": 0
-        },
-        {
-          "value": 10,
-          "date": "2020-10-9 14:2:22",
-          "id": 1
-        }
-      ],
-      "settings": {
-        "bgColor": "#73846a",
-        "incColor": "#4a90e2"
-      }
-    },
-    {
-      "id": 13,
+      "id": 15,
       "name": "Test",
-      "value": 115,
-      "numIncrements": 3,
-      "numClicks": 25,
+      "value": 29,
+      "numIncrements": 1,
+      "numClicks": 4,
       "clicks": [
         {
-          "value": 108,
-          "date": "2020-10-9 14:15:1",
-          "id": 23
+          "value": 23,
+          "date": "2020-10-9 14:49:35",
+          "id": 2
         },
         {
-          "value": 105,
-          "date": "2020-10-9 14:15:1",
-          "id": 22
+          "value": 17,
+          "date": "2020-10-9 14:49:35",
+          "id": 1
         },
         {
-          "value": 115,
-          "date": "2020-10-9 14:15:2",
-          "id": 24
+          "value": 11,
+          "date": "2020-10-9 14:49:34",
+          "id": 0
+        },
+        {
+          "value": 29,
+          "date": "2020-10-9 14:49:36",
+          "id": 3
         }
       ],
       "settings": {
-        "bgColor": "#747b95",
-        "incColor": "#4d4a6a"
+        "bgColor": "#418c73",
+        "incColor": "#437349",
+        "historyColor": "#538669"
       }
     }
   ],
   "increments": [
     {
-      "trackerId": 11,
-      "value": 10,
-      "id": 22
-    },
-    {
-      "trackerId": 11,
+      "trackerId": 14,
       "value": 5,
-      "id": 23
+      "id": 30
     },
     {
-      "trackerId": 11,
-      "value": 2,
-      "id": 24
-    },
-    {
-      "trackerId": 12,
-      "value": 3,
-      "id": 25
-    },
-    {
-      "trackerId": 12,
-      "value": 5,
-      "id": 26
-    },
-    {
-      "trackerId": 13,
-      "value": 3,
-      "id": 27
-    },
-    {
-      "trackerId": 13,
-      "value": 5,
-      "id": 28
-    },
-    {
-      "trackerId": 13,
-      "value": 7,
-      "id": 29
+      "trackerId": 15,
+      "value": 6,
+      "id": 31
     }
   ]
 }

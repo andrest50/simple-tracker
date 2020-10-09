@@ -127,7 +127,8 @@ export const createTracker = (name, value) => (dispatch) => {
     clicks: [],
     settings: {
       bgColor: "#939cbe",
-      incColor: "#5E54B9"
+      incColor: "#5E54B9",
+      historyColor: "#4196ad",
     }
   };
 

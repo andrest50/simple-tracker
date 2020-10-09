@@ -22,6 +22,7 @@ const SingleTrackerHeader = (props) => {
   const [isValueModalOpen, setIsValueModalOpen] = useState(false);
   const [isBgColorModalOpen, setIsBgColorModalOpen] = useState(false);
   const [isIncColorModalOpen, setIsIncColorModalOpen] = useState(false);
+  const [isHistoryColorModalOpen, setIsHistoryColorModalOpen] = useState(false);
 
   const toggleValueModal = () => {
     console.log(!isValueModalOpen);
@@ -44,6 +45,15 @@ const SingleTrackerHeader = (props) => {
         props.updateSetting(props.tracker);
     }
     setIsIncColorModalOpen(!isIncColorModalOpen);
+  };
+
+  const toggleHistoryColorModal = () => {
+    console.log(!isHistoryColorModalOpen);
+    if(isHistoryColorModalOpen){
+        //props.tracker.setting.incColor = String(props.incColor);
+        props.updateSetting(props.tracker);
+    }
+    setIsHistoryColorModalOpen(!isHistoryColorModalOpen);
   };
 
   const setTrackerValue = (values) => {
@@ -86,6 +96,14 @@ const SingleTrackerHeader = (props) => {
                 isModalOpen={isIncColorModalOpen}
                 color={props.incColor}
                 handleColor={props.handleIncColor}
+                headerText="Increment Color"
+              />
+              <DropdownItem onClick={toggleHistoryColorModal}>History Background Color</DropdownItem>
+              <ColorModal
+                toggleModal={toggleHistoryColorModal}
+                isModalOpen={isHistoryColorModalOpen}
+                color={props.historyColor}
+                handleColor={props.handleHistoryColor}
                 headerText="Increment Color"
               />
             </DropdownMenu>

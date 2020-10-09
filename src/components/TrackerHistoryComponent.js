@@ -63,7 +63,7 @@ const TrackerHistory = (props) => {
   });
 
   return (
-    <div className="history center">
+    <div style={{backgroundColor: props.tracker.settings.historyColor}} className="history center">
       <div className="history-header">
         <h4 className="history-title">History</h4>
         <div className="history-options">
