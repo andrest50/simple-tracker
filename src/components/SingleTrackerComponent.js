@@ -23,12 +23,16 @@ class SingleTracker extends Component {
 
   handleAddIncrement(values) {
     this.props.createIncrement(this.props.tracker.id, values.value);
-    this.props.updateNumIncrements(this.props.tracker, 1);
+    this.props.tracker.numIncrements += 1;
+    this.props.updateTracker(this.props.tracker);
+    //this.props.updateNumIncrements(this.props.tracker, 1);
   }
 
   handleDeleteIncrement(id) {
     this.props.deleteIncrement(id);
-    this.props.updateNumIncrements(this.props.tracker, -1);
+    this.props.tracker.numIncrements -= 1;
+    this.props.updateTracker(this.props.tracker);
+    //this.props.updateNumIncrements(this.props.tracker, -1);
   }
 
   handleDeleteTracker(id) {
@@ -85,7 +89,8 @@ class SingleTracker extends Component {
       <div style={{backgroundColor: this.state.tracker.settings.bgColor}}>
         <SingleTrackerHeader 
             tracker={this.props.tracker} 
-            incrementTracker={this.props.incrementTracker}
+            //incrementTracker={this.props.incrementTracker}
+            updateTracker={this.props.updateTracker}
             bgColor={this.state.tracker.settings.bgColor}
             handleBgColor={this.handleBgColor}
             updateSetting={this.props.updateSetting}
@@ -99,13 +104,15 @@ class SingleTracker extends Component {
                 increments={this.props.increments}
                 handleAddIncrement={this.handleAddIncrement}
                 handleDeleteIncrement={this.handleDeleteIncrement}
-                incrementTracker={this.props.incrementTracker}
+                //incrementTracker={this.props.incrementTracker}
                 handleDeleteTracker={this.handleDeleteTracker}
+                updateTracker={this.props.updateTracker}
               />
               <TrackerHistory
                 tracker={this.props.tracker}
-                incrementTracker={this.props.incrementTracker}
+                //incrementTracker={this.props.incrementTracker}
                 deleteClick={this.props.deleteClick}
+                updateTracker={this.props.updateTracker}
               />
             </div>
           ) : null}

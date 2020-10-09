@@ -49,7 +49,7 @@ const SingleTrackerHeader = (props) => {
   const setTrackerValue = (values) => {
     props.tracker.value = 0;
     console.log(parseInt(props.tracker.value + values.value));
-    handleIncrement(props.tracker, values.value, props.incrementTracker);
+    handleIncrement(props.tracker, values.value, props.updateTracker);
   };
 
   return (

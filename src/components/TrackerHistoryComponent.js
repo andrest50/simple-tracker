@@ -46,7 +46,7 @@ const TrackerHistory = (props) => {
             handleIncrement(
               props.tracker,
               click.value - props.tracker.value,
-              props.incrementTracker
+              props.updateTracker
             )
           }
         >

@@ -46,12 +46,16 @@ class DashboardTracker extends Component {
   handleAddIncrement(values) {
     this.toggleModal();
     this.props.createIncrement(this.props.tracker.id, values.value);
-    this.props.updateNumIncrements(this.props.tracker, 1);
+    this.props.tracker.numIncrements += 1;
+    this.props.updateTracker(this.props.tracker);
+    //this.props.updateNumIncrements(this.props.tracker, 1);
   }
 
   handleDeleteIncrement(id) {
     this.props.deleteIncrement(id);
-    this.props.updateNumIncrements(this.props.tracker, -1);
+    this.props.tracker.numIncrements -= 1;
+    this.props.updateTracker(this.props.tracker);
+    //this.props.updateNumIncrements(this.props.tracker, -1);
   }
 
   handleDeleteTracker(id) {
@@ -66,7 +70,7 @@ class DashboardTracker extends Component {
         handleIncrement(
           this.props.tracker,
           increment.value,
-          this.props.incrementTracker
+          this.props.updateTracker
         );
       }
       else {

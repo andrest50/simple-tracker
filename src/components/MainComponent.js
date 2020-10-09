@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { incrementTracker, fetchTrackers, deleteTracker, 
   fetchIncrements, createTracker, createIncrement, deleteIncrement, 
-  updateNumIncrements, updateSetting, deleteClick } from "../redux";
+  updateTracker, updateNumIncrements, updateSetting, deleteClick } from "../redux";
 
 const mapStateToProps = (state) => {
   return {
@@ -16,14 +16,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     fetchTrackers: () => dispatch(fetchTrackers()),
     fetchIncrements: () => dispatch(fetchIncrements()),
-    incrementTracker: (tracker, amount) => dispatch(incrementTracker(tracker, amount)),
+    //incrementTracker: (tracker, amount) => dispatch(incrementTracker(tracker, amount)),
     createTracker: (name, value) => dispatch(createTracker(name, value)),
     deleteTracker: (id) => dispatch(deleteTracker(id)),
     createIncrement: (trackerId, value) => dispatch(createIncrement(trackerId, value)),
     deleteIncrement: (id) => dispatch(deleteIncrement(id)),
-    updateNumIncrements: (id, amount) => dispatch(updateNumIncrements(id, amount)),
+    //updateNumIncrements: (id, amount) => dispatch(updateNumIncrements(id, amount)),
     deleteClick: (id, clicks) => dispatch(deleteClick(id, clicks)),
     updateSetting: (tracker) => dispatch(updateSetting(tracker)),
+    updateTracker: (tracker) => dispatch(updateTracker(tracker)),
 });
 
 class Main extends Component {
@@ -41,8 +42,9 @@ class Main extends Component {
           deleteTracker={this.props.deleteTracker}  
           createIncrement={this.props.createIncrement}
           deleteIncrement={this.props.deleteIncrement} 
-          incrementTracker={this.props.incrementTracker} 
-          updateNumIncrements={this.props.updateNumIncrements}/>
+          //incrementTracker={this.props.incrementTracker} 
+          //updateNumIncrements={this.props.updateNumIncrements}
+          updateTracker={this.props.updateTracker}/>
       );
     }
 
@@ -53,8 +55,9 @@ class Main extends Component {
           deleteTracker={this.props.deleteTracker}  
           createIncrement={this.props.createIncrement} 
           deleteIncrement={this.props.deleteIncrement}
-          incrementTracker={this.props.incrementTracker} 
-          updateNumIncrements={this.props.updateNumIncrements}
+          //incrementTracker={this.props.incrementTracker}
+          updateTracker={this.props.updateTracker} 
+          //updateNumIncrements={this.props.updateNumIncrements}
           updateSetting={this.props.updateSetting}
           deleteClick={this.props.deleteClick}/>
       );

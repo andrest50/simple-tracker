@@ -5,6 +5,7 @@ import {
   ADD_INCREMENTS,
   INCREMENT_TRACKER,
   UPDATE_SETTING,
+  UPDATE_TRACKER,
   UPDATE_NUM_INCREMENTS,
   DELETE_INCREMENT,
   DELETE_TRACKER,
@@ -61,6 +62,17 @@ const TrackersReducer = (
           return tracker;
         }),
       });
+      case UPDATE_TRACKER:
+        return Object.assign({}, state, {
+          trackers: state.trackers.map((tracker) => {
+            if (tracker.id === action.tracker.id) {
+              return Object.assign({}, tracker, {
+                tracker: action.tracker
+              });
+            }
+            return tracker;
+          }),
+        });
     case DELETE_INCREMENT:
       return {
         ...state,

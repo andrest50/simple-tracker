@@ -49,7 +49,7 @@ const SingleTrackerDetails = (props) => {
         if (
           isDeleteMode === true
             ? props.handleDeleteIncrement(increment.id)
-            : handleIncrement(props.tracker, increment.value, props.incrementTracker)
+            : handleIncrement(props.tracker, increment.value, props.updateTracker)
         );
     }
 

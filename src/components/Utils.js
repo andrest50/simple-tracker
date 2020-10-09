@@ -1,4 +1,6 @@
-export const handleIncrement = (tracker, amount, incrementTracker) => {
+import { updateTracker } from "../redux/trackers/trackersActions";
+
+export const handleIncrement = (tracker, amount, updateTracker) => {
   var curr_date = new Date();
   var date =
     curr_date.getFullYear() +
@@ -19,7 +21,10 @@ export const handleIncrement = (tracker, amount, incrementTracker) => {
     id: tracker.numClicks
   };
   tracker.clicks.push(new_click);
-  incrementTracker(tracker, amount);
+  tracker.value += parseInt(amount);
+  tracker.numClicks += 1;
+  updateTracker(tracker);
+  //incrementTracker(tracker, amount);
 };
 
 export const sortHistory = (isSorted, tracker) => {

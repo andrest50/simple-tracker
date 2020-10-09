@@ -5,6 +5,7 @@ import {
   ADD_INCREMENTS,
   INCREMENT_TRACKER,
   UPDATE_SETTING,
+  UPDATE_TRACKER,
   UPDATE_NUM_INCREMENTS,
   DELETE_CLICK,
   DELETE_INCREMENT,
@@ -46,6 +47,13 @@ export const handleIncrementTracker = (trackerId, amount) => {
     amount: amount,
   };
 };
+
+export const handleUpdateTracker = (tracker) => {
+  return {
+    type: UPDATE_TRACKER,
+    tracker: tracker
+  }
+}
 
 export const handleSetting = (tracker) => {
   return {
@@ -153,6 +161,50 @@ export const createTracker = (name, value) => (dispatch) => {
     .catch((error) => {
       console.log("Create trackers ", error.message);
       alert("Your tracker could not be created\nError: " + error.message);
+    });
+};
+
+export const updateTracker = (tracker) => (dispatch) => {
+  const updatedTracker = {
+    id: tracker.id,
+    name: String(tracker.name),
+    value: parseInt(tracker.value),
+    numIncrements: parseInt(tracker.numIncrements),
+    numClicks: parseInt(tracker.numClicks),
+    clicks: tracker.clicks,
+    settings: tracker.settings
+  };
+
+  return fetch(`http://localhost:3000/trackers/${tracker.id}`, {
+    method: "PUT",
+    body: JSON.stringify(updatedTracker),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "same-origin",
+  })
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error(
+            "Error " + response.status + ": " + response.statusText
+          );
+          error.repsonse = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      }
+    )
+    .then((response) => response.json())
+    .then((tracker) => dispatch(handleUpdateTracker(tracker)))
+    .catch((error) => {
+      console.log("Update tracker", error.message);
+      alert("Your tracker could not be updated\nError: " + error.message);
     });
 };
 

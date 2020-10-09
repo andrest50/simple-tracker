@@ -52,8 +52,9 @@ class Dashboard extends Component {
             createIncrement={this.props.createIncrement}
             deleteIncrement={this.props.deleteIncrement}
             deleteTracker={this.props.deleteTracker}
-            incrementTracker={this.props.incrementTracker}
-            updateNumIncrements={this.props.updateNumIncrements}
+            //incrementTracker={this.props.incrementTracker}
+            //updateNumIncrements={this.props.updateNumIncrements}
+            updateTracker={this.props.updateTracker}
           />
         </div>
       );
