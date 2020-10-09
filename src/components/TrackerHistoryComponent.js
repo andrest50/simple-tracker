@@ -1,5 +1,11 @@
 import React, { useState } from "react";
 import { sortHistory, handleIncrement } from './Utils';
+import {
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    DropdownToggle
+} from "reactstrap";
 
 const TrackerHistory = (props) => {
   const [isHistoryDropdown, setIsHistoryDropdown] = useState(false);
@@ -72,6 +78,17 @@ const TrackerHistory = (props) => {
             </div>
           ) : null}
         </div>
+        {/* <Dropdown className="history-options" isOpen={isHistoryDropdown} toggle={toggleHistoryDropdown}>
+                <i
+                    className="fa fa-ellipsis-v history-options-btn noselect"
+                    onClick={toggleHistoryDropdown}
+                    data-toggle="dropdown"
+                ></i>               
+            <DropdownMenu>
+                <DropdownItem onClick={() => handleDeleteAllClicks(props.tracker)}>Clear</DropdownItem>
+                <DropdownItem onClick={handleSortHistory}>Sort</DropdownItem>
+            </DropdownMenu>
+        </Dropdown> */}
       </div>
       {sorted_clicks}
     </div>

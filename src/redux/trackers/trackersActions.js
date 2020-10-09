@@ -4,6 +4,7 @@ import {
   ADD_INCREMENT,
   ADD_INCREMENTS,
   INCREMENT_TRACKER,
+  UPDATE_BG_COLOR,
   UPDATE_NUM_INCREMENTS,
   DELETE_CLICK,
   DELETE_INCREMENT,
@@ -43,6 +44,14 @@ export const handleIncrementTracker = (trackerId, amount) => {
     type: INCREMENT_TRACKER,
     trackerId: trackerId,
     amount: amount,
+  };
+};
+
+export const handleBgColor = (trackerId, bgColor) => {
+  return {
+    type: UPDATE_BG_COLOR,
+    trackerId: trackerId,
+    bgColor: bgColor,
   };
 };
 
@@ -108,7 +117,10 @@ export const createTracker = (name, value) => (dispatch) => {
     value: parseInt(value),
     numIncrements: 0,
     numClicks: 0,
-    clicks: []
+    clicks: [],
+    settings: {
+      bgColor: "#939cbe"
+    }
   };
 
   return fetch("http://localhost:3000/trackers", {
@@ -151,7 +163,8 @@ export const incrementTracker = (tracker, amount) => (dispatch) => {
     value: parseInt(tracker.value) + parseInt(amount),
     numIncrements: parseInt(tracker.numIncrements),
     numClicks: parseInt(tracker.numClicks) + 1,
-    clicks: tracker.clicks
+    clicks: tracker.clicks,
+    settings: tracker.settings
   };
 
   return fetch(`http://localhost:3000/trackers/${tracker.id}`, {
@@ -181,6 +194,52 @@ export const incrementTracker = (tracker, amount) => (dispatch) => {
     )
     .then((response) => response.json())
     .then((tracker) => dispatch(handleIncrementTracker(tracker.id, amount)))
+    .catch((error) => {
+      console.log("Create increment", error.message);
+      alert("Your tracker could not be incremented\nError: " + error.message);
+    });
+};
+
+export const updateBgColor = (tracker, newBgColor) => (dispatch) => {
+  const updateTracker = {
+    id: tracker.id,
+    name: String(tracker.name),
+    value: parseInt(tracker.value),
+    numIncrements: parseInt(tracker.numIncrements),
+    numClicks: parseInt(tracker.numClicks),
+    clicks: tracker.clicks,
+    settings: {
+      bgColor: newBgColor
+    }
+  };
+
+  return fetch(`http://localhost:3000/trackers/${tracker.id}`, {
+    method: "PUT",
+    body: JSON.stringify(updateTracker),
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "same-origin",
+  })
+    .then(
+      (response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error(
+            "Error " + response.status + ": " + response.statusText
+          );
+          error.repsonse = response;
+          throw error;
+        }
+      },
+      (error) => {
+        var errmess = new Error(error.message);
+        throw errmess;
+      }
+    )
+    .then((response) => response.json())
+    .then((tracker) => dispatch(handleBgColor(tracker.id, newBgColor)))
     .catch((error) => {
       console.log("Create increment", error.message);
       alert("Your tracker could not be incremented\nError: " + error.message);
@@ -259,7 +318,8 @@ export const updateNumIncrements = (tracker, amount) => (dispatch) => {
     value: parseInt(tracker.value),
     numIncrements: parseInt(tracker.numIncrements) + parseInt(amount),
     numClicks: parseInt(tracker.numClicks),
-    clicks: tracker.clicks
+    clicks: tracker.clicks,
+    settings: tracker.settings
   };
 
   return fetch(`http://localhost:3000/trackers/${tracker.id}`, {
@@ -302,7 +362,8 @@ export const deleteClick = (tracker, clicks) => (dispatch) => {
     value: parseInt(tracker.value),
     numIncrements: tracker.numIncrements,
     numClicks: tracker.numClicks,
-    clicks: clicks
+    clicks: clicks,
+    settings: tracker.settings
   };
 
   return fetch(`http://localhost:3000/trackers/${tracker.id}`, {

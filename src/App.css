@@ -128,8 +128,9 @@ body {
 }
 
 #dashboard-trackers {
-  background-color: #95a5ca;
+  background-color: #93aacf;
   border-radius: 30px;
+  border: 2px solid rgb(107, 107, 107);
   padding: 30px 0px 70px 0px;
 }
 

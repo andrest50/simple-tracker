@@ -11,7 +11,7 @@ class SingleTracker extends Component {
     this.state = {
       redirect: false,
       tracker: null,
-      bgColor: "#939cbe"
+      bgColor: null
     };
 
     this.handleAddIncrement = this.handleAddIncrement.bind(this);
@@ -38,9 +38,15 @@ class SingleTracker extends Component {
   }
 
   handleBgColor(color){
-      this.setState({
+      console.log(String(color.hex));
+      /* this.setState({
           bgColor: color.hex
+      }); */
+      this.props.tracker.settings.bgColor = color.hex;
+      this.setState({
+        tracker: this.props.tracker,
       });
+      //this.props.updateBgColor(this.props.tracker, String(color.hex));
   }
 
   componentDidMount() {
@@ -51,19 +57,25 @@ class SingleTracker extends Component {
   }
 
   render() {
+
+    if(this.state.tracker == null){
+        return null;
+    }
+
     if (this.state.redirect === true) {
       return <Redirect to="/home" />;
     }
 
-    console.log(this.state.tracker);
+    console.log(this.props.tracker);
 
     return (
-      <div style={{backgroundColor: this.state.bgColor}}>
+      <div style={{backgroundColor: this.state.tracker.settings.bgColor}}>
         <SingleTrackerHeader 
             tracker={this.props.tracker} 
             incrementTracker={this.props.incrementTracker}
-            bgColor={this.state.bgColor}
-            handleBgColor={this.handleBgColor} />
+            bgColor={this.state.tracker.settings.bgColor}
+            handleBgColor={this.handleBgColor}
+            updateBgColor={this.props.updateBgColor} />
         <div className="single-tracker-page">
           {this.props.tracker ? (
             <div className="single-tracker-div">

@@ -11,5 +11,6 @@ export {
   createIncrement,
   deleteIncrement,
   updateNumIncrements,
+  updateBgColor,
   deleteClick
 } from "./trackers/trackersActions";

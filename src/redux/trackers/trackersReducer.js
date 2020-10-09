@@ -4,6 +4,7 @@ import {
   ADD_INCREMENT,
   ADD_INCREMENTS,
   INCREMENT_TRACKER,
+  UPDATE_BG_COLOR,
   UPDATE_NUM_INCREMENTS,
   DELETE_INCREMENT,
   DELETE_TRACKER,
@@ -38,6 +39,19 @@ const TrackersReducer = (
           return tracker;
         }),
       });
+    case UPDATE_BG_COLOR:
+        return Object.assign({}, state, {
+            trackers: state.trackers.map((tracker) => {
+                if (tracker.id === action.trackerId) {
+                return Object.assign({}, tracker, {
+                    settings: {
+                        bgColor: action.bgColor
+                    },
+                });
+                }
+                return tracker;
+            }),
+        });
     case UPDATE_NUM_INCREMENTS:
       return Object.assign({}, state, {
         trackers: state.trackers.map((tracker) => {
@@ -67,7 +81,6 @@ const TrackersReducer = (
           )
       };
     case DELETE_CLICK:
-        console.log("here: " + action.clicks);
         return Object.assign({}, state, {
             trackers: state.trackers.map((tracker) => {
               if (tracker.id === action.trackerId) {

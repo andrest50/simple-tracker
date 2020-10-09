@@ -4,7 +4,8 @@ import SingleTrackerComponent from './SingleTrackerComponent';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { incrementTracker, fetchTrackers, deleteTracker, 
-  fetchIncrements, createTracker, createIncrement, deleteIncrement, updateNumIncrements, deleteClick } from "../redux";
+  fetchIncrements, createTracker, createIncrement, deleteIncrement, 
+  updateNumIncrements, updateBgColor, deleteClick } from "../redux";
 
 const mapStateToProps = (state) => {
   return {
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch) => ({
     deleteIncrement: (id) => dispatch(deleteIncrement(id)),
     updateNumIncrements: (id, amount) => dispatch(updateNumIncrements(id, amount)),
     deleteClick: (id, clicks) => dispatch(deleteClick(id, clicks)),
+    updateBgColor: (id, bgColor) => dispatch(updateBgColor(id, bgColor)),
 });
 
 class Main extends Component {
@@ -53,6 +55,7 @@ class Main extends Component {
           deleteIncrement={this.props.deleteIncrement}
           incrementTracker={this.props.incrementTracker} 
           updateNumIncrements={this.props.updateNumIncrements}
+          updateBgColor={this.props.updateBgColor}
           deleteClick={this.props.deleteClick}/>
       );
     }
