@@ -75,7 +75,7 @@ const SingleTrackerDetails = (props) => {
         toggleDeleteMode={toggleDeleteMode}/> */}
         <ButtonGroup role="group" className="increment-btns">
           <Button
-            style={{backgroundColor: props.tracker.settings.incColor}}
+            style={isDeleteMode ? {backgroundColor: "#C33E3E"} : {backgroundColor: props.tracker.settings.incColor}}
             className={
               isDeleteMode
                 ? "single-tracker-btn-standard tracker-delete-btn-color-default"

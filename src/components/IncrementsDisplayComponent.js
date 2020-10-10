@@ -20,7 +20,7 @@ const IncrementsDisplay = (props) => {
         return (
           <Button
             key={increment.id}
-            style={{backgroundColor: props.tracker.settings.incColor}}
+            style={props.isDeleteMode ? {backgroundColor: "#C33E3E"} : {backgroundColor: props.tracker.settings.incColor}}
             className={
               props.isDeleteMode
                 ? "single-tracker-inc-btn-standard tracker-delete-btn-color-default"

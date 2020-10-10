@@ -11,7 +11,6 @@ class SingleTracker extends Component {
     this.state = {
       redirect: false,
       tracker: null,
-      bgColor: null
     };
 
     this.handleAddIncrement = this.handleAddIncrement.bind(this);
