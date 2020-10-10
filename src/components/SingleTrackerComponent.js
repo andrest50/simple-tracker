@@ -54,13 +54,20 @@ class SingleTracker extends Component {
     this.props.deleteTracker(id);
   }
 
+ /*  handleColor(color){
+    console.log(String(color.hex));
+    this.props.tracker.settings.bgColor = color.hex;
+    this.setState({
+      tracker: this.props.tracker,
+    });
+} */
+
   handleBgColor(color){
       console.log(String(color.hex));
       this.props.tracker.settings.bgColor = color.hex;
       this.setState({
         tracker: this.props.tracker,
       });
-      //this.props.updateBgColor(this.props.tracker, String(color.hex));
   }
 
   handleIncColor(color){
@@ -69,7 +76,6 @@ class SingleTracker extends Component {
     this.setState({
       tracker: this.props.tracker,
     });
-    //this.props.updateBgColor(this.props.tracker, String(color.hex));
 }
 
 handleHistoryColor(color){
@@ -78,7 +84,6 @@ handleHistoryColor(color){
     this.setState({
       tracker: this.props.tracker,
     });
-    //this.props.updateBgColor(this.props.tracker, String(color.hex));
 }
 
   componentDidMount() {
@@ -106,12 +111,12 @@ handleHistoryColor(color){
             tracker={this.props.tracker} 
             //incrementTracker={this.props.incrementTracker}
             updateTracker={this.props.updateTracker}
-            bgColor={this.state.tracker.settings.bgColor}
-            handleBgColor={this.handleBgColor}
             updateSetting={this.props.updateSetting}
-            incColor={this.state.tracker.settings.incColor}
+            //bgColor={this.state.tracker.settings.bgColor}
+            handleBgColor={this.handleBgColor}
+            //incColor={this.state.tracker.settings.incColor}
             handleIncColor={this.handleIncColor}
-            historyColor={this.state.tracker.settings.historyColor}
+            //historyColor={this.state.tracker.settings.historyColor}
             handleHistoryColor={this.handleHistoryColor} />
         <div className="single-tracker-page">
           {this.props.tracker ? (

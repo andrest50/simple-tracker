@@ -53,8 +53,6 @@ const SingleTrackerDetails = (props) => {
         );
     }
 
-    console.log(isModalOpen);
-
   return (
     <div>
       <h2 className="tracker-name single-tracker-name">

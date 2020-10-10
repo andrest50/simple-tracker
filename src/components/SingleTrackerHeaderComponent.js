@@ -32,7 +32,6 @@ const SingleTrackerHeader = (props) => {
   const toggleBgColorModal = () => {
     console.log(!isBgColorModalOpen);
     if(isBgColorModalOpen){
-        //props.tracker.setting.bgColor = String(props.bgColor);
         props.updateSetting(props.tracker);
     }
     setIsBgColorModalOpen(!isBgColorModalOpen);
@@ -41,7 +40,6 @@ const SingleTrackerHeader = (props) => {
   const toggleIncColorModal = () => {
     console.log(!isIncColorModalOpen);
     if(isIncColorModalOpen){
-        //props.tracker.setting.incColor = String(props.incColor);
         props.updateSetting(props.tracker);
     }
     setIsIncColorModalOpen(!isIncColorModalOpen);
@@ -50,7 +48,6 @@ const SingleTrackerHeader = (props) => {
   const toggleHistoryColorModal = () => {
     console.log(!isHistoryColorModalOpen);
     if(isHistoryColorModalOpen){
-        //props.tracker.setting.incColor = String(props.incColor);
         props.updateSetting(props.tracker);
     }
     setIsHistoryColorModalOpen(!isHistoryColorModalOpen);
@@ -61,6 +58,8 @@ const SingleTrackerHeader = (props) => {
     console.log(parseInt(props.tracker.value + values.value));
     handleIncrement(props.tracker, values.value, props.updateTracker);
   };
+
+  var settings = props.tracker.settings;
 
   return (
     <React.Fragment>
@@ -86,7 +85,7 @@ const SingleTrackerHeader = (props) => {
               <ColorModal
                 toggleModal={toggleBgColorModal}
                 isModalOpen={isBgColorModalOpen}
-                color={props.bgColor}
+                color={settings.bgColor}
                 handleColor={props.handleBgColor}
                 headerText="Background Color"
               />
@@ -94,7 +93,7 @@ const SingleTrackerHeader = (props) => {
               <ColorModal
                 toggleModal={toggleIncColorModal}
                 isModalOpen={isIncColorModalOpen}
-                color={props.incColor}
+                color={settings.incColor}
                 handleColor={props.handleIncColor}
                 headerText="Increment Color"
               />
@@ -102,7 +101,7 @@ const SingleTrackerHeader = (props) => {
               <ColorModal
                 toggleModal={toggleHistoryColorModal}
                 isModalOpen={isHistoryColorModalOpen}
-                color={props.historyColor}
+                color={settings.historyColor}
                 handleColor={props.handleHistoryColor}
                 headerText="Increment Color"
               />

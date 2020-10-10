@@ -39,7 +39,7 @@ const TrackerHistory = (props) => {
 
   const sorted_clicks = props.tracker.clicks.map((click) => {
     return (
-      <div>
+      <div className="history-row">
         <span
           className="history-click"
           onClick={() =>

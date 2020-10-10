@@ -3,6 +3,7 @@ import { Button } from "reactstrap";
 import DashboardHeader from "./DashboardHeaderComponent";
 import DashboardTracker from "./DashboardTrackerComponent";
 import TrackerModal from "./TrackerModalComponent";
+import {sortTrackers} from './Utils';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -11,11 +12,13 @@ class Dashboard extends Component {
     this.state = {
       isModalOpen: false,
       isDashboardDropdown: false,
+      sort: 1
     };
 
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddTracker = this.handleAddTracker.bind(this);
     this.toggleDashboardDropdown = this.toggleDashboardDropdown.bind(this);
+    this.handleSort = this.handleSort.bind(this);
   }
 
   toggleModal() {
@@ -35,6 +38,20 @@ class Dashboard extends Component {
     this.props.createTracker(values.name, values.value);
   }
 
+  handleSort() {
+    console.log(this.state.sort);
+    if(this.state.sort !== 3){
+        this.setState({
+            sort: this.state.sort + 1
+        })
+    }
+    else {
+        this.setState({
+            sort: 1
+        })
+    }
+  }
+
   render() {
     /* const compare = (a, b) => {
       if (a.value < b.value) {
@@ -48,6 +65,8 @@ class Dashboard extends Component {
 
     this.props.trackers.trackers.sort(compare);
     console.log(this.props.trackers.trackers); */
+
+    sortTrackers(this.props.trackers.trackers, this.state.sort);
 
     const trackers = this.props.trackers.trackers.map((tracker) => {
       return (
@@ -88,7 +107,7 @@ class Dashboard extends Component {
                 <i className="fa fa-ellipsis-v dashboard-options-btn noselect" onClick={this.toggleDashboardDropdown}></i>
                 {this.state.isDashboardDropdown ? (
                   <div className="dashboard-options-dropdown">
-                    <p>Sort</p>
+                    <p onClick={this.handleSort}>Sort</p>
                   </div>
                 ) : null}
               </div>
