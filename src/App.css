@@ -178,6 +178,47 @@ body {
   height: 50px;
 }
 
+#dashboard-trackers-header {
+  position: relative;
+}
+
+.dashboard-options {
+  position: absolute;
+  right: 20px;
+  top: 0px;
+}
+
+.dashboard-options-btn {
+  font-size: 25px;
+  padding: 5px;
+}
+
+.dashboard-options-btn:hover {
+  cursor: pointer;
+  color: #243494
+}
+
+.dashboard-options-dropdown {
+  position: absolute;
+  background-color: #e0e7e9;
+  right: 1px;
+  border-radius: 2px;
+}
+
+.dashboard-options-dropdown p {
+  padding: 5px 15px 5px 15px;
+  width: 100px;
+  margin: 0;
+}
+
+.dashboard-options-dropdown p:hover {
+  cursor: pointer;
+  color: #2a3579;
+  background-color: #84cbdf;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
 #footer {
   height: 50px;
   background-color: #3f414d;
@@ -251,6 +292,30 @@ body {
 
 /* History Section of Single Tracker Page */
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #93aacf;
+}
+
+::-webkit-scrollbar-corner {
+  background: #93aacf;
+}
+
 .history {
   margin-top: 50px;
   padding: 10px 0 10px 0;
@@ -260,6 +325,8 @@ body {
   margin: auto;
   background-color: #4196ad;
   border-radius: 20px;
+  max-height: 500px;
+  overflow: auto;
 }
 
 .history-header {
@@ -276,6 +343,7 @@ body {
 
 .history-options {
   position: absolute;
+  top: 5px;
   right: 20px;
 }
 
@@ -303,11 +371,12 @@ body {
   position: absolute;
   background-color: #9cd4e4;
   right: 1px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .history-options-dropdown p {
-  padding: 10px 15px 10px 15px;
+  padding: 5px 15px 5px 15px;
+  width: 80px;
   margin: 0;
 }
 

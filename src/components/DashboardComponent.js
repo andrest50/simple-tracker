@@ -10,16 +10,24 @@ class Dashboard extends Component {
 
     this.state = {
       isModalOpen: false,
+      isDashboardDropdown: false,
     };
 
     this.toggleModal = this.toggleModal.bind(this);
     this.handleAddTracker = this.handleAddTracker.bind(this);
+    this.toggleDashboardDropdown = this.toggleDashboardDropdown.bind(this);
   }
 
   toggleModal() {
     this.setState({
       isModalOpen: !this.state.isModalOpen,
     });
+  }
+
+  toggleDashboardDropdown() {
+    this.setState({
+        isDashboardDropdown: !this.state.isDashboardDropdown,
+      });
   }
 
   handleAddTracker(values) {
@@ -73,8 +81,18 @@ class Dashboard extends Component {
             handleAddTracker={this.handleAddTracker}
           />
           <div id="dashboard-trackers">
-            <h2 id="dashboard-trackers-title">Your Trackers: </h2>
-            <p>You have {this.props.trackers.trackers.length} trackers</p>
+            <div id="dashboard-trackers-header">
+              <h2 id="dashboard-trackers-title">Your Trackers: </h2>
+              <p>You have {this.props.trackers.trackers.length} trackers</p>
+              <div className="dashboard-options">
+                <i className="fa fa-ellipsis-v dashboard-options-btn noselect" onClick={this.toggleDashboardDropdown}></i>
+                {this.state.isDashboardDropdown ? (
+                  <div className="dashboard-options-dropdown">
+                    <p>Sort</p>
+                  </div>
+                ) : null}
+              </div>
+            </div>
             <hr />
             {trackers}
           </div>
