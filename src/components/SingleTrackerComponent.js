@@ -22,14 +22,26 @@ class SingleTracker extends Component {
   }
 
   handleAddIncrement(values) {
-    this.props.createIncrement(this.props.tracker.id, values.value);
+    var id;
+    if(this.props.tracker.numIncrements > 0)
+      id = parseInt(this.props.tracker.increments[this.props.tracker.increments.length-1].id) + 1;
+    else
+      id = 0;
+    var new_increment = {
+      value: parseInt(values.value),
+      id: id
+    }
+    this.props.tracker.increments.push(new_increment);
+    //this.props.createIncrement(this.props.tracker.id, values.value);
     this.props.tracker.numIncrements += 1;
     this.props.updateTracker(this.props.tracker);
     //this.props.updateNumIncrements(this.props.tracker, 1);
   }
 
   handleDeleteIncrement(id) {
-    this.props.deleteIncrement(id);
+    console.log(this.props.tracker.increments.filter((increment) => increment.id !== id));
+    this.props.tracker.increments = this.props.tracker.increments.filter((increment) => increment.id !== id);
+    //this.props.deleteIncrement(id);
     this.props.tracker.numIncrements -= 1;
     this.props.updateTracker(this.props.tracker);
     //this.props.updateNumIncrements(this.props.tracker, -1);
@@ -106,7 +118,7 @@ handleHistoryColor(color){
             <div className="single-tracker-div">
               <SingleTrackerDetails
                 tracker={this.props.tracker}
-                increments={this.props.increments}
+                //increments={this.props.increments}
                 handleAddIncrement={this.handleAddIncrement}
                 handleDeleteIncrement={this.handleDeleteIncrement}
                 //incrementTracker={this.props.incrementTracker}

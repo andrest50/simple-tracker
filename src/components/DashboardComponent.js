@@ -46,11 +46,11 @@ class Dashboard extends Component {
         <div key={tracker.id}>
           <DashboardTracker
             tracker={tracker}
-            increments={this.props.trackers.increments.filter(
-              (increment) => increment.trackerId === tracker.id
-            )}
-            createIncrement={this.props.createIncrement}
-            deleteIncrement={this.props.deleteIncrement}
+            //increments={this.props.trackers.trackers.increments.filter(
+            //  (increment) => increment.trackerId === tracker.id
+            //)}
+            //createIncrement={this.props.createIncrement}
+            //deleteIncrement={this.props.deleteIncrement}
             deleteTracker={this.props.deleteTracker}
             //incrementTracker={this.props.incrementTracker}
             //updateNumIncrements={this.props.updateNumIncrements}
@@ -74,6 +74,7 @@ class Dashboard extends Component {
           />
           <div id="dashboard-trackers">
             <h2 id="dashboard-trackers-title">Your Trackers: </h2>
+            <p>You have {this.props.trackers.trackers.length} trackers</p>
             <hr />
             {trackers}
           </div>

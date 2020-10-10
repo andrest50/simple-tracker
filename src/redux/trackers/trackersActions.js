@@ -1,14 +1,14 @@
 import {
   ADD_TRACKER,
   ADD_TRACKERS,
-  ADD_INCREMENT,
-  ADD_INCREMENTS,
-  INCREMENT_TRACKER,
+  //ADD_INCREMENT,
+  //ADD_INCREMENTS,
+  //INCREMENT_TRACKER,
   UPDATE_SETTING,
   UPDATE_TRACKER,
-  UPDATE_NUM_INCREMENTS,
+  //UPDATE_NUM_INCREMENTS,
   DELETE_CLICK,
-  DELETE_INCREMENT,
+  //DELETE_INCREMENT,
   DELETE_TRACKER,
 } from "./trackersTypes";
 
@@ -26,7 +26,7 @@ export const addTrackers = (trackers) => {
   };
 };
 
-export const addIncrement = (increment) => {
+/* export const addIncrement = (increment) => {
   return {
     type: ADD_INCREMENT,
     payload: increment,
@@ -38,15 +38,15 @@ export const addIncrements = (increments) => {
     type: ADD_INCREMENTS,
     payload: increments,
   };
-};
+}; */
 
-export const handleIncrementTracker = (trackerId, amount) => {
+/* export const handleIncrementTracker = (trackerId, amount) => {
   return {
     type: INCREMENT_TRACKER,
     trackerId: trackerId,
     amount: amount,
   };
-};
+}; */
 
 export const handleUpdateTracker = (tracker) => {
   return {
@@ -62,13 +62,13 @@ export const handleSetting = (tracker) => {
   };
 };
 
-export const handleUpdateNumIncrements = (trackerId, amount) => {
+/* export const handleUpdateNumIncrements = (trackerId, amount) => {
   return {
     type: UPDATE_NUM_INCREMENTS,
     trackerId: trackerId,
     amount: amount,
   };
-};
+}; */
 
 export const handleDeleteClick = (trackerId, clicks) => {
   return {
@@ -78,12 +78,12 @@ export const handleDeleteClick = (trackerId, clicks) => {
   };
 };
 
-export const handleDeleteIncrement = (id) => {
+/* export const handleDeleteIncrement = (id) => {
   return {
     type: DELETE_INCREMENT,
     payload: id,
   };
-};
+}; */
 
 export const handleDeleteTracker = (id) => {
   return {
@@ -124,6 +124,7 @@ export const createTracker = (name, value) => (dispatch) => {
     value: parseInt(value),
     numIncrements: 0,
     numClicks: 0,
+    increments: [],
     clicks: [],
     settings: {
       bgColor: "#939cbe",
@@ -172,6 +173,7 @@ export const updateTracker = (tracker) => (dispatch) => {
     value: parseInt(tracker.value),
     numIncrements: parseInt(tracker.numIncrements),
     numClicks: parseInt(tracker.numClicks),
+    increments: tracker.increments,
     clicks: tracker.clicks,
     settings: tracker.settings
   };
@@ -209,7 +211,7 @@ export const updateTracker = (tracker) => (dispatch) => {
     });
 };
 
-export const incrementTracker = (tracker, amount) => (dispatch) => {
+/* export const incrementTracker = (tracker, amount) => (dispatch) => {
   const updateTracker = {
     id: tracker.id,
     name: String(tracker.name),
@@ -251,7 +253,7 @@ export const incrementTracker = (tracker, amount) => (dispatch) => {
       console.log("Create increment", error.message);
       alert("Your tracker could not be incremented\nError: " + error.message);
     });
-};
+}; */
 
 export const updateSetting = (tracker) => (dispatch) => {
   const updateTracker = {
@@ -260,6 +262,7 @@ export const updateSetting = (tracker) => (dispatch) => {
     value: parseInt(tracker.value),
     numIncrements: parseInt(tracker.numIncrements),
     numClicks: parseInt(tracker.numClicks),
+    increments: tracker.increments,
     clicks: tracker.clicks,
     settings: tracker.settings
   };
@@ -297,7 +300,7 @@ export const updateSetting = (tracker) => (dispatch) => {
     });
 };
 
-export const fetchIncrements = () => (dispatch) => {
+/* export const fetchIncrements = () => (dispatch) => {
   return fetch("http://localhost:3000/increments")
     .then(
       (response) => {
@@ -321,9 +324,9 @@ export const fetchIncrements = () => (dispatch) => {
     .catch((error) => {
       console.log(error);
     });
-};
+}; */
 
-export const createIncrement = (trackerId, value) => (dispatch) => {
+/* export const createIncrement = (trackerId, value) => (dispatch) => {
   const newIncrement = {
     trackerId: trackerId,
     value: parseInt(value),
@@ -360,15 +363,16 @@ export const createIncrement = (trackerId, value) => (dispatch) => {
       console.log("Create increment ", error.message);
       alert("Your increment could not be created\nError: " + error.message);
     });
-};
+}; */
 
-export const updateNumIncrements = (tracker, amount) => (dispatch) => {
+/* export const updateNumIncrements = (tracker, amount) => (dispatch) => {
   const updateTracker = {
     id: tracker.id,
     name: String(tracker.name),
     value: parseInt(tracker.value),
     numIncrements: parseInt(tracker.numIncrements) + parseInt(amount),
     numClicks: parseInt(tracker.numClicks),
+    increments: tracker.increments,
     clicks: tracker.clicks,
     settings: tracker.settings
   };
@@ -404,7 +408,7 @@ export const updateNumIncrements = (tracker, amount) => (dispatch) => {
       console.log("Create increment ", error.message);
       alert("Your numIncrements could not be updated\nError: " + error.message);
     });
-};
+}; */
 
 export const deleteClick = (tracker, clicks) => (dispatch) => {
   const updateTracker = {
@@ -413,6 +417,7 @@ export const deleteClick = (tracker, clicks) => (dispatch) => {
     value: parseInt(tracker.value),
     numIncrements: tracker.numIncrements,
     numClicks: tracker.numClicks,
+    increments: tracker.increments,
     clicks: clicks,
     settings: tracker.settings
   };
@@ -458,10 +463,10 @@ export const deleteTracker = (id) => (dispatch) => {
     .then((response) => dispatch(handleDeleteTracker(id)));
 };
 
-export const deleteIncrement = (id) => (dispatch) => {
+/* export const deleteIncrement = (id) => (dispatch) => {
   return fetch(`http://localhost:3000/increments/${id}`, {
     method: "DELETE",
   })
     .then((response) => response.json())
     .then((response) => dispatch(handleDeleteIncrement(id)));
-};
+}; */

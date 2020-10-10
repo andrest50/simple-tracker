@@ -45,14 +45,25 @@ class DashboardTracker extends Component {
 
   handleAddIncrement(values) {
     this.toggleModal();
-    this.props.createIncrement(this.props.tracker.id, values.value);
+    var id;
+    if(this.props.tracker.numIncrements > 0)
+      id = parseInt(this.props.tracker.increments[this.props.tracker.increments.length-1].id) + 1;
+    else
+      id = 0;
+    var new_increment = {
+      value: parseInt(values.value),
+      id: id
+    }
+    this.props.tracker.increments.push(new_increment);
+    //this.props.createIncrement(this.props.tracker.id, values.value);
     this.props.tracker.numIncrements += 1;
     this.props.updateTracker(this.props.tracker);
     //this.props.updateNumIncrements(this.props.tracker, 1);
   }
 
   handleDeleteIncrement(id) {
-    this.props.deleteIncrement(id);
+    this.props.tracker.increments = this.props.tracker.increments.filter((increment) => increment.id !== id);
+    //this.props.deleteIncrement(id);
     this.props.tracker.numIncrements -= 1;
     this.props.updateTracker(this.props.tracker);
     //this.props.updateNumIncrements(this.props.tracker, -1);
@@ -69,7 +80,7 @@ class DashboardTracker extends Component {
       if(this.props.tracker.value + increment.value < 1000000){
         handleIncrement(
           this.props.tracker,
-          increment.value,
+          parseInt(increment.value),
           this.props.updateTracker
         );
       }
@@ -103,9 +114,9 @@ class DashboardTracker extends Component {
       return 0;
     };
 
-    this.props.increments.sort(compare);
+    this.props.tracker.increments.sort(compare);
 
-    const increments = this.props.increments.map((increment) => {
+    const increments = this.props.tracker.increments.map((increment) => {
       return (
         <Button
           key={increment.id}

@@ -1,5 +1,3 @@
-import { updateTracker } from "../redux/trackers/trackersActions";
-
 export const handleIncrement = (tracker, amount, updateTracker) => {
   var curr_date = new Date();
   var date =
@@ -54,13 +52,3 @@ export const sortHistory = (isSorted, tracker) => {
     tracker.clicks.sort(compare);
   }
 };
-
-/* export const handleAddIncrement = (values, tracker, createIncrement, updateNumIncrements) => {
-    createIncrement(tracker.id, values.value);
-    updateNumIncrements(tracker, 1);
-  }
-
-export const handleDeleteIncrement = (id, tracker, deleteIncrement, updateNumIncrements) => {
-    deleteIncrement(id);
-    updateNumIncrements(tracker, -1);
-} */

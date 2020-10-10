@@ -49,7 +49,7 @@ const SingleTrackerDetails = (props) => {
         if (
           isDeleteMode === true
             ? props.handleDeleteIncrement(increment.id)
-            : handleIncrement(props.tracker, increment.value, props.updateTracker)
+            : handleIncrement(props.tracker, parseInt(increment.value), props.updateTracker)
         );
     }
 
@@ -87,7 +87,7 @@ const SingleTrackerDetails = (props) => {
           </Button>
           <IncrementsDisplay 
             tracker={props.tracker}
-            increments={props.increments} 
+            increments={props.tracker.increments} 
             handleIncrementOptions={handleIncrementOptions}
             isDeleteMode={isDeleteMode} />
           <Button

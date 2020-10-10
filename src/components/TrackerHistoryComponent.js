@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { sortHistory, handleIncrement } from './Utils';
-import {
+/* import {
     Dropdown,
     DropdownMenu,
     DropdownItem,
     DropdownToggle
-} from "reactstrap";
+} from "reactstrap"; */
 
 const TrackerHistory = (props) => {
   const [isHistoryDropdown, setIsHistoryDropdown] = useState(false);
