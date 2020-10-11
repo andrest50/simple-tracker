@@ -4,6 +4,7 @@ import SingleTrackerHeader from "./SingleTrackerHeaderComponent";
 import SingleTrackerDetails from "./SingleTrackerDetailsComponent";
 import TrackerHistory from "./TrackerHistoryComponent";
 import TrackerNotes from "./TrackerNotesComponent";
+import TrackerMilestones from "./TrackerMilestonesComponent";
 
 class SingleTracker extends Component {
   constructor(props) {
@@ -140,6 +141,12 @@ handleHistoryColor(color){
               <br />
               <br />
               <TrackerNotes
+                tracker={this.props.tracker}
+                updateTracker={this.props.updateTracker}
+              />
+              <br />
+              <br />
+              <TrackerMilestones
                 tracker={this.props.tracker}
                 updateTracker={this.props.updateTracker}
               />

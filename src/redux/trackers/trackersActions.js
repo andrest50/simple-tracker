@@ -127,6 +127,7 @@ export const createTracker = (name, value) => (dispatch) => {
     increments: [],
     clicks: [],
     notes: [],
+    milestones: [],
     settings: {
       bgColor: "#939cbe",
       incColor: "#5E54B9",
@@ -177,6 +178,7 @@ export const updateTracker = (tracker) => (dispatch) => {
     increments: tracker.increments,
     clicks: tracker.clicks,
     notes: tracker.notes,
+    milestones: tracker.milestones,
     settings: tracker.settings
   };
 
@@ -267,6 +269,7 @@ export const updateSetting = (tracker) => (dispatch) => {
     increments: tracker.increments,
     clicks: tracker.clicks,
     notes: tracker.notes,
+    milestones: tracker.milestones,
     settings: tracker.settings
   };
 
@@ -423,6 +426,7 @@ export const deleteClick = (tracker, clicks) => (dispatch) => {
     increments: tracker.increments,
     clicks: clicks,
     notes: tracker.notes,
+    milestones: tracker.milestones,
     settings: tracker.settings
   };
 

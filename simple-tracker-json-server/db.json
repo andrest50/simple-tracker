@@ -2,10 +2,10 @@
   "trackers": [
     {
       "id": 1,
-      "name": "New",
-      "value": 7,
+      "name": "Test",
+      "value": 50,
       "numIncrements": 1,
-      "numClicks": 2,
+      "numClicks": 18,
       "increments": [
         {
           "value": 3,
@@ -14,30 +14,137 @@
       ],
       "clicks": [
         {
-          "value": 7,
-          "date": "2020-10-11 11:18:31",
+          "value": 50,
+          "date": "2020-10-11 11:58:36",
+          "id": 17
+        },
+        {
+          "value": 23,
+          "date": "2020-10-11 11:58:31",
+          "id": 16
+        },
+        {
+          "value": 50,
+          "date": "2020-10-11 11:57:40",
+          "id": 15
+        },
+        {
+          "value": 47,
+          "date": "2020-10-11 11:57:37",
+          "id": 14
+        },
+        {
+          "value": 44,
+          "date": "2020-10-11 11:57:36",
+          "id": 13
+        },
+        {
+          "value": 41,
+          "date": "2020-10-11 11:57:18",
+          "id": 12
+        },
+        {
+          "value": 38,
+          "date": "2020-10-11 11:57:15",
+          "id": 11
+        },
+        {
+          "value": 35,
+          "date": "2020-10-11 11:57:14",
+          "id": 10
+        },
+        {
+          "value": 32,
+          "date": "2020-10-11 11:57:14",
+          "id": 9
+        },
+        {
+          "value": 29,
+          "date": "2020-10-11 11:57:13",
+          "id": 8
+        },
+        {
+          "value": 26,
+          "date": "2020-10-11 11:57:13",
+          "id": 7
+        },
+        {
+          "value": 23,
+          "date": "2020-10-11 11:29:29",
+          "id": 6
+        },
+        {
+          "value": 20,
+          "date": "2020-10-11 11:29:29",
+          "id": 5
+        },
+        {
+          "value": 17,
+          "date": "2020-10-11 11:29:29",
+          "id": 4
+        },
+        {
+          "value": 14,
+          "date": "2020-10-11 11:29:29",
+          "id": 3
+        },
+        {
+          "value": 11,
+          "date": "2020-10-11 11:29:29",
+          "id": 2
+        },
+        {
+          "value": 8,
+          "date": "2020-10-11 11:29:28",
           "id": 1
         },
         {
-          "value": 4,
-          "date": "2020-10-11 11:18:31",
+          "value": 5,
+          "date": "2020-10-11 11:29:28",
           "id": 0
         }
       ],
       "notes": [
         {
-          "text": "Try and get to 100 by Friday",
+          "text": "Testing",
           "id": 0
         },
         {
-          "text": "Not exceed 200 before end of month",
+          "text": "Another",
           "id": 1
         }
       ],
+      "milestones": [
+        {
+          "value": 100,
+          "completed": false,
+          "id": 2
+        },
+        {
+          "value": 50,
+          "completed": false,
+          "id": 0
+        },
+        {
+          "value": 20,
+          "completed": true,
+          "id": 2
+        },
+        {
+          "value": 10,
+          "completed": true,
+          "id": 1
+        },
+        {
+          "value": 400,
+          "completed": false,
+          "id": 2
+        }
+      ],
       "settings": {
-        "bgColor": "#939cbe",
-        "incColor": "#5E54B9",
-        "historyColor": "#4196ad"
+        "bgColor": "#66719a",
+        "incColor": "#3a3562",
+        "historyColor": "#496e78"
       }
     }
   ],
