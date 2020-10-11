@@ -319,6 +319,7 @@ body {
 
 .history {
   margin-top: 50px;
+  margin-bottom: 50px;
   padding: 10px 0 10px 0;
   width: 50%;
   min-width: 200px;
@@ -415,6 +416,69 @@ body {
   cursor: pointer;
   color: #5d1111;
   font-weight: 600;
+}
+
+.tracker-goals {
+  padding: 10px 0 10px 0;
+  width: 50%;
+  min-width: 200px;
+  max-width: 600px;
+  margin: auto;
+  background-color: #4196ad;
+  border-radius: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.goals-title {
+  color: #1a2564;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.goals-form-label {
+  font-size: 20px;
+  color: #1a2564;
+}
+
+.goals-form-submit-btn {
+  margin-left: -15px;
+}
+
+.goal-add-btn {
+  font-size: 23px;
+}
+
+.goals-list {
+  padding: 10px 10px 10px 10px;
+  border-radius: 25px;
+}
+
+.goal {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.goal-remove-btn {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  color: rgb(138, 46, 46);
+}
+
+.goal-remove-btn:hover {
+  color: rgb(93, 25, 25);
+  cursor: pointer;
+}
+
+.goal-text {
+  margin-left: 50px;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .increments {

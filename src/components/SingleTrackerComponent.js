@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import SingleTrackerHeader from "./SingleTrackerHeaderComponent";
 import SingleTrackerDetails from "./SingleTrackerDetailsComponent";
 import TrackerHistory from "./TrackerHistoryComponent";
+import TrackerGoals from "./TrackerGoalsComponent";
 
 class SingleTracker extends Component {
   constructor(props) {
@@ -134,6 +135,12 @@ handleHistoryColor(color){
                 tracker={this.props.tracker}
                 //incrementTracker={this.props.incrementTracker}
                 deleteClick={this.props.deleteClick}
+                updateTracker={this.props.updateTracker}
+              />
+              <br />
+              <br />
+              <TrackerGoals
+                tracker={this.props.tracker}
                 updateTracker={this.props.updateTracker}
               />
             </div>

@@ -126,6 +126,7 @@ export const createTracker = (name, value) => (dispatch) => {
     numClicks: 0,
     increments: [],
     clicks: [],
+    goals: [],
     settings: {
       bgColor: "#939cbe",
       incColor: "#5E54B9",
@@ -175,6 +176,7 @@ export const updateTracker = (tracker) => (dispatch) => {
     numClicks: parseInt(tracker.numClicks),
     increments: tracker.increments,
     clicks: tracker.clicks,
+    goals: tracker.goals,
     settings: tracker.settings
   };
 
@@ -264,6 +266,7 @@ export const updateSetting = (tracker) => (dispatch) => {
     numClicks: parseInt(tracker.numClicks),
     increments: tracker.increments,
     clicks: tracker.clicks,
+    goals: tracker.goals,
     settings: tracker.settings
   };
 
@@ -419,6 +422,7 @@ export const deleteClick = (tracker, clicks) => (dispatch) => {
     numClicks: tracker.numClicks,
     increments: tracker.increments,
     clicks: clicks,
+    goals: tracker.goals,
     settings: tracker.settings
   };
 
