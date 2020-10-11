@@ -55,7 +55,7 @@ body {
 
 /* Default tracker button colors */
 
-.tracker-btn-color-default, .tracker-btn-color-default:focus{
+.tracker-btn-color-default, .tracker-btn-color-default:focus, .tracker-btn-color-default:active{
   background-color: rgb(94, 84, 185);
 }
 
@@ -169,7 +169,8 @@ body {
   height: 50px;
 }
 
-.dashboard-tracker-inc-btn {
+.dashboard-tracker-inc-btn, .dashboard-tracker-inc-btn:active {
+  background-color: rgb(94, 84, 185);
   font-size: 18px;
   height: 50px;
 }
@@ -418,7 +419,7 @@ body {
   font-weight: 600;
 }
 
-.tracker-goals {
+.tracker-notes {
   padding: 10px 0 10px 0;
   width: 50%;
   min-width: 200px;
@@ -431,31 +432,31 @@ body {
   overflow-x: hidden;
 }
 
-.goals-title {
+.notes-title {
   color: #1a2564;
   margin-bottom: 30px;
   font-size: 30px;
 }
 
-.goals-form-label {
+.notes-form-label {
   font-size: 20px;
   color: #1a2564;
 }
 
-.goals-form-submit-btn {
+.notes-form-submit-btn {
   margin-left: -15px;
 }
 
-.goal-add-btn {
+.note-add-btn {
   font-size: 23px;
 }
 
-.goals-list {
+.notes-list {
   padding: 10px 10px 10px 10px;
   border-radius: 25px;
 }
 
-.goal {
+.note {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -463,19 +464,19 @@ body {
   justify-content: space-between;
 }
 
-.goal-remove-btn {
+.note-remove-btn {
   position: absolute;
   top: 10px;
   right: 50px;
   color: rgb(138, 46, 46);
 }
 
-.goal-remove-btn:hover {
+.note-remove-btn:hover {
   color: rgb(93, 25, 25);
   cursor: pointer;
 }
 
-.goal-text {
+.note-text {
   margin-left: 50px;
   font-size: 20px;
   font-weight: 300;

@@ -1,11 +1,11 @@
 {
   "trackers": [
     {
-      "id": 7,
+      "id": 1,
       "name": "New",
-      "value": 20,
+      "value": 7,
       "numIncrements": 1,
-      "numClicks": 5,
+      "numClicks": 2,
       "increments": [
         {
           "value": 3,
@@ -14,124 +14,30 @@
       ],
       "clicks": [
         {
-          "value": 20,
-          "date": "2020-10-10 18:44:34",
-          "id": 4
-        },
-        {
-          "value": 17,
-          "date": "2020-10-10 18:44:33",
-          "id": 3
-        },
-        {
-          "value": 14,
-          "date": "2020-10-10 18:44:33",
-          "id": 2
-        },
-        {
-          "value": 11,
-          "date": "2020-10-10 18:44:32",
+          "value": 7,
+          "date": "2020-10-11 11:18:31",
           "id": 1
         },
         {
-          "value": 8,
-          "date": "2020-10-10 18:44:32",
+          "value": 4,
+          "date": "2020-10-11 11:18:31",
           "id": 0
         }
       ],
-      "goals": [
+      "notes": [
         {
-          "text": "Testing this feature",
+          "text": "Try and get to 100 by Friday",
           "id": 0
         },
         {
-          "text": "Another",
+          "text": "Not exceed 200 before end of month",
           "id": 1
-        },
-        {
-          "text": "New goal",
-          "id": 2
-        },
-        {
-          "text": "Test",
-          "id": 3
-        },
-        {
-          "text": "Test2",
-          "id": 4
-        },
-        {
-          "text": "Test3",
-          "id": 5
-        },
-        {
-          "text": "Test4",
-          "id": 6
         }
       ],
       "settings": {
         "bgColor": "#939cbe",
         "incColor": "#5E54B9",
         "historyColor": "#4196ad"
-      }
-    },
-    {
-      "id": 8,
-      "name": "Test",
-      "value": 28,
-      "numIncrements": 1,
-      "numClicks": 5,
-      "increments": [
-        {
-          "value": 5,
-          "id": 0
-        }
-      ],
-      "clicks": [
-        {
-          "value": 28,
-          "date": "2020-10-10 19:44:56",
-          "id": 4
-        },
-        {
-          "value": 23,
-          "date": "2020-10-10 19:44:55",
-          "id": 3
-        },
-        {
-          "value": 18,
-          "date": "2020-10-10 19:44:55",
-          "id": 2
-        },
-        {
-          "value": 13,
-          "date": "2020-10-10 19:44:54",
-          "id": 1
-        },
-        {
-          "value": 8,
-          "date": "2020-10-10 19:44:54",
-          "id": 0
-        }
-      ],
-      "goals": [
-        {
-          "text": "New",
-          "id": 0
-        },
-        {
-          "text": "Trying",
-          "id": 1
-        },
-        {
-          "text": "Alright",
-          "id": 2
-        }
-      ],
-      "settings": {
-        "bgColor": "#7c86ab",
-        "incColor": "#534c92",
-        "historyColor": "#528592"
       }
     }
   ],
