@@ -9,9 +9,9 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import TrackerValueModal from "./TrackerValueModalComponent";
-import { handleIncrement } from "./Utils";
-import ColorModal from "./ColorModalComponent";
+import TrackerValueModal from "../modals/TrackerValueModalComponent";
+import { handleIncrement } from "../Utils";
+import ColorModal from "../modals/ColorModalComponent";
 
 const SingleTrackerHeader = (props) => {
   /* const changeColorMode = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { sortHistory, handleIncrement } from './Utils';
+import { sortHistory, handleIncrement } from '../Utils';
 /* import {
     Dropdown,
     DropdownMenu,

@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { Button, Alert, ButtonGroup } from "reactstrap";
-import IncrementModal from "./IncrementModalComponent";
-import IncrementsDisplay from "./IncrementsDisplayComponent";
-import {handleIncrement} from './Utils'
+import IncrementModal from "../modals/IncrementModalComponent";
+import IncrementsDisplay from "../IncrementsDisplayComponent";
+import {handleIncrement} from '../Utils'
 
 const SingleTrackerDetails = (props) => {
 

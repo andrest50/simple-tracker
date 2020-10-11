@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Dashboard from "./DashboardComponent";
-import SingleTrackerComponent from './SingleTrackerComponent';
+import Dashboard from "./dashboard/DashboardComponent";
+import SingleTrackerComponent from './single-tracker/SingleTrackerComponent';
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { fetchTrackers, deleteTracker, 

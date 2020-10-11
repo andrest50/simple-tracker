@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Button } from "reactstrap";
 import DashboardHeader from "./DashboardHeaderComponent";
 import DashboardTracker from "./DashboardTrackerComponent";
-import TrackerModal from "./TrackerModalComponent";
-import {sortTrackers} from './Utils';
+import TrackerModal from "../modals/TrackerModalComponent";
+import {sortTrackers} from '../Utils';
 
 class Dashboard extends Component {
   constructor(props) {

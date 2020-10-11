@@ -3,8 +3,8 @@ import {
   Button,
   ButtonGroup,
 } from "reactstrap";
-import IncrementModal from "./IncrementModalComponent";
-import {handleIncrement} from './Utils'
+import IncrementModal from "../modals/IncrementModalComponent";
+import {handleIncrement} from '../Utils'
 import { Link } from "react-router-dom";
 
 class DashboardTracker extends Component {

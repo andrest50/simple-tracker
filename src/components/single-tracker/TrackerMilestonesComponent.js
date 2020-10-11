@@ -6,7 +6,7 @@ import {
   Label,
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
-import {sortMilestones} from './Utils'
+import {sortMilestones} from '../Utils'
 
 const TrackerMilestones = (props) => {
 
