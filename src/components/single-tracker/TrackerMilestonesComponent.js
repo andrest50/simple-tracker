@@ -13,6 +13,7 @@ const TrackerMilestones = (props) => {
   const handleAddMilestone = (values) => {
       console.log(values.milestone);
       var id = 0, completed = false;
+      sortMilestones(props.tracker, 2);
       //console.log(Math.max(...props.tracker.milestones));
       if(props.tracker.milestones.length > 0)
         id = parseInt(props.tracker.milestones[props.tracker.milestones.length-1].id) + 1;
@@ -33,8 +34,7 @@ const TrackerMilestones = (props) => {
     props.updateTracker(props.tracker);
   }
 
-  var modified_tracker = props.tracker;
-  sortMilestones(modified_tracker)
+  sortMilestones(props.tracker, 1);
 
   return (
     <div className="tracker-milestones" style={{backgroundColor: props.tracker.settings.historyColor}}>
@@ -60,7 +60,7 @@ const TrackerMilestones = (props) => {
         </LocalForm>
       </div>
       <div className="milestones-list">
-          {modified_tracker.milestones.map((milestone) => {
+          {props.tracker.milestones.map((milestone) => {
               return (
                   <div className="milestone">
                     <p className={milestone.completed ? "milestone-complete" : "milestone-incomplete"}>{milestone.value}</p>

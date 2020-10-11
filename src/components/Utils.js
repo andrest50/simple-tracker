@@ -22,11 +22,9 @@ export const handleIncrement = (tracker, amount, updateTracker) => {
   tracker.value += parseInt(amount);
   tracker.numClicks += 1;
   tracker.milestones.map((milestone) => {
-      if(tracker.value >= milestone.value)
-        milestone.completed = true;
-      if(tracker.value < milestone.value)
-        milestone.completed = false;
-  })
+    if (tracker.value >= milestone.value) milestone.completed = true;
+    if (tracker.value < milestone.value) milestone.completed = false;
+  });
   updateTracker(tracker);
   //incrementTracker(tracker, amount);
 };
@@ -99,16 +97,28 @@ export const sortTrackers = (trackers, state) => {
   }
 };
 
-export const sortMilestones = (tracker) => {
-  const compare = (a, b) => {
-    if (a.value < b.value) {
-      return 1;
-    }
-    if (a.value > b.value) {
-      return -1;
-    }
-    return 0;
-  };
-
-  tracker.milestones.sort(compare);
+export const sortMilestones = (tracker, state) => {
+  if (state === 1) {
+    const compare = (a, b) => {
+      if (a.value < b.value) {
+        return 1;
+      }
+      if (a.value > b.value) {
+        return -1;
+      }
+      return 0;
+    };
+    tracker.milestones.sort(compare);
+  } else if (state === 2) {
+    const compare = (a, b) => {
+      if (a.id > b.id) {
+        return 1;
+      }
+      if (a.id < b.id) {
+        return -1;
+      }
+      return 0;
+    };
+    tracker.milestones.sort(compare);
+  }
 };
