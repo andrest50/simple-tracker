@@ -22,8 +22,13 @@ export const handleIncrement = (tracker, amount, updateTracker) => {
   tracker.value += parseInt(amount);
   tracker.numClicks += 1;
   tracker.milestones.map((milestone) => {
-    if (tracker.value >= milestone.value) milestone.completed = true;
-    if (tracker.value < milestone.value) milestone.completed = false;
+    if (tracker.value >= milestone.value && milestone.completed === false){
+      milestone.completed = true;
+      milestone.completedDate = dateTime;
+    }
+    if (tracker.value < milestone.value){
+      milestone.completed = false;
+    }
   });
   updateTracker(tracker);
   //incrementTracker(tracker, amount);

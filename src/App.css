@@ -552,6 +552,13 @@ body {
   font-weight: 600;
 }
 
+.milestone-completedDate {
+  position: absolute;
+  top: 8px;
+  left: 180px;
+  font-weight: 600;
+}
+
 .increments {
   display: flex;
   background-color: rgb(94, 84, 185);

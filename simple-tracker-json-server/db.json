@@ -3,9 +3,9 @@
     {
       "id": 1,
       "name": "Test",
-      "value": 40,
+      "value": 70,
       "numIncrements": 1,
-      "numClicks": 13,
+      "numClicks": 23,
       "increments": [
         {
           "value": 3,
@@ -14,54 +14,44 @@
       ],
       "clicks": [
         {
-          "value": 37,
-          "date": "2020-10-11 13:50:8",
-          "id": 11
+          "value": 70,
+          "date": "2020-10-13 20:2:58",
+          "id": 22
         },
         {
-          "value": 34,
-          "date": "2020-10-11 13:50:8",
-          "id": 10
+          "value": 67,
+          "date": "2020-10-13 19:58:55",
+          "id": 21
         },
         {
-          "value": 31,
-          "date": "2020-10-11 13:50:5",
-          "id": 9
+          "value": 64,
+          "date": "2020-10-13 19:58:54",
+          "id": 20
         },
         {
-          "value": 28,
-          "date": "2020-10-11 13:50:4",
-          "id": 8
+          "value": 61,
+          "date": "2020-10-13 19:56:30",
+          "id": 19
         },
         {
-          "value": 25,
-          "date": "2020-10-11 13:50:4",
-          "id": 7
+          "value": 58,
+          "date": "2020-10-13 19:56:29",
+          "id": 18
         },
         {
-          "value": 22,
-          "date": "2020-10-11 13:50:4",
-          "id": 6
+          "value": 55,
+          "date": "2020-10-13 19:56:29",
+          "id": 17
         },
         {
-          "value": 19,
-          "date": "2020-10-11 13:50:4",
-          "id": 5
+          "value": 52,
+          "date": "2020-10-13 19:26:32",
+          "id": 16
         },
         {
-          "value": 16,
-          "date": "2020-10-11 13:50:4",
-          "id": 4
-        },
-        {
-          "value": 13,
-          "date": "2020-10-11 13:49:20",
-          "id": 3
-        },
-        {
-          "value": 10,
-          "date": "2020-10-11 13:49:20",
-          "id": 2
+          "value": 49,
+          "date": "2020-10-13 19:26:32",
+          "id": 15
         },
         {
           "value": 7,
@@ -72,11 +62,6 @@
           "value": 4,
           "date": "2020-10-11 13:49:20",
           "id": 0
-        },
-        {
-          "value": 40,
-          "date": "2020-10-11 13:50:8",
-          "id": 12
         }
       ],
       "notes": [
@@ -91,49 +76,46 @@
       ],
       "milestones": [
         {
-          "value": 500,
+          "value": 300,
           "completed": false,
-          "id": 0
-        },
-        {
-          "value": 250,
-          "completed": false,
-          "id": 5
+          "completedDate": "",
+          "id": 2
         },
         {
           "value": 200,
           "completed": false,
-          "id": 4
-        },
-        {
-          "value": 150,
-          "completed": false,
-          "id": 6
+          "completedDate": "",
+          "id": 1
         },
         {
           "value": 100,
           "completed": false,
-          "id": 1
+          "completedDate": "",
+          "id": 0
         },
         {
-          "value": 50,
-          "completed": false,
-          "id": 7
-        },
-        {
-          "value": 40,
+          "value": 70,
           "completed": true,
+          "completedDate": "2020-10-13 20:2:58",
+          "id": 11
+        },
+        {
+          "value": 65,
+          "completed": true,
+          "completedDate": "2020-10-13 19:58:55",
           "id": 8
         },
         {
-          "value": 10,
+          "value": 50,
           "completed": true,
-          "id": 3
+          "completedDate": "2020-10-13 19:26:32",
+          "id": 9
         },
         {
-          "value": 5,
+          "value": 42,
           "completed": true,
-          "id": 2
+          "completedDate": "2020-10-13 19:26:31",
+          "id": 10
         }
       ],
       "settings": {
