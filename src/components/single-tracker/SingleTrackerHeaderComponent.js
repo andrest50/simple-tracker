@@ -73,6 +73,7 @@ const SingleTrackerHeader = (props) => {
               <i className="fa fa-cog tracker-settings"></i>
             </DropdownToggle>
             <DropdownMenu right>
+              <DropdownItem header>Tracker</DropdownItem>
               <DropdownItem onClick={toggleValueModal}>
                 Set Tracker Value
               </DropdownItem>
@@ -81,6 +82,8 @@ const SingleTrackerHeader = (props) => {
                 toggleModal={toggleValueModal}
                 isModalOpen={isValueModalOpen}
               />
+              <DropdownItem divider />
+              <DropdownItem header>Colors</DropdownItem>
               <DropdownItem onClick={toggleBgColorModal}>Background Color</DropdownItem>
               <ColorModal
                 toggleModal={toggleBgColorModal}

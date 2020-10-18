@@ -3,16 +3,70 @@
     {
       "id": 1,
       "name": "Test",
-      "value": 70,
-      "numIncrements": 1,
-      "numClicks": 23,
+      "value": 156,
+      "numIncrements": 2,
+      "numClicks": 33,
       "increments": [
         {
           "value": 3,
           "id": 0
+        },
+        {
+          "value": 10,
+          "id": 1
         }
       ],
       "clicks": [
+        {
+          "value": 156,
+          "date": "2020-10-18 10:33:27",
+          "id": 32
+        },
+        {
+          "value": 146,
+          "date": "2020-10-18 10:33:26",
+          "id": 31
+        },
+        {
+          "value": 136,
+          "date": "2020-10-18 10:33:17",
+          "id": 30
+        },
+        {
+          "value": 126,
+          "date": "2020-10-18 10:33:16",
+          "id": 29
+        },
+        {
+          "value": 116,
+          "date": "2020-10-18 10:33:16",
+          "id": 28
+        },
+        {
+          "value": 106,
+          "date": "2020-10-18 10:33:16",
+          "id": 27
+        },
+        {
+          "value": 96,
+          "date": "2020-10-18 10:33:15",
+          "id": 26
+        },
+        {
+          "value": 86,
+          "date": "2020-10-18 10:33:15",
+          "id": 25
+        },
+        {
+          "value": 76,
+          "date": "2020-10-18 10:33:11",
+          "id": 24
+        },
+        {
+          "value": 73,
+          "date": "2020-10-18 10:33:11",
+          "id": 23
+        },
         {
           "value": 70,
           "date": "2020-10-13 20:2:58",
@@ -72,6 +126,14 @@
         {
           "text": "Cool",
           "id": 1
+        },
+        {
+          "text": "More testing",
+          "id": 2
+        },
+        {
+          "text": "Very nice",
+          "id": 3
         }
       ],
       "milestones": [
@@ -88,9 +150,15 @@
           "id": 1
         },
         {
+          "value": 150,
+          "completed": true,
+          "completedDate": "2020-10-18 10:33:27",
+          "id": 12
+        },
+        {
           "value": 100,
-          "completed": false,
-          "completedDate": "",
+          "completed": true,
+          "completedDate": "2020-10-18 10:33:16",
           "id": 0
         },
         {
@@ -119,24 +187,63 @@
         }
       ],
       "settings": {
-        "bgColor": "#939cbe",
-        "incColor": "#5E54B9",
-        "historyColor": "#4196ad"
+        "bgColor": "#626d97",
+        "incColor": "#4d4592",
+        "historyColor": "#286676"
       }
     },
     {
       "id": 2,
       "name": "Test2",
-      "value": 43,
-      "numIncrements": 1,
-      "numClicks": 10,
+      "value": 100,
+      "numIncrements": 2,
+      "numClicks": 18,
       "increments": [
         {
           "value": 4,
           "id": 0
+        },
+        {
+          "value": 5,
+          "id": 1
         }
       ],
       "clicks": [
+        {
+          "value": 75,
+          "date": "2020-10-18 10:36:6",
+          "id": 16
+        },
+        {
+          "value": 70,
+          "date": "2020-10-18 10:36:5",
+          "id": 15
+        },
+        {
+          "value": 66,
+          "date": "2020-10-18 10:36:4",
+          "id": 14
+        },
+        {
+          "value": 61,
+          "date": "2020-10-18 10:36:4",
+          "id": 13
+        },
+        {
+          "value": 57,
+          "date": "2020-10-18 10:36:2",
+          "id": 12
+        },
+        {
+          "value": 52,
+          "date": "2020-10-18 10:36:1",
+          "id": 11
+        },
+        {
+          "value": 48,
+          "date": "2020-10-18 10:36:0",
+          "id": 10
+        },
         {
           "value": 43,
           "date": "2020-10-11 13:52:7",
@@ -186,6 +293,11 @@
           "value": 7,
           "date": "2020-10-11 13:51:26",
           "id": 0
+        },
+        {
+          "value": 100,
+          "date": "2020-10-18 10:37:23",
+          "id": 17
         }
       ],
       "notes": [
@@ -200,39 +312,50 @@
       ],
       "milestones": [
         {
-          "value": 100,
-          "completed": false,
-          "id": 0
-        },
-        {
           "value": 200,
           "completed": false,
           "id": 1
         },
         {
-          "value": 50,
+          "value": 150,
           "completed": false,
-          "id": 2
+          "id": 6
+        },
+        {
+          "value": 100,
+          "completed": true,
+          "id": 0,
+          "completedDate": "2020-10-18 10:37:23"
+        },
+        {
+          "value": 60,
+          "completed": true,
+          "id": 5,
+          "completedDate": "2020-10-18 10:36:4"
+        },
+        {
+          "value": 50,
+          "completed": true,
+          "id": 2,
+          "completedDate": "2020-10-18 10:36:1"
         },
         {
           "value": 40,
           "completed": true,
-          "id": 3
+          "completedDate": "2020-10-11 13:52:7",
+          "id": 9
+        },
+        {
+          "value": 30,
+          "completed": true,
+          "completedDate": "2020-10-11 13:52:6",
+          "id": 7
         },
         {
           "value": 20,
           "completed": true,
-          "id": 4
-        },
-        {
-          "value": 60,
-          "completed": false,
-          "id": 5
-        },
-        {
-          "value": 150,
-          "completed": false,
-          "id": 6
+          "completedDate": "2020-10-11 13:52:6",
+          "id": 8
         }
       ],
       "settings": {
