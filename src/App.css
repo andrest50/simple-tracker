@@ -432,6 +432,10 @@ body {
   overflow-x: hidden;
 }
 
+.form-group {
+  margin-right: 25px;
+}
+
 .notes-title {
   color: #1a2564;
   margin-bottom: 30px;
@@ -439,6 +443,7 @@ body {
 }
 
 .notes-form-label {
+  width: 50px;
   font-size: 20px;
   color: #1a2564;
 }
@@ -503,6 +508,7 @@ body {
 
 .milestones-form-label {
   font-size: 20px;
+  margin-right: 20px;
   color: #1a2564;
 }
 

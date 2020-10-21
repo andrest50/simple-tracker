@@ -24,6 +24,7 @@ export const handleIncrement = (tracker, amount, updateTracker) => {
   tracker.milestones.map((milestone) => {
     if (tracker.value >= milestone.value && milestone.completed === false){
       milestone.completed = true;
+      alert("You have reached your milestone of " + milestone.value);
       milestone.completedDate = dateTime;
     }
     if (tracker.value < milestone.value){
