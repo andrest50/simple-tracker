@@ -377,13 +377,13 @@ body {
   border-radius: 2px;
 }
 
-.history-options-dropdown p {
+.history-options-dropdown div {
   padding: 5px 15px 5px 15px;
   width: 80px;
   margin: 0;
 }
 
-.history-options-dropdown p:hover {
+.history-options-dropdown div:hover {
   cursor: pointer;
   color: #2a3579;
   background-color: #45c7eb;

@@ -73,8 +73,8 @@ const TrackerHistory = (props) => {
           ></i>
           {isHistoryDropdown ? (
             <div className="history-options-dropdown">
-              <p onClick={() => handleDeleteAllClicks(props.tracker)}>Clear</p>
-              <p onClick={() => handleSortHistory}>Sort</p>
+              <div onClick={() => handleDeleteAllClicks(props.tracker)}>Clear</div>
+              <div onClick={() => handleSortHistory}>Sort</div>
             </div>
           ) : null}
         </div>
