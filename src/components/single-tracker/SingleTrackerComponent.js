@@ -34,19 +34,15 @@ class SingleTracker extends Component {
       id: id
     }
     this.props.tracker.increments.push(new_increment);
-    //this.props.createIncrement(this.props.tracker.id, values.value);
     this.props.tracker.numIncrements += 1;
     this.props.updateTracker(this.props.tracker);
-    //this.props.updateNumIncrements(this.props.tracker, 1);
   }
 
   handleDeleteIncrement(id) {
     console.log(this.props.tracker.increments.filter((increment) => increment.id !== id));
     this.props.tracker.increments = this.props.tracker.increments.filter((increment) => increment.id !== id);
-    //this.props.deleteIncrement(id);
     this.props.tracker.numIncrements -= 1;
     this.props.updateTracker(this.props.tracker);
-    //this.props.updateNumIncrements(this.props.tracker, -1);
   }
 
   handleDeleteTracker(id) {
@@ -55,14 +51,6 @@ class SingleTracker extends Component {
     });
     this.props.deleteTracker(id);
   }
-
- /*  handleColor(color){
-    console.log(String(color.hex));
-    this.props.tracker.settings.bgColor = color.hex;
-    this.setState({
-      tracker: this.props.tracker,
-    });
-} */
 
   handleBgColor(color){
       console.log(String(color.hex));
@@ -111,30 +99,23 @@ handleHistoryColor(color){
       <div style={{backgroundColor: this.state.tracker.settings.bgColor}}>
         <SingleTrackerHeader 
             tracker={this.props.tracker} 
-            //incrementTracker={this.props.incrementTracker}
             updateTracker={this.props.updateTracker}
             updateSetting={this.props.updateSetting}
-            //bgColor={this.state.tracker.settings.bgColor}
             handleBgColor={this.handleBgColor}
-            //incColor={this.state.tracker.settings.incColor}
             handleIncColor={this.handleIncColor}
-            //historyColor={this.state.tracker.settings.historyColor}
             handleHistoryColor={this.handleHistoryColor} />
         <div className="single-tracker-page">
           {this.props.tracker ? (
             <div className="single-tracker-div">
               <SingleTrackerDetails
                 tracker={this.props.tracker}
-                //increments={this.props.increments}
                 handleAddIncrement={this.handleAddIncrement}
                 handleDeleteIncrement={this.handleDeleteIncrement}
-                //incrementTracker={this.props.incrementTracker}
                 handleDeleteTracker={this.handleDeleteTracker}
                 updateTracker={this.props.updateTracker}
               />
               <TrackerHistory
                 tracker={this.props.tracker}
-                //incrementTracker={this.props.incrementTracker}
                 deleteClick={this.props.deleteClick}
                 updateTracker={this.props.updateTracker}
               />

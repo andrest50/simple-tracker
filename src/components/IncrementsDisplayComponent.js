@@ -37,26 +37,6 @@ const IncrementsDisplay = (props) => {
         <div className="increments">
             {increments}
         </div>
-        /* <ButtonGroup role="group" className="increment-btns">
-          <Button
-            className={
-              props.isDeleteMode
-                ? "single-tracker-btn-standard tracker-delete-btn-color-default"
-                : "single-tracker-btn-standard tracker-btn-color-default"
-            }
-            onClick={props.handleTrackerOptions}
-          >
-            {props.incrementText}
-          </Button>
-          {increments}
-          <Button
-            color="danger"
-            className="delete-mode-btn"
-            onClick={props.toggleDeleteMode}
-          >
-            X
-          </Button>
-        </ButtonGroup> */
     );
 }
 

@@ -68,9 +68,6 @@ const SingleTrackerDetails = (props) => {
             </span>
           </Alert>
         ) : null}
-        {/* <IncrementsDisplay increments={props.increments} handleIncrementOptions={handleIncrementOptions}
-        isDeleteMode={isDeleteMode} handleTrackerOptions={handleTrackerOptions} incrementText={incrementText}
-        toggleDeleteMode={toggleDeleteMode}/> */}
         <ButtonGroup role="group" className="increment-btns">
           <Button
             style={isDeleteMode ? {backgroundColor: "#C33E3E"} : {backgroundColor: props.tracker.settings.incColor}}

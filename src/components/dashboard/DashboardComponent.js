@@ -53,18 +53,6 @@ class Dashboard extends Component {
   }
 
   render() {
-    /* const compare = (a, b) => {
-      if (a.value < b.value) {
-        return 1;
-      }
-      if (a.value > b.value) {
-        return -1;
-      }
-      return 0;
-    };
-
-    this.props.trackers.trackers.sort(compare);
-    console.log(this.props.trackers.trackers); */
 
     sortTrackers(this.props.trackers.trackers, this.state.sort);
 
@@ -73,14 +61,7 @@ class Dashboard extends Component {
         <div key={tracker.id}>
           <DashboardTracker
             tracker={tracker}
-            //increments={this.props.trackers.trackers.increments.filter(
-            //  (increment) => increment.trackerId === tracker.id
-            //)}
-            //createIncrement={this.props.createIncrement}
-            //deleteIncrement={this.props.deleteIncrement}
             deleteTracker={this.props.deleteTracker}
-            //incrementTracker={this.props.incrementTracker}
-            //updateNumIncrements={this.props.updateNumIncrements}
             updateTracker={this.props.updateTracker}
           />
         </div>

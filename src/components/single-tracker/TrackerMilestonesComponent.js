@@ -16,7 +16,6 @@ const TrackerMilestones = (props) => {
       console.log(values.milestone);
       var id = 0, completed = false, completedDate = "";
       sortMilestones(props.tracker, 2);
-      //console.log(Math.max(...props.tracker.milestones));
       if(props.tracker.milestones.length > 0)
         id = parseInt(props.tracker.milestones[props.tracker.milestones.length-1].id) + 1;
       if(props.tracker.value > values.milestone){

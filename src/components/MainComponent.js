@@ -14,13 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     fetchTrackers: () => dispatch(fetchTrackers()),
-    //fetchIncrements: () => dispatch(fetchIncrements()),
-    //incrementTracker: (tracker, amount) => dispatch(incrementTracker(tracker, amount)),
     createTracker: (name, value) => dispatch(createTracker(name, value)),
     deleteTracker: (id) => dispatch(deleteTracker(id)),
-    //createIncrement: (trackerId, value) => dispatch(createIncrement(trackerId, value)),
-    //deleteIncrement: (id) => dispatch(deleteIncrement(id)),
-    //updateNumIncrements: (id, amount) => dispatch(updateNumIncrements(id, amount)),
     deleteClick: (id, clicks) => dispatch(deleteClick(id, clicks)),
     updateSetting: (tracker) => dispatch(updateSetting(tracker)),
     updateTracker: (tracker) => dispatch(updateTracker(tracker)),
@@ -29,20 +24,14 @@ const mapDispatchToProps = (dispatch) => ({
 class Main extends Component {
   componentDidMount() {
     this.props.fetchTrackers();
-    //this.props.fetchIncrements();
   }
 
   render() {
     const TrackersPage = () => {
       return (
         <Dashboard trackers={this.props.trackers} 
-          //increments={this.props.increments} 
           createTracker={this.props.createTracker}
           deleteTracker={this.props.deleteTracker}  
-          //createIncrement={this.props.createIncrement}
-          //deleteIncrement={this.props.deleteIncrement} 
-          //incrementTracker={this.props.incrementTracker} 
-          //updateNumIncrements={this.props.updateNumIncrements}
           updateTracker={this.props.updateTracker}/>
       );
     }
@@ -50,13 +39,8 @@ class Main extends Component {
     const SingleTrackerPage = ({match}) => {
       return (
         <SingleTrackerComponent tracker={this.props.trackers.trackers.filter((tracker) => tracker.id === parseInt(match.params.trackerId))[0]} 
-          //increments={this.props.trackers.increments.filter((increment) => increment.trackerId === parseInt(match.params.trackerId))}
           deleteTracker={this.props.deleteTracker}  
-          //createIncrement={this.props.createIncrement} 
-          //deleteIncrement={this.props.deleteIncrement}
-          //incrementTracker={this.props.incrementTracker}
           updateTracker={this.props.updateTracker} 
-          //updateNumIncrements={this.props.updateNumIncrements}
           updateSetting={this.props.updateSetting}
           deleteClick={this.props.deleteClick}/>
       );
