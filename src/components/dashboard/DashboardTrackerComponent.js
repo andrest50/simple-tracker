@@ -55,18 +55,14 @@ class DashboardTracker extends Component {
       id: id
     }
     this.props.tracker.increments.push(new_increment);
-    //this.props.createIncrement(this.props.tracker.id, values.value);
     this.props.tracker.numIncrements += 1;
     this.props.updateTracker(this.props.tracker);
-    //this.props.updateNumIncrements(this.props.tracker, 1);
   }
 
   handleDeleteIncrement(id) {
     this.props.tracker.increments = this.props.tracker.increments.filter((increment) => increment.id !== id);
-    //this.props.deleteIncrement(id);
     this.props.tracker.numIncrements -= 1;
     this.props.updateTracker(this.props.tracker);
-    //this.props.updateNumIncrements(this.props.tracker, -1);
   }
 
   handleDeleteTracker(id) {

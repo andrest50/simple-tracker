@@ -14,10 +14,6 @@ import { handleIncrement } from "../Utils";
 import ColorModal from "../modals/ColorModalComponent";
 
 const SingleTrackerHeader = (props) => {
-  /* const changeColorMode = () => {
-        var element = document.getElementById('colorModeBtn');
-        element.classList.toggle('night-mode');
-    } */
 
   const [isValueModalOpen, setIsValueModalOpen] = useState(false);
   const [isBgColorModalOpen, setIsBgColorModalOpen] = useState(false);
