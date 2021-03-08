@@ -62,6 +62,7 @@ const TrackerNotes = (props) => {
                   </div>
               )
           })}
+          {props.tracker.notes.length == 0 && <h5>No notes yet.</h5>}
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { sortHistory, handleIncrement } from '../Utils';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 
 const TrackerHistory = (props) => {
   const [isHistoryDropdown, setIsHistoryDropdown] = useState(false);
@@ -59,20 +60,20 @@ const TrackerHistory = (props) => {
     <div style={{backgroundColor: props.tracker.settings.historyColor}} className="history center">
       <div className="history-header">
         <h4 className="history-title">History</h4>
-        <div className="history-options">
-          <i
-            className="fa fa-ellipsis-v history-options-btn noselect"
-            onClick={toggleHistoryDropdown}
-          ></i>
-          {isHistoryDropdown ? (
-            <div className="history-options-dropdown">
-              <div onClick={() => handleDeleteAllClicks(props.tracker)}>Clear</div>
-              <div onClick={() => handleSortHistory}>Sort</div>
-            </div>
-          ) : null}
-        </div>
+        <Dropdown isOpen={isHistoryDropdown} toggle={toggleHistoryDropdown} className="history-options">
+          <DropdownToggle style={{backgroundColor: "#4196ad", color: "black", border: "none"}}>
+            <i
+              className="fa fa-ellipsis-v history-options-btn noselect"
+            ></i>
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem onClick={() => handleDeleteAllClicks(props.tracker)}>Clear</DropdownItem>
+            <DropdownItem onClick={() => handleSortHistory}>Sort</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </div>
       {sorted_clicks}
+      {props.tracker.clicks.length == 0 && <h5>No clicks yet.</h5>}
     </div>
   );
 };

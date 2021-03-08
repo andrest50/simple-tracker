@@ -96,7 +96,7 @@ const SingleTrackerHeader = (props) => {
                 handleColor={props.handleIncColor}
                 headerText="Increment Color"
               />
-              <DropdownItem onClick={toggleHistoryColorModal}>History Background Color</DropdownItem>
+              <DropdownItem onClick={toggleHistoryColorModal}>Sections Background Color</DropdownItem>
               <ColorModal
                 toggleModal={toggleHistoryColorModal}
                 isModalOpen={isHistoryColorModalOpen}
@@ -107,11 +107,6 @@ const SingleTrackerHeader = (props) => {
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
-        {/* <Nav navbar>
-                    <NavItem>
-                        <NavLink href="/" id="navbar-btn">Dashboard</NavLink>
-                    </NavItem>
-                </Nav> */}
       </Navbar>
       <div id="description">
         <h5>This is a website for creating, and maintaining, many trackers</h5>

@@ -340,7 +340,7 @@ body {
 
 .history-title {
   color: #1a2564;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   font-size: 30px;
 }
 
@@ -380,7 +380,7 @@ body {
 .history-options-dropdown div {
   padding: 5px 15px 5px 15px;
   width: 80px;
-  margin: 0;
+  margin-bottom: 5px;
 }
 
 .history-options-dropdown div:hover {
@@ -453,7 +453,7 @@ body {
 }
 
 .note-add-btn {
-  font-size: 23px;
+  font-size: 18px;
 }
 
 .notes-list {
@@ -514,10 +514,18 @@ body {
 
 .milestones-form-submit-btn {
   margin-left: -15px;
+  height: 32px; 
+  width: 40px;
+  text-align: center;
+  display: flex;
 }
 
 .milestone-add-btn {
-  font-size: 23px;
+  font-size: 18px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .milestones-list {

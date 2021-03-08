@@ -51,7 +51,7 @@ const TrackerMilestones = (props) => {
         <h3 className="milestones-title">Milestones</h3>
         <LocalForm className="justify-content-center" onSubmit={(values) => handleAddMilestone(values)}>
           <Row className="form-group">
-          <Label className="milestones-form-label" htmlFor="milestone" md={4}>
+            <Label className="milestones-form-label" htmlFor="milestone" md={4}>
               {null}
             </Label>
             <Col md={3}>
@@ -60,6 +60,7 @@ const TrackerMilestones = (props) => {
                 id="milestone"
                 name="milestone"
                 className="form-control"
+                style={{height: "30px"}}
                 validators={{
                   isNumber,
                 }}
@@ -89,6 +90,7 @@ const TrackerMilestones = (props) => {
                   </div>
               )
           })}
+          {props.tracker.milestones.length == 0 && <h5>No milestones yet.</h5>}
       </div>
     </div>
   );
