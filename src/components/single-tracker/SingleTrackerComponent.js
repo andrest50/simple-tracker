@@ -66,15 +66,15 @@ class SingleTracker extends Component {
     this.setState({
       tracker: this.props.tracker,
     });
-}
+  }
 
-handleHistoryColor(color){
+  handleHistoryColor(color){
     console.log(String(color.hex));
     this.props.tracker.settings.historyColor = color.hex;
     this.setState({
       tracker: this.props.tracker,
     });
-}
+  }
 
   componentDidMount() {
     //window.scrollTo(0, 0);

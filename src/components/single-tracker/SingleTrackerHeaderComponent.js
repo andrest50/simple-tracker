@@ -12,10 +12,13 @@ import {
 import TrackerValueModal from "../modals/TrackerValueModalComponent";
 import { handleIncrement } from "../Utils";
 import ColorModal from "../modals/ColorModalComponent";
+import TrackerRenameModal from "../modals/TrackerRenameModal";
+import { updateTracker } from "../../redux";
 
 const SingleTrackerHeader = (props) => {
 
   const [isValueModalOpen, setIsValueModalOpen] = useState(false);
+  const [isRenameModalOpen, setIsRenameModalOpen] = useState(false);
   const [isBgColorModalOpen, setIsBgColorModalOpen] = useState(false);
   const [isIncColorModalOpen, setIsIncColorModalOpen] = useState(false);
   const [isHistoryColorModalOpen, setIsHistoryColorModalOpen] = useState(false);
@@ -23,6 +26,11 @@ const SingleTrackerHeader = (props) => {
   const toggleValueModal = () => {
     console.log(!isValueModalOpen);
     setIsValueModalOpen(!isValueModalOpen);
+  };
+
+  const toggleRenameModal = () => {
+    console.log(!isRenameModalOpen);
+    setIsRenameModalOpen(!isRenameModalOpen);
   };
 
   const toggleBgColorModal = () => {
@@ -55,6 +63,12 @@ const SingleTrackerHeader = (props) => {
     handleIncrement(props.tracker, values.value, props.updateTracker);
   };
 
+  const setTrackerName = (values) => {
+    console.log(values.name);
+    props.tracker.name = values.name;
+    props.updateTracker(props.tracker);
+  }
+
   var settings = props.tracker.settings;
 
   return (
@@ -77,6 +91,14 @@ const SingleTrackerHeader = (props) => {
                 setTrackerValue={setTrackerValue}
                 toggleModal={toggleValueModal}
                 isModalOpen={isValueModalOpen}
+              />
+              <DropdownItem onClick={toggleRenameModal}>
+                Rename Tracker
+              </DropdownItem>
+              <TrackerRenameModal
+                setTrackerName={setTrackerName}
+                toggleModal={toggleRenameModal}
+                isModalOpen={isRenameModalOpen}
               />
               <DropdownItem divider />
               <DropdownItem header>Colors</DropdownItem>

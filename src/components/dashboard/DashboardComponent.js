@@ -83,7 +83,7 @@ class Dashboard extends Component {
           <div id="dashboard-trackers">
             <div id="dashboard-trackers-header">
               <h2 id="dashboard-trackers-title">Your Trackers: </h2>
-              <p>You have {this.props.trackers.trackers.length} trackers</p>
+              <p>You have {this.props.trackers.trackers.length} tracker{this.props.trackers.trackers.length == 1 ? null: "s"}</p>
               <div className="dashboard-options">
                 <i className="fa fa-ellipsis-v dashboard-options-btn noselect" onClick={this.toggleDashboardDropdown}></i>
                 {this.state.isDashboardDropdown ? (
