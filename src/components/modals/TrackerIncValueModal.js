@@ -12,15 +12,16 @@ import { Control, LocalForm, Errors } from "react-redux-form";
 
 //Form validation checks
 const required = (val) => val && val.length;
-const maxValue = (val) => val < 1000;
+const maxValue = (val) => val < 10000;
 const isNumber = (val) => !isNaN(Number(val));
 
-const IncrementModal = (props) => {
+const TrackerIncValueModal = (props) => {
+    console.log("here");
     return (
         <Modal isOpen={props.isModalOpen} toggle={props.toggleModal}>
-          <ModalHeader toggle={props.toggleModal}>Create Increment</ModalHeader>
+          <ModalHeader toggle={props.toggleModal}>Increment By</ModalHeader>
           <ModalBody>
-            <LocalForm onSubmit={(values) => props.handleAddIncrement(values)}>
+            <LocalForm onSubmit={(values) => props.incTrackerValue(values)}>
               <Row className="form-group">
                 <Label htmlFor="value" md={2}>
                   Value
@@ -30,7 +31,7 @@ const IncrementModal = (props) => {
                     model=".value"
                     id="value"
                     name="value"
-                    placeholder="Increment Value"
+                    placeholder="Tracker Value"
                     className="form-control"
                     autocomplete="off"
                     validators={{
@@ -46,7 +47,7 @@ const IncrementModal = (props) => {
                       messages={{
                         required: "Required. ",
                         isNumber: "Value must be a number. ",
-                        maxValue: "Value must be less than 1000. "
+                        maxValue: "Value must be less than 10000. "
                       }}
                     />
                 </Col>
@@ -60,4 +61,4 @@ const IncrementModal = (props) => {
       );
 }
 
-export default IncrementModal;
+export default TrackerIncValueModal;

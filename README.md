@@ -1,6 +1,6 @@
-## Run JSON Server (for database)
+## Run JSON Server (for REST API)
 
-npm install json-server
+npm install json-server <br />
 json-server --watch db.json
 
 ## React Application

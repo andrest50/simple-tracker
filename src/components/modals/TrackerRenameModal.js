@@ -31,6 +31,7 @@ const TrackerRenameModal = (props) => {
                     name="name"
                     placeholder="Tracker Name"
                     className="form-control"
+                    autocomplete="off"
                     validators={{
                         required
                     }}                   

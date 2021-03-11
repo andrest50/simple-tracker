@@ -34,6 +34,7 @@ const TrackerModal = (props) => {
                     name="name"
                     placeholder="Tracker Name"
                     className="form-control"
+                    autocomplete="off"
                     validators={{
                       required,
                       minLength: minLength(2),
@@ -63,6 +64,7 @@ const TrackerModal = (props) => {
                     name="value"
                     placeholder="Starting Value"
                     className="form-control"
+                    autocomplete="off"
                     validators={{
                       required,
                       isNumber,

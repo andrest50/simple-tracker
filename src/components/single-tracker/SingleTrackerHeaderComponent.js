@@ -10,6 +10,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import TrackerValueModal from "../modals/TrackerValueModalComponent";
+import TrackerIncValueModal from "../modals/TrackerIncValueModal"
 import { handleIncrement } from "../Utils";
 import ColorModal from "../modals/ColorModalComponent";
 import TrackerRenameModal from "../modals/TrackerRenameModal";
@@ -18,6 +19,7 @@ import { updateTracker } from "../../redux";
 const SingleTrackerHeader = (props) => {
 
   const [isValueModalOpen, setIsValueModalOpen] = useState(false);
+  const [isIncValueModalOpen, setIsIncValueModalOpen] = useState(false);
   const [isRenameModalOpen, setIsRenameModalOpen] = useState(false);
   const [isBgColorModalOpen, setIsBgColorModalOpen] = useState(false);
   const [isIncColorModalOpen, setIsIncColorModalOpen] = useState(false);
@@ -26,6 +28,11 @@ const SingleTrackerHeader = (props) => {
   const toggleValueModal = () => {
     console.log(!isValueModalOpen);
     setIsValueModalOpen(!isValueModalOpen);
+  };
+
+  const toggleIncValueModal = () => {
+    console.log(!isIncValueModalOpen);
+    setIsIncValueModalOpen(!isIncValueModalOpen);
   };
 
   const toggleRenameModal = () => {
@@ -63,6 +70,11 @@ const SingleTrackerHeader = (props) => {
     handleIncrement(props.tracker, values.value, props.updateTracker);
   };
 
+  const incTrackerValue = (values) => {
+    console.log(parseInt(props.tracker.value + values.value));
+    handleIncrement(props.tracker, parseInt(values.value), props.updateTracker);
+  };
+
   const setTrackerName = (values) => {
     console.log(values.name);
     props.tracker.name = values.name;
@@ -91,6 +103,14 @@ const SingleTrackerHeader = (props) => {
                 setTrackerValue={setTrackerValue}
                 toggleModal={toggleValueModal}
                 isModalOpen={isValueModalOpen}
+              />
+              <DropdownItem onClick={toggleIncValueModal}>
+                Increment Tracker Value
+              </DropdownItem>
+              <TrackerIncValueModal
+                incTrackerValue={incTrackerValue}
+                toggleModal={toggleIncValueModal}
+                isModalOpen={isIncValueModalOpen}
               />
               <DropdownItem onClick={toggleRenameModal}>
                 Rename Tracker
