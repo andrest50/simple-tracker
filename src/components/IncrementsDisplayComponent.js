@@ -16,7 +16,6 @@ const IncrementsDisplay = (props) => {
       props.increments.sort(compare);
     
       const increments = props.increments.map((increment) => {
-        console.log(increment);
         return (
           <Button
             key={increment.id}

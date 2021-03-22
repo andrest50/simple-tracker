@@ -13,7 +13,6 @@ const isNumber = (val) => !isNaN(Number(val));
 const TrackerMilestones = (props) => {
 
   const handleAddMilestone = (values) => {
-      console.log(values.milestone);
       var id = 0, completed = false, completedDate = "";
       sortMilestones(props.tracker, 2);
       if(props.tracker.milestones.length > 0)
@@ -38,7 +37,6 @@ const TrackerMilestones = (props) => {
   };
 
   const handleRemoveMilestone = (id) => {
-    console.log(props.tracker.milestones = props.tracker.milestones.filter((milestone) => milestone.id !== id));
     props.tracker.milestones = props.tracker.milestones.filter((milestone) => milestone.id !== id);
     props.updateTracker(props.tracker);
   }

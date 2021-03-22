@@ -90,7 +90,6 @@ class DashboardTracker extends Component {
     if (this.state.isDeleteMode === true) {
       this.handleDeleteTracker(tracker.id);
     } else {
-      console.log(tracker.numIncrements)
       if(tracker.numIncrements < 5)
         this.toggleModal();
       else

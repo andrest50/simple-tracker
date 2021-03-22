@@ -39,7 +39,6 @@ class SingleTracker extends Component {
   }
 
   handleDeleteIncrement(id) {
-    console.log(this.props.tracker.increments.filter((increment) => increment.id !== id));
     this.props.tracker.increments = this.props.tracker.increments.filter((increment) => increment.id !== id);
     this.props.tracker.numIncrements -= 1;
     this.props.updateTracker(this.props.tracker);
@@ -53,7 +52,6 @@ class SingleTracker extends Component {
   }
 
   handleBgColor(color){
-      console.log(String(color.hex));
       this.props.tracker.settings.bgColor = color.hex;
       this.setState({
         tracker: this.props.tracker,
@@ -61,7 +59,6 @@ class SingleTracker extends Component {
   }
 
   handleIncColor(color){
-    console.log(String(color.hex));
     this.props.tracker.settings.incColor = color.hex;
     this.setState({
       tracker: this.props.tracker,
@@ -69,7 +66,6 @@ class SingleTracker extends Component {
   }
 
   handleHistoryColor(color){
-    console.log(String(color.hex));
     this.props.tracker.settings.historyColor = color.hex;
     this.setState({
       tracker: this.props.tracker,
@@ -92,8 +88,6 @@ class SingleTracker extends Component {
     if (this.state.redirect === true) {
       return <Redirect to="/home" />;
     }
-
-    console.log(this.props.tracker);
 
     return (
       <div style={{backgroundColor: this.state.tracker.settings.bgColor}}>

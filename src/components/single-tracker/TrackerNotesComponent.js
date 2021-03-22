@@ -10,7 +10,6 @@ import { Control, LocalForm, Errors } from "react-redux-form";
 const TrackerNotes = (props) => {
 
   const handleAddNote = (values) => {
-      console.log(values.notes);
       var id;
       if(props.tracker.notes.length > 0)
         id = parseInt(props.tracker.notes[props.tracker.notes.length-1].id) + 1;
@@ -25,7 +24,6 @@ const TrackerNotes = (props) => {
   };
 
   const handleRemoveNote = (id) => {
-    console.log(props.tracker.notes = props.tracker.notes.filter((note) => note.id !== id));
     props.tracker.notes = props.tracker.notes.filter((note) => note.id !== id);
     props.updateTracker(props.tracker);
   }

@@ -39,7 +39,6 @@ class Dashboard extends Component {
   }
 
   handleSort() {
-    console.log(this.state.sort);
     if(this.state.sort !== 3){
         this.setState({
             sort: this.state.sort + 1

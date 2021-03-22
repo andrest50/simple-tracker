@@ -19,7 +19,6 @@ export const handleIncrement = (tracker, amount, updateTracker) => {
     id: tracker.numClicks,
   };
   tracker.clicks.push(new_click);
-  console.log(tracker.value)
   tracker.value += parseInt(amount);
   tracker.numClicks += 1;
   tracker.milestones.map((milestone) => {

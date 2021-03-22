@@ -16,7 +16,6 @@ const maxValue = (val) => val < 10000;
 const isNumber = (val) => !isNaN(Number(val));
 
 const TrackerIncValueModal = (props) => {
-    console.log("here");
     return (
         <Modal isOpen={props.isModalOpen} toggle={props.toggleModal}>
           <ModalHeader toggle={props.toggleModal}>Increment By</ModalHeader>

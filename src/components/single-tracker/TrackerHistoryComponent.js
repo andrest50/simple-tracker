@@ -15,7 +15,6 @@ const TrackerHistory = (props) => {
   };
 
   const handleDeleteClick = (tracker, click) => {
-    console.log(tracker.clicks);
     var new_clicks = tracker.clicks.filter(
       (curr_click) => curr_click.id !== click.id
     );
@@ -26,8 +25,6 @@ const TrackerHistory = (props) => {
     var new_clicks = [];
     props.deleteClick(tracker, new_clicks);
   };
-
-  console.log(isSorted);
 
   sortHistory(isSorted, props.tracker);
 

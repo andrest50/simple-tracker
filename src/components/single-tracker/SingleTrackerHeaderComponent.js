@@ -14,7 +14,6 @@ import TrackerIncValueModal from "../modals/TrackerIncValueModal"
 import { handleIncrement } from "../Utils";
 import ColorModal from "../modals/ColorModalComponent";
 import TrackerRenameModal from "../modals/TrackerRenameModal";
-import { updateTracker } from "../../redux";
 
 const SingleTrackerHeader = (props) => {
 
@@ -26,22 +25,18 @@ const SingleTrackerHeader = (props) => {
   const [isHistoryColorModalOpen, setIsHistoryColorModalOpen] = useState(false);
 
   const toggleValueModal = () => {
-    console.log(!isValueModalOpen);
     setIsValueModalOpen(!isValueModalOpen);
   };
 
   const toggleIncValueModal = () => {
-    console.log(!isIncValueModalOpen);
     setIsIncValueModalOpen(!isIncValueModalOpen);
   };
 
   const toggleRenameModal = () => {
-    console.log(!isRenameModalOpen);
     setIsRenameModalOpen(!isRenameModalOpen);
   };
 
   const toggleBgColorModal = () => {
-    console.log(!isBgColorModalOpen);
     if(isBgColorModalOpen){
         props.updateSetting(props.tracker);
     }
@@ -49,7 +44,6 @@ const SingleTrackerHeader = (props) => {
   };
 
   const toggleIncColorModal = () => {
-    console.log(!isIncColorModalOpen);
     if(isIncColorModalOpen){
         props.updateSetting(props.tracker);
     }
@@ -57,7 +51,6 @@ const SingleTrackerHeader = (props) => {
   };
 
   const toggleHistoryColorModal = () => {
-    console.log(!isHistoryColorModalOpen);
     if(isHistoryColorModalOpen){
         props.updateSetting(props.tracker);
     }
@@ -66,17 +59,14 @@ const SingleTrackerHeader = (props) => {
 
   const setTrackerValue = (values) => {
     props.tracker.value = 0;
-    console.log(parseInt(props.tracker.value + values.value));
     handleIncrement(props.tracker, values.value, props.updateTracker);
   };
 
   const incTrackerValue = (values) => {
-    console.log(parseInt(props.tracker.value + values.value));
     handleIncrement(props.tracker, parseInt(values.value), props.updateTracker);
   };
 
   const setTrackerName = (values) => {
-    console.log(values.name);
     props.tracker.name = values.name;
     props.updateTracker(props.tracker);
   }

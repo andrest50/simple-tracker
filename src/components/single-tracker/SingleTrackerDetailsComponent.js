@@ -29,7 +29,6 @@ const SingleTrackerDetails = (props) => {
     }
     
     const toggleModal = () => {
-        console.log(!isModalOpen);
         setIsModalOpen(!isModalOpen);
     }
 
@@ -37,7 +36,6 @@ const SingleTrackerDetails = (props) => {
         if (isDeleteMode === true) {
           props.handleDeleteTracker(props.tracker.id);
         } else {
-          console.log(props.tracker.numIncrements);
           if (props.tracker.numIncrements < 5) toggleModal();
           else {
             setIsAlert(true);

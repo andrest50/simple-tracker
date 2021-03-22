@@ -17,7 +17,6 @@ const isNumber = (val) => !isNaN(Number(val));
 const maxValue = (val) => val < 1000000;
 
 const TrackerModal = (props) => {
-    console.log(props);
     return (
         <Modal isOpen={props.isModalOpen} toggle={() => props.toggleModal(!props.isModalOpen)}>
           <ModalHeader toggle={() => props.toggleModal(!props.isModalOpen)}>Create Tracker</ModalHeader>
